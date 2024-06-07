@@ -1,10 +1,12 @@
 import React from 'react';
-import '../public/style.css';
+import './index.css';
+import Tabs from './components/Tabs.jsx';
 
 function App() {
   return (
     <div>
-      <h1>grader is running</h1>
+      <h1 class="text-3xl font-bold underline">Grading Assistant</h1>
+      <Tabs> </Tabs>
     </div>
   );
 }
