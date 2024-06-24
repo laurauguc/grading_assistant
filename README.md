@@ -1,5 +1,5 @@
 # Description
-Gemini-powered Grading Assistant aids teachers in grading written work. Teachers can apply pre-designed rubrics or upload their own.
+Gemini-powered Grading Assistant aids teachers in grading written work. Teachers can apply curated rubrics or upload their own.
 
 # Architecture
 
