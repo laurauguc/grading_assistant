@@ -34,7 +34,9 @@ Versions: Python 3.12.3, node v22.3.0, npm 10.8.1.
 3. Check that node, npm, and python are installed by running (on terminal):
 
     node -v
+
     npm -v
+
     python3 -V
 
 4. Install depedencies:
@@ -45,9 +47,9 @@ Versions: Python 3.12.3, node v22.3.0, npm 10.8.1.
 
 5. Run the project: Need to open 2 terminal windows to start the Django and React development servers.
 
-* To start the Django development server, navigate to the project folder and run: python manage.py runserver
+* To start the Django development server, navigate to the project folder and run: __python manage.py runserver__
 
-* To start the React development server, navigate to the React app folder (grading_assistant/frontend) and run: npm start.
+* To start the React development server, navigate to the React app folder (grading_assistant/frontend) and run: __npm start__.
 
 6. Open your web browser and navigate to http://localhost:3000/
 
