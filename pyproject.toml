@@ -2,7 +2,7 @@
 name = "grading-assistant"
 version = "0.0.1"
 description = "Gemini-powered Grading Assistant aids teachers in grading written work. Teachers can apply curated rubrics or upload their own."
-authors = ["Laura Uguccioni <l.uguccioni1@gmail.com>"]
+authors = [{name = "Laura Uguccioni", email = "l.uguccioni1@gmail.com"}]
 
 [project.dependencies]
 djangorestframework = "^3.15.1"
