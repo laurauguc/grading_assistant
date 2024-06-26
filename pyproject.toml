@@ -3,10 +3,9 @@ name = "grading-assistant"
 version = "0.0.1"
 description = "Gemini-powered Grading Assistant aids teachers in grading written work. Teachers can apply curated rubrics or upload their own."
 authors = [{name = "Laura Uguccioni", email = "l.uguccioni1@gmail.com"}]
-
-[project.dependencies]
-djangorestframework = "^3.15.1"
-django-cors-headers = "^3.15.1"
-Django = "^4.2.13"
-google-generativeai = "^0.5.4"
-python-dotenv = "^1.0.1"
+dependencies = [
+"djangorestframework==3.15.1",
+"django-cors-headers==3.15.1",
+"Django==4.2.13",
+"google-generativeai==0.5.4",
+"python-dotenv==1.0.1"]
