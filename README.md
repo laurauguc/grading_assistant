@@ -1,72 +1,123 @@
-# Description
-Gemini-powered Grading Assistant aids teachers in grading written work. Teachers can apply curated rubrics or upload their own.
+# Grading Assistant Application
 
-# Architecture
+The Gemini-powered Grading Assistant Application aids teachers in grading written work. Teachers can apply curated rubrics or upload their own.
+
+## Architecture
 
 The Grading Assistant is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS App while the backend is a Django App, functioning as an api endpoint. The calls to the Gemini API are made from the backend.
 
-# Requirements
+## Requirements
 
-Requirements: Node.js, Python.
+The required programming languages are Node.js and Python. Versions: Python 3.12.3, node v22.3.0, npm 10.8.1.
 
-Fr installation of Javascript and Python depedencies, see set-up instructions below, or see the package.json and requirements.text files for respectively.
+For installation of Javascript and Python dependencies, see the set-up instructions below.
 
-Versions: Python 3.12.3, node v22.3.0, npm 10.8.1.
+## Set-Up Instructions
 
-# Set-Up
+1. (Optional) Create and activate a virtual environment.
 
-1. (Optional): Create and activate a virtual environment. From the command line:
+  A. Using the command line, install virtualenv:
 
-  * Install virtualenv (if not already installed): pip install virtualenv
+  ```console
+  pip install virtualenv
+  ```
+  Note: if using Homebrew to manage packages, the command is likely `brew install virtualenv`, instead.
 
-  * Create a virtual env: virtualenv venv
+  B. Create a virtual environment, by first navigating to the project folder and then running this command:
 
-  * Activate the virtual environment: source venv/bin/activate
+  ```console
+  virtualenv venv
+  ```
 
-2. Create a .env file to store the GOOGLE_API_KEY.
+  This command creates a virtual environment called "venv" contained in the homonymous folder. By using the same name for the virtual environment, git will know to ignore it (since listed in the .gitignore file).
 
-  * Obtain a Google API KEY here: https://aistudio.google.com/app/apikey
+  C. Activate the virtual environment:
 
-  * Create a .env file in the project root directory. From the terminal: touch .env
+  ```console
+  source venv/bin/activate
+  ```
 
-  * Add the API key to the .env file: GOOGLE_API_KEY="<Insert-API-Key-here"
+2. Create and store the GOOGLE_API_KEY.
 
-3. Check that node, npm, and python are installed by running (on terminal):
+  A. Obtain a Google API KEY here: https://aistudio.google.com/app/apikey
 
-    node -v
+  B. Add the API key to a new _.env_ file.
 
-    npm -v
+  Create a .env file in the project directory.
 
-    python3 -V
+  ```console
+  echo "GOOGLE_API_KEY="<Insert-API-Key-here>" >> .env
+  ```
 
-4. Install depedencies:
+3. Check that node, npm, and python are installed:
 
-  * To install python depedencies from project folder: pip install -e (or: pip install -r requirements.txt). Note: packages listed in requirements.txt.
+  ```console
+  node -v
+  npm -v
+  python3 -V
+  ```
 
-  * To install Javascript depedencies run from project folder: npm install. Note: depedencies listed in package.json.
+4. Install dependencies:
 
-5. Run the project: Need to open 2 terminal windows to start the Django and React development servers.
+  A. To install the python dependencies, first navigate to the project folder, and then run the following command.
 
-* To start the Django development server, navigate to the project folder and run: __python manage.py runserver__
+  ```console
+  pip install -e .
+  ```
 
-* To start the React development server, navigate to the React app folder (grading_assistant/frontend) and run: __npm start__.
+  Note: this command installs the packages listed in the _grading_assistant.toml_ file.
+
+  B. To install Javascript dependencies, first navigate to the _frontend_ folder (within project the folder):
+
+  ```console
+  cd ./frontend
+  ```
+
+  And then run the following command:
+
+  ```console
+  npm install
+  ```
+
+  Note: this command installs the packages listed in the _package.json_ file.
+
+5. Run the project
+
+  Two terminal windows are needed to start the Django development server and the React development server.
+
+  A. To start the Django development server, navigate to the project folder and run:
+
+  ```console
+  python manage.py runserver
+  ```
+  B. To start the React development server, navigate to the React app folder (_grading_assistant/frontend_) and run:
+
+  ```console
+  npm start
+  ````
 
 6. Open your web browser and navigate to http://localhost:3000/
 
-# Managing data
+## Managing data
 
-The data can be loaded and changed in a few different ways. Note: if changes are made to the field names, the data model in backend/models.py and the admin settings in backend/admin.py need to be updated accordingly.
+The data can be loaded and changed in a few different ways. Note: if changes are made to the field names, the data model in _backend/models.py_ need to be updated accordingly.
 
-1. To load external data to the db.sqlite3 database for the first time, run from command line:
+### Instructions for loading external data for the first time.
 
-* python manage.py migrate
+The project on this GitHub repository already contains loaded data. So, this step is only needed if wanting to load data from scratch. In this scenario, the _db.sqlite3_ database would first need to be deleted.
 
-* python manage.py load_grading_rubric_data (Note: right now the script assumes a specific location for the external_data; it would be better to pass the location as an argument (for later))
 
-These commands will create the db.sqlite3 database and load the data into it. It will also move the grading rubrics to the rubrics folder and create a new name matching the file-path specified in the database.
+```console
+python manage.py migrate
+python manage.py load_grading_rubric_data
+````
 
-Since the project in the GitHub repo already contains loaded data, first the db.sqlite3 database and the rubrics folder would need to be deleted.
+These commands create the _db.sqlite3_ database and load the data contained in the _external_data_ folder into this database. It will also move the grading rubrics to a specified folder.
 
-2. Modifying the db.sqlite3. You can view and modify the the db.sqlite3 database by using an App such as DB Browser for SQLite, downloadable here: https://sqlitebrowser.org/
+Note: As of the release 0.0.1, the _load_grading_rubric_data_ module assumes a specific location for the _external_data_ folder. For future version, we should pass the location as an argument to the command.
 
-3. Through the admin site: http://127.0.0.1:8000/admin (after launching the Django server). Superuser credentials shared on Slack.
+### Instructions for modifying the _db.sqlite3_ database
+
+The recommended way to modify the database is through the admin site. Make sure that the backend server is running, and then, from a browser, navigate to the admin site: http://127.0.0.1:8000/admin. The admin site allows both viewing and modifying the data. It also allows managing users and user groups authentication and authorization. Superuser credentials have been shared on Slack.
+
+It is also possible to view and modify the _db.sqlite3_ database with a database browsing App, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, I recommend using the admin site instead.
