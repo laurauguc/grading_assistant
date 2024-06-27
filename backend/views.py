@@ -11,6 +11,8 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
+import os
+from django.conf import settings
 
 load_dotenv(Path(".env"))
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
@@ -53,5 +55,7 @@ def obtain_rubric(request):
     rubric_id=request.query_params['rubric_id']
     #rubric = GradingRubric.objects.get(id = rubric_id)
     rubric = GradingRubric.objects.get(id = rubric_id).__dict__
+    rubric['file_'] = open(os.path.join(settings.BASE_DIR,rubric['content'])).read()
+
     del rubric['_state'] # need to remove this created key in order for object to be serializable
     return Response(rubric)

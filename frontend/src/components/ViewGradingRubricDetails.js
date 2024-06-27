@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {marked} from 'marked'
+import Markdown from 'react-markdown'
+import remarkGfm from "remark-gfm";
+
 
 function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
@@ -17,18 +20,17 @@ function ViewGradingRubricDetails(props) {
       });
   }, [props]);
 
-
   return (
-    <div>
+    <>
       <h3>Selected Rubric Details</h3>
       <p>Name: {message.name}</p>
       <p>Description: {message.description}</p>
       <p>Class names: {message.class_name}</p>
       <p>Level: {message.level}</p>
       <p>Language: {message.language}</p>
-      <div>Path to file (need to display): {message.content}</div>
 
-    </div>
+      <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>
+    </>
   );
 }
 

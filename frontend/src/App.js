@@ -4,21 +4,11 @@ import React from 'react';
 import GradeWithGemini from './components/GradeWithGemini';// './GradeWithGemini';
 import ObtainRubricNames from './components/ObtainRubricNames'
 import ViewGradingRubricDetails from './components/ViewGradingRubricDetails'
+//import DisplayGradingRubric from './components/DisplayGradingRubric'
 //import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import {marked} from 'marked'
+
 import {useState, useRef} from "react";
-
-//import Markdown from "marked-react";
-
-
-//const { useState } = React;
-
-//const student_assignment = "Test student input"
-
-
-
-
-
+import Markdown from 'react-markdown'
 
 
 function App() {
@@ -64,8 +54,6 @@ function App() {
 
       <h1>Grading Rubric</h1>
       <ViewGradingRubricDetails rubric_id = {selected_rubric_id}/>
-
-
 
       <img src={footer} className="App-logo" alt="logo" height={200} />
 

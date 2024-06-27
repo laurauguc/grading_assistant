@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {marked} from 'marked'
-
+import Markdown from 'react-markdown'
 
 
 
@@ -24,7 +23,6 @@ function GradeWithGemini({student_assignment, rubric_id}) {
       });
   }
 
-  const marked_output = marked.parse(graded_feedback)
 
 
   if (grading_loading) return (
@@ -40,7 +38,8 @@ function GradeWithGemini({student_assignment, rubric_id}) {
 
     <h2>Graded feedback:</h2>
 
-    <div contentEditable='true' dangerouslySetInnerHTML={{ __html: marked_output}}></div>
+    <Markdown>{graded_feedback}</Markdown>
+
     </>
   );
 }
