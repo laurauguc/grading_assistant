@@ -16,7 +16,7 @@ from django.conf import settings
 
 load_dotenv(Path(".env"))
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
-
+genai.configure(api_key=GOOGLE_API_KEY)
 
 
 @api_view(['GET'])
