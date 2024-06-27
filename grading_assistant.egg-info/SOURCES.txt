@@ -1,8 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-grading_assistant.egg-info/PKG-INFO
-grading_assistant.egg-info/SOURCES.txt
-grading_assistant.egg-info/dependency_links.txt
-grading_assistant.egg-info/requires.txt
-grading_assistant.egg-info/top_level.txt

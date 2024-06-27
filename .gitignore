@@ -3,3 +3,4 @@ node_modules
 .DS_Store
 venv/
 frontend/node_modules/
+grading_assistant.egg-info/
