@@ -8,7 +8,6 @@ import ViewGradingRubricDetails from './components/ViewGradingRubricDetails'
 //import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 import {useState, useRef} from "react";
-import Markdown from 'react-markdown'
 
 
 function App() {
