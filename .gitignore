@@ -5,3 +5,5 @@ venv/
 frontend/node_modules/
 grading_assistant.egg-info/
 .ipynb_checkpoints/
+grading_assistant/__pycache__/
+backend/__pycache__/
