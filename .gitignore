@@ -3,3 +3,9 @@ node_modules
 .DS_Store
 venv/
 frontend/node_modules/
+grading_assistant.egg-info/
+backend/__pycache__/
+backend/migrations/__pycache__/
+grading_assistant/__pycache__/
+.ipynb_checkpoints/
+*.pyc 
