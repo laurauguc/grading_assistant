@@ -6,4 +6,5 @@ frontend/node_modules/
 grading_assistant.egg-info/
 .ipynb_checkpoints/
 grading_assistant/__pycache__/
-backend/__pycache__/
+backend/migrations/__pycache__/
+*.pyc 

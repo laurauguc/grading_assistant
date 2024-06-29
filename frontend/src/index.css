@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+header {
+  display: flex;
+  align-items: center;
+}
+.tabs {
+  font-family: Arial, sans-serif;
+  width: 80%;
+  margin: auto;
+}
+
+.tab-buttons {
+  display: flex;
+  /* border-bottom: 2px solid #b01616;   */
+}
+
+.tab-button {
+  padding: 12px 10px;
+  width: 180px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  /* transition: background 0.3s; */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: 5px;
+}
+
+.tab-button:hover {
+  background: #f0f0f0;
+}
+
+.tab-button.active {
+  /* border-bottom: 2px solid #007bff; */
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.home_flex {
+  display: flex;
+  justify-content: space-between;
+}
