@@ -8,3 +8,4 @@ backend/__pycache__/
 backend/migrations/__pycache__/
 grading_assistant/__pycache__/
 .ipynb_checkpoints/
+*.pyc 
