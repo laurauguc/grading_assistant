@@ -1,10 +1,25 @@
+# Environment variables
 .env
-node_modules
+
+# Node.js modules
+node_modules/
+
+# macOS specific files
 .DS_Store
+
+# Python virtual environment
 venv/
-frontend/node_modules/
+
+# Egg info
 grading_assistant.egg-info/
+
+# Jupyter notebook checkpoints
 .ipynb_checkpoints/
+
+# Python cache files
+*.pyc
 grading_assistant/__pycache__/
 backend/migrations/__pycache__/
-*.pyc 
+
+# If frontend is a directory in your project
+frontend/node_modules/
