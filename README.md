@@ -46,7 +46,7 @@ For installation of Javascript and Python dependencies, see the set-up instructi
   Create a .env file in the project directory.
 
   ```console
-  echo "GOOGLE_API_KEY="<Insert-API-Key-here>" >> .env
+  echo 'GOOGLE_API_KEY="<Insert-API-Key-here>"' >> .env
   ```
 
 3. Check that node, npm, and python are installed:

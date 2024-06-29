@@ -1,9 +1,6 @@
 import logo from './images/logo.png';
 import footer from './images/footer.png';
 import React from 'react';
-//import DisplayGradingRubric from './components/DisplayGradingRubric'
-//import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-
 import Home from '../src/pages/Home.jsx';
 import Rubric from '../src/pages/Rubric.jsx';
 import Details from '../src/pages/Details.jsx';

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 function ObtainRubricNames({ selected_rubric_id, setRubricID }) {
   const [rubrics, setRubrics] = useState(null);

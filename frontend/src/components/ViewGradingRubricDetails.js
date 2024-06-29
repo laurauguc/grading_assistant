@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {marked} from 'marked'
 import Markdown from 'react-markdown'
 import remarkGfm from "remark-gfm";
 
