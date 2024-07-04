@@ -50,7 +50,7 @@ const Home = ({
         <p>Insert the student assignment</p>
 
         <form onSubmit={handleSubmit}>
-          <textarea ref={student_assignment_submission} cols={65} rows={10} />
+          <textarea ref={student_assignment_submission} cols={67} rows={10} />
           <h2>Step 2: Grading rubric</h2>
           <p>Select or load the grading rubric</p>
           <ObtainRubricNames

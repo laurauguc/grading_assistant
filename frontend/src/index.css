@@ -16,9 +16,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap;
-  padding: 10px;
+  padding: 5px;
 }
+.App-logo {
+  height: 120px;
+}
+
+header h1 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+/* tabs interface */
 .tabs {
   font-family: Arial, sans-serif;
   width: 85%;
@@ -60,23 +72,24 @@ header {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
+  gap: 20px;
 }
+
 .assignment_section,
 .grading_section {
   flex: 1;
-  /* padding: 20px; */
   box-sizing: border-box;
 }
 textarea {
   border: 1px solid #ccc;
+  /* outline: #ccc; */
 }
 .assignment_section {
   border-right: 1px solid #ccc;
-  margin-right: 30px;
 }
 .graded_feedback {
-  width: 99%;
-  height: 350px;
+  width: 100%;
+  height: 370px;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
@@ -84,30 +97,43 @@ textarea {
   white-space: pre-wrap;
 }
 
-footer {
-  text-align: center;
-  font-size: 10px;
-  margin-top: 20px;
-}
 .center {
-  text-align: center;
+  /* text-align: center; */
+  margin: 0;
 }
+
 button {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
   width: 70%;
   border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #ffcdd2;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 select {
+  padding: 10px 20px;
+  font-size: 16px;
   width: 70%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  outline: none;
 }
+/* select:hover {
+  background-color: #ffcdd2;
+  transition: background-color 0.5s ease, color 0.5s ease;
+} */
 
 /* Spinner styles */
 .spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  width: 30px;
-  height: 30px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   border-left-color: rgb(255, 0, 0);
   animation: spin 1s linear infinite;
@@ -118,4 +144,16 @@ select {
   to {
     transform: rotate(360deg);
   }
+}
+footer {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+.graded_feedback p {
+  margin: 0;
+}
+.graded_feedback ul {
+  margin: 0;
 }
