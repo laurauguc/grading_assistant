@@ -35,6 +35,7 @@ header {
   /* transition: background 0.3s; */
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-right: 5px;
+  border-radius: 10px 10px 0 0;
 }
 
 .tab-button:hover {
@@ -47,11 +48,30 @@ header {
 }
 
 .tab-content {
-  padding: 20px;
   border: 1px solid #ccc;
   border-top: none;
 }
-.home_flex {
+
+.main_container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.assignment_section,
+.grading_section {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.grading_section {
+  margin-left: 30px;
+  /* width: 100%; */
+}
+.assignment_section {
+  border-right: 1px solid #ccc;
+}
+.graded_feedback {
+  border: 1px solid black;
+  height: 60px;
+  width: 430px;
 }

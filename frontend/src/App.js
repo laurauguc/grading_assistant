@@ -54,7 +54,7 @@ function App() {
     <React.Fragment>
       <header>
         <img src={logo} className="App-logo" alt="logo" height={120} />
-        <h1>Grading Assistant</h1>
+        <h1>GradeMate: Simplify Grading, Amplify Teaching</h1>
       </header>
       <div className="tabs">
         <div
