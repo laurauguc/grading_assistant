@@ -41,31 +41,36 @@ const Home = ({
   };
   return (
     <div className="main_container">
+      <p className="center">
+        The Grading Assistant applies curated grading rubrics, or user-uploaded
+        ones, to writing assignments to provide graded feedback.
+      </p>
       <div className="assignment_section">
-        <h2>1. Insert student assignment</h2>
+        <h2>Step 1: Student assignment</h2>
+        <p>Insert the student assignment</p>
 
         <form onSubmit={handleSubmit}>
-          <textarea ref={student_assignment_submission} cols={50} rows={10} />
+          <textarea ref={student_assignment_submission} cols={65} rows={10} />
           <h2>Step 2: Grading rubric</h2>
           <p>Select or load the grading rubric</p>
           <ObtainRubricNames
             selected_rubric_id={selected_rubric_id}
             setRubricID={setRubricID}
           />
+          <br />
           <button type="submit">Grade</button>
         </form>
       </div>
       <div className="grading_section">
-        <h2>Graded feedback:</h2>
-        {grading_loading ? (
-          <p>Loading...</p>
-        ) : (
-          <div>
-            <div className="graded_feedback">
-              <Markdown>{graded_feedback}</Markdown>
-            </div>
-          </div>
-        )}
+        <h2>Result: Graded feedback</h2>
+        <p>The grade and feedback will appear here</p>
+        <div className="graded_feedback">
+          {grading_loading ? (
+            <div className="spinner"></div>
+          ) : (
+            <Markdown>{graded_feedback}</Markdown>
+          )}
+        </div>
       </div>
     </div>
   );
