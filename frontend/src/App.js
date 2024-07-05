@@ -34,7 +34,12 @@ function App() {
       label: 'Grading Rubric',
       defaultColor: '#BBDEFB', // Example color (light blue)
       activeColor: '#2196F3', // Example color (blue)
-      component: <Rubric selected_rubric_id={selected_rubric_id} />,
+      component: (
+        <Rubric
+          selected_rubric_id={selected_rubric_id}
+          setRubricID={setRubricID}
+        />
+      ),
     },
     {
       label: 'Detailed View',
@@ -87,7 +92,7 @@ function App() {
         responses. It is powered by the{' '}
         <a href="https://ai.google.dev/gemini-api/terms">Gemini API</a>
       </footer>
-      <img src={footer} className="App-logo" alt="logo" height={200} />
+      {/* <img src={footer} className="App-logo" alt="logo" height={200} /> */}
     </React.Fragment>
   );
 }

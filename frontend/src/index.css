@@ -82,7 +82,8 @@ header h2 {
 }
 textarea {
   border: 1px solid #ccc;
-  /* outline: #ccc; */
+  outline: none;
+  border-radius: 10px;
 }
 .assignment_section {
   border-right: 1px solid #ccc;
@@ -95,18 +96,20 @@ textarea {
   padding: 10px;
   box-sizing: border-box;
   white-space: pre-wrap;
+  border-radius: 10px;
 }
 
 .center {
-  /* text-align: center; */
+  text-align: center;
   margin: 0;
+  padding: 15px 0 0 0;
 }
 
 button {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
-  width: 70%;
+  width: 250px;
   border-radius: 10px;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -118,18 +121,23 @@ button:hover {
 select {
   padding: 10px 20px;
   font-size: 16px;
-  width: 70%;
+  width: 250px;
   border-radius: 10px;
   border: 1px solid #ccc;
   cursor: pointer;
   outline: none;
 }
-/* select:hover {
-  background-color: #ffcdd2;
-  transition: background-color 0.5s ease, color 0.5s ease;
-} */
 
-/* Spinner styles */
+footer {
+  text-align: center;
+  font-size: 10px;
+  margin: 20px 0;
+}
+
+.graded_feedback * {
+  margin: 0;
+}
+
 .spinner {
   border: 3px solid rgba(0, 0, 0, 0.1);
   width: 25px;
@@ -145,15 +153,23 @@ select {
     transform: rotate(360deg);
   }
 }
-footer {
-  text-align: center;
-  font-size: 10px;
-  margin-top: 20px;
+
+/*  Grading Rubric*/
+.select_rubric {
+  flex: 1;
+  box-sizing: border-box;
+}
+.rubric_details {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  border-radius: 10px;
 }
 
-.graded_feedback p {
-  margin: 0;
-}
-.graded_feedback ul {
-  margin: 0;
+.view_rubric {
+  flex: 3;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0 15px;
 }
