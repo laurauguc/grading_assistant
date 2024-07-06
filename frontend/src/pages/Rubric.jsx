@@ -3,8 +3,13 @@ import ViewGradingRubricDetails from '../components/ViewGradingRubricDetails';
 
 const Rubric = ({ selected_rubric_id, setRubricID }) => {
   return (
-    <div>
-      <ViewGradingRubricDetails rubric_id={selected_rubric_id} />
+    <div className="container">
+      <p className="center">View or change your Grading Rubric</p>
+
+      <ViewGradingRubricDetails
+        rubric_id={selected_rubric_id}
+        setRubricID={setRubricID}
+      />
     </div>
   );
 };

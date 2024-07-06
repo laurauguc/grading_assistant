@@ -34,7 +34,12 @@ function App() {
       label: 'Grading Rubric',
       defaultColor: '#BBDEFB', // Example color (light blue)
       activeColor: '#2196F3', // Example color (blue)
-      component: <Rubric selected_rubric_id={selected_rubric_id} />,
+      component: (
+        <Rubric
+          selected_rubric_id={selected_rubric_id}
+          setRubricID={setRubricID}
+        />
+      ),
     },
     {
       label: 'Detailed View',
@@ -54,7 +59,10 @@ function App() {
     <React.Fragment>
       <header>
         <img src={logo} className="App-logo" alt="logo" height={120} />
-        <h1>Grading Assistant</h1>
+        <div>
+          <h1>GradeMate: Simplify Grading, Amplify Teaching</h1>
+          <h2>Gemini-powered Grading Assistant for teachers and students</h2>
+        </div>
       </header>
       <div className="tabs">
         <div
@@ -79,8 +87,12 @@ function App() {
         </div>
         <div className="tab-content">{tabs[activeTab].component}</div>
       </div>
-
-      <img src={footer} className="App-logo" alt="logo" height={200} />
+      <footer>
+        The Grading Assistant may display inaccurate info so double-check its
+        responses. It is powered by the{' '}
+        <a href="https://ai.google.dev/gemini-api/terms">Gemini API</a>
+      </footer>
+      {/* <img src={footer} className="App-logo" alt="logo" height={200} /> */}
     </React.Fragment>
   );
 }

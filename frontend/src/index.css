@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,10 +15,25 @@ code {
 header {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
 }
+.App-logo {
+  height: 120px;
+}
+
+header h1 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+/* tabs interface */
 .tabs {
   font-family: Arial, sans-serif;
-  width: 80%;
+  width: 85%;
   margin: auto;
 }
 
@@ -35,6 +51,7 @@ header {
   /* transition: background 0.3s; */
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-right: 5px;
+  border-radius: 10px 10px 0 0;
 }
 
 .tab-button:hover {
@@ -47,11 +64,112 @@ header {
 }
 
 .tab-content {
-  padding: 20px;
   border: 1px solid #ccc;
   border-top: none;
 }
-.home_flex {
+
+.main_container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+}
+
+.assignment_section,
+.grading_section {
+  flex: 1;
+  box-sizing: border-box;
+}
+textarea {
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 10px;
+}
+.assignment_section {
+  border-right: 1px solid #ccc;
+}
+.graded_feedback {
+  width: 100%;
+  height: 370px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  border-radius: 10px;
+}
+
+.center {
+  text-align: center;
+  margin: 0;
+  padding: 15px 0 0 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #ffcdd2;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+select {
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  outline: none;
+}
+
+footer {
+  text-align: center;
+  font-size: 10px;
+  margin: 20px 0;
+}
+
+.graded_feedback * {
+  margin: 0;
+}
+
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border-left-color: rgb(255, 0, 0);
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*  Grading Rubric*/
+.select_rubric {
+  flex: 1;
+  box-sizing: border-box;
+}
+.rubric_details {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  border-radius: 10px;
+}
+
+.view_rubric {
+  flex: 3;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0 15px;
 }
