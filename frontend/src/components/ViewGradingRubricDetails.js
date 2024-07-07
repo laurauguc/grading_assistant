@@ -8,10 +8,11 @@ function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
 
   //http://localhost:8000/api/obtain-rubric/?rubric_id=1
+  const REACT_APP_HOST_BASE_URL = process.env.REACT_APP_HOST_BASE_URL;
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/obtain-rubric/', { params: props }) // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
+      .get(REACT_APP_HOST_BASE_URL.concat('api/obtain-rubric/'), { params: props }) // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
       .then(response => {
         setMessage(response.data);
       })

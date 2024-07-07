@@ -9,8 +9,11 @@ function ObtainRubricNames({ selected_rubric_id, setRubricID }) {
     setRubricID(event.target.value);
   };
 
+  const REACT_APP_HOST_BASE_URL = process.env.REACT_APP_HOST_BASE_URL;
+
   useEffect(() => {
-    fetch('http://localhost:8000/api/obtain-rubric-names/') // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
+    fetch(
+      REACT_APP_HOST_BASE_URL.concat("api/obtain-rubric-names/")) // 'http://localhost:8000/api/obtain-rubric-names/') // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
       .then(rubric_response => rubric_response.json())
       .then(setRubrics)
       .catch(error => {

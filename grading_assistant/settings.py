@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import socket
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,13 +28,30 @@ load_dotenv(env_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-3e-ln#ncj%bk)xhzrmon^&@q)v%5y^8a1%%8&bx+z3%f9xn3#s'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')#, 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
+if socket.gethostname() == 'green-liveconsole4': # Deployed version
+    # security.W016
+    CSRF_COOKIE_SECURE = True
+
+    # security.W012
+    SESSION_COOKIE_SECURE = True
+
+    # security.W008
+    SECURE_SSL_REDIRECT = True
+
+    # security.W004
+    SECURE_HSTS_SECONDS = 31536000 # One year in seconds
+
+    # Another security settings
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
 
 ALLOWED_HOSTS = ["laurauguc.pythonanywhere.com", "127.0.0.1", "localhost"]
 
@@ -138,7 +156,10 @@ STATIC_URL = 'static/'
 
 #STATIC_URL = "/static/"
 STATICFILES_DIRS = [
+
+    FRONTEND_DIR / "build",
     FRONTEND_DIR / "build/static",
+
 ]
 
 # Default primary key field type

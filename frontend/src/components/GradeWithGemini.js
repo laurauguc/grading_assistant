@@ -11,11 +11,13 @@ function GradeWithGemini({
   // States to manage Gemini grading & loading message
   const [grading_loading, setGradingLoading] = useState(false);
 
+  const REACT_APP_HOST_BASE_URL = process.env.REACT_APP_HOST_BASE_URL;
+
   // fetch call into a callback that is called by the button element's onClick handler
   const generate = () => {
     setGradingLoading(true);
     axios
-      .get('http://localhost:8000/api/grade-with-gemini/', {
+      .get(REACT_APP_HOST_BASE_URL.concat('api/grade-with-gemini/'), {
         params: {
           student_assignment: student_assignment,
           rubric_id: rubric_id,
