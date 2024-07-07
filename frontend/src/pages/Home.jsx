@@ -3,6 +3,13 @@ import ObtainRubricNames from '../components/ObtainRubricNames';
 import axios from 'axios';
 import Markdown from 'react-markdown';
 
+var REACT_APP_HOST_BASE_URL;
+if (process.env.NODE_ENV == 'development') {
+  REACT_APP_HOST_BASE_URL="http://localhost:8000/"
+} else {
+  REACT_APP_HOST_BASE_URL="http://laurauguc.pythonanywhere.com/"
+}
+
 const Home = ({
   selected_rubric_id,
   setRubricID,
@@ -25,7 +32,7 @@ const Home = ({
   const generate = (student_assignment, rubric_id) => {
     setGradingLoading(true);
     axios
-      .get('http://localhost:8000/api/grade-with-gemini/', {
+      .get(REACT_APP_HOST_BASE_URL.concat('api/grade-with-gemini/'), {
         params: {
           student_assignment,
           rubric_id,

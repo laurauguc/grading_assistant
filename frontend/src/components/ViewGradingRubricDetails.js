@@ -8,7 +8,12 @@ function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
 
   //http://localhost:8000/api/obtain-rubric/?rubric_id=1
-  const REACT_APP_HOST_BASE_URL = process.env.REACT_APP_HOST_BASE_URL;
+  var REACT_APP_HOST_BASE_URL;
+  if (process.env.NODE_ENV == 'development') {
+    REACT_APP_HOST_BASE_URL="http://localhost:8000/"
+  } else {
+    REACT_APP_HOST_BASE_URL="http://laurauguc.pythonanywhere.com/"
+  }
 
   useEffect(() => {
     axios
