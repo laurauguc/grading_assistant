@@ -1,7 +1,14 @@
 import React, { useState, useRef } from 'react';
-import GradeWithGemini from '../components/GradeWithGemini.js'; // './GradeWithGemini';
 import ObtainRubricNames from '../components/ObtainRubricNames';
-// import ViewGradingRubricDetails from '../components/ViewGradingRubricDetails';
+import axios from 'axios';
+import Markdown from 'react-markdown';
+
+var REACT_APP_HOST_BASE_URL;
+if (process.env.NODE_ENV == 'development') {
+  REACT_APP_HOST_BASE_URL="http://localhost:8000/"
+} else {
+  REACT_APP_HOST_BASE_URL="http://laurauguc.pythonanywhere.com/"
+}
 
 const Home = ({
   selected_rubric_id,
@@ -12,37 +19,68 @@ const Home = ({
   setGrading,
 }) => {
   // to collect the student assignment
+  const [grading_loading, setGradingLoading] = useState(false);
   const student_assignment_submission = useRef();
-  const add_assignment = e => {
+
+  const handleSubmit = e => {
     e.preventDefault();
-    setStudentAssignment(student_assignment_submission.current.value);
+    const assignment = student_assignment_submission.current.value;
+    setStudentAssignment(assignment);
+    generate(assignment, selected_rubric_id);
+  };
+
+  const generate = (student_assignment, rubric_id) => {
+    setGradingLoading(true);
+    axios
+      .get(REACT_APP_HOST_BASE_URL.concat('api/grade-with-gemini/'), {
+        params: {
+          student_assignment,
+          rubric_id,
+        },
+      })
+      .then(response => {
+        setGrading(response.data.message);
+      })
+      .then(() => setGradingLoading(false))
+      .catch(error => {
+        console.log(error);
+      });
   };
   return (
-    <div>
-      <h2>1. Insert student assignment</h2>
+    <div className="container">
+      <p className="center">
+        The Grading Assistant applies curated grading rubrics, or user-uploaded
+        ones, to writing assignments to provide graded feedback.
+      </p>
+      <div className="main_container">
+        <div className="assignment_section">
+          <h2>Step 1: Student assignment</h2>
+          <p>Insert the student assignment</p>
 
-      <form onSubmit={add_assignment}>
-        <input ref={student_assignment_submission} />
-        <button>ADD</button>
-      </form>
-
-      <p>{student_assignment}</p>
-
-      <h2>2. Select rubric</h2>
-
-      <ObtainRubricNames
-        selected_rubric_id={selected_rubric_id}
-        setRubricID={setRubricID}
-      />
-
-      {/* <p>Selected rubric id: {selected_rubric_id}</p> */}
-
-      <GradeWithGemini
-        student_assignment={student_assignment}
-        rubric_id={selected_rubric_id}
-        graded_feedback={graded_feedback}
-        setGrading={setGrading}
-      />
+          <form onSubmit={handleSubmit}>
+            <textarea ref={student_assignment_submission} cols={67} rows={10} />
+            <h2>Step 2: Grading rubric</h2>
+            <p>Select or load the grading rubric</p>
+            <ObtainRubricNames
+              selected_rubric_id={selected_rubric_id}
+              setRubricID={setRubricID}
+            />
+            <br />
+            <button type="submit">Grade</button>
+          </form>
+        </div>
+        <div className="grading_section">
+          <h2>Result: Graded feedback</h2>
+          <p>The grade and feedback will appear here</p>
+          <div className="graded_feedback">
+            {grading_loading ? (
+              <div className="spinner"></div>
+            ) : (
+              <Markdown>{graded_feedback}</Markdown>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

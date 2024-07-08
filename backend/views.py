@@ -13,6 +13,7 @@ from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 import os
 from django.conf import settings
+from . import utils
 
 load_dotenv(Path(".env"))
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
@@ -45,7 +46,6 @@ def grade_with_gemini(request):
 @api_view(['GET'])
 def obtain_rubric_names(request):
     rubric_names = GradingRubric.objects.values('name', 'id')
-    #rubric_names = [i[0] for i in rubric_names] # flattening list
     return Response(rubric_names)
 
 
@@ -59,3 +59,12 @@ def obtain_rubric(request):
 
     del rubric['_state'] # need to remove this created key in order for object to be serializable
     return Response(rubric)
+
+@api_view(['GET'])
+def convert_docx_to_md(request):
+    docx_path = request.query_params["docx_path"]
+    # delete commented line (temporarily here to provide example for testing)
+    #docx_path = "/Users/laura/Desktop/grading_assistant/external_data/rubric_markdown_test/us_history_rubric_test.docx"
+    converter = utils.DocxToMarkdownConverter(docx_path)
+    md_content = converter.convert()
+    return Response(md_content)
