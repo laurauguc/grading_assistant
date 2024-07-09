@@ -4,7 +4,7 @@ import axios from 'axios';
 import Markdown from 'react-markdown';
 
 var REACT_APP_HOST_BASE_URL;
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV === 'development') {
   REACT_APP_HOST_BASE_URL="http://localhost:8000/"
 } else {
   REACT_APP_HOST_BASE_URL="http://laurauguc.pythonanywhere.com/"
