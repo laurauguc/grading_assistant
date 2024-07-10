@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import ObtainRubricNames from '../components/ObtainRubricNames';
 import axios from 'axios';
 import Markdown from 'react-markdown';
@@ -56,13 +56,13 @@ const Home = ({
       <div className="main_container">
         <div className="assignment_section">
           <form onSubmit={handleSubmit}>
-            <h2>Step 1: Grading rubric</h2>
+            <h2 className="step1">Step 1: Grading rubric</h2>
             <p>Select a curated grading rubric</p>
             <ObtainRubricNames
               selected_rubric_id={selected_rubric_id}
               setRubricID={setRubricID}
             />
-            <h2>Step 2: Student assignment</h2>
+            <h2 className="step2">Step 2: Student assignment</h2>
             <p>Insert the student assignment</p>
             <textarea ref={student_assignment_submission} cols={66} rows={10} />
             <br />
