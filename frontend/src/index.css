@@ -102,12 +102,14 @@ textarea {
 }
 .assignment_section h2 {
   margin-bottom: 10px;
+  margin-top: 0;
 }
 .assignment_section p {
   margin-top: 0px;
 }
 .grading_section h2 {
   margin-bottom: 10px;
+  margin-top: 0;
 }
 .grading_section p {
   margin-top: 0px;
@@ -122,8 +124,8 @@ textarea {
   box-sizing: border-box;
   white-space: pre-wrap;
   border-radius: 10px;
-  flex: 1;
-  min-width: 0;
+  /* flex: 1; */
+  /* min-width: 0; */
 }
 
 .center {
@@ -149,6 +151,7 @@ textarea {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-right: 20px;
 }
 select {
   padding: 10px 20px;
