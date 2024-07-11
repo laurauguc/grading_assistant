@@ -5,9 +5,9 @@ import Markdown from 'react-markdown';
 
 var REACT_APP_HOST_BASE_URL;
 if (process.env.NODE_ENV === 'development') {
-  REACT_APP_HOST_BASE_URL="http://localhost:8000/"
+  REACT_APP_HOST_BASE_URL = 'http://localhost:8000/';
 } else {
-  REACT_APP_HOST_BASE_URL="http://laurauguc.pythonanywhere.com/"
+  REACT_APP_HOST_BASE_URL = 'http://laurauguc.pythonanywhere.com/';
 }
 
 const Home = ({
@@ -46,27 +46,32 @@ const Home = ({
         console.log(error);
       });
   };
+
   return (
     <div className="container">
-      <p className="center">
+      {/* <p className="center">
         The Grading Assistant applies curated grading rubrics, or user-uploaded
         ones, to writing assignments to provide graded feedback.
-      </p>
+      </p> */}
       <div className="main_container">
         <div className="assignment_section">
-          <h2>Step 1: Student assignment</h2>
-          <p>Insert the student assignment</p>
-
           <form onSubmit={handleSubmit}>
-            <textarea ref={student_assignment_submission} cols={67} rows={10} />
-            <h2>Step 2: Grading rubric</h2>
-            <p>Select or load the grading rubric</p>
+            <h2 className="step1">Step 1: Grading rubric</h2>
+            <p>Select a curated grading rubric</p>
             <ObtainRubricNames
               selected_rubric_id={selected_rubric_id}
               setRubricID={setRubricID}
             />
+            <h2 className="step2">Step 2: Student assignment</h2>
+            <p>Insert the student assignment</p>
+            <textarea ref={student_assignment_submission} cols={66} rows={10} />
             <br />
-            <button type="submit">Grade</button>
+            <div className="button-container">
+              <p>Click Grade to submit the grading rubric and assignment</p>
+              <button type="submit" className="grade-button">
+                Grade
+              </button>
+            </div>
           </form>
         </div>
         <div className="grading_section">
