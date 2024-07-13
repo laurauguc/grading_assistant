@@ -91,7 +91,7 @@ FRONTEND_DIR = BASE_DIR / "frontend"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [FRONTEND_DIR / "build",],
+        'DIRS':  [BASE_DIR /"static"], #[FRONTEND_DIR / "build",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

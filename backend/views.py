@@ -1,17 +1,17 @@
-from django.shortcuts import render
+#from django.shortcuts import render
 
-from django.shortcuts import render
+#from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from backend.models import GradingRubric
-from django.core import serializers
+#from django.core import serializers
 
-import pathlib ## needed?
+#import pathlib ## needed?
 import os
 import google.generativeai as genai
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 from pathlib import Path
-import os
+#import os
 from django.conf import settings
 from . import utils
 
