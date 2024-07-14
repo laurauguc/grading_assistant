@@ -54,7 +54,8 @@ if socket.gethostname() == 'green-liveconsole4': # Deployed version
     SECURE_CONTENT_TYPE_NOSNIFF = True
 
 ALLOWED_HOSTS = ["laurauguc.pythonanywhere.com",
-"127.0.0.1", "localhost", "grademate.pythonanywhere.com", "www.grademate.pythonanywhere.com"]
+"127.0.0.1", "localhost", "grademate.pythonanywhere.com", "www.grademate.pythonanywhere.com", "grade-mate.app",
+"www.grade-mate.app"]
 
 
 # Application definition
