@@ -35,10 +35,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')#, 'django-insecure-&psk#na5l=p3
 #DEBUG = True
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-SECURITY_SETTINGS = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-
-if SECURITY_SETTINGS: # Deployed version
+if os.environ.get('SECURITY_SETTINGS', '') == 'True': # Deployed version
     # security.W016
     CSRF_COOKIE_SECURE = True
     # security.W012
@@ -46,7 +44,7 @@ if SECURITY_SETTINGS: # Deployed version
     # security.W008
     SECURE_SSL_REDIRECT = True
     # security.W004
-    SECURE_HSTS_SECONDS = 31536000 # One year in seconds
+    SECURE_HSTS_SECONDS = 5 # 31536000 # One year in seconds
     # Another security settings
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
@@ -60,7 +58,7 @@ else:
     # security.W008
     SECURE_SSL_REDIRECT = False
     # security.W004
-    SECURE_HSTS_SECONDS = None # One year in seconds
+    SECURE_HSTS_SECONDS = None
     # Another security settings
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
     SECURE_HSTS_PRELOAD = False
