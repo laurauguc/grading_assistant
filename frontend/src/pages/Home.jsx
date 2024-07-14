@@ -5,7 +5,7 @@ import Markdown from 'react-markdown';
 
 var REACT_APP_HOST_BASE_URL;
 if (process.env.NODE_ENV === 'development') {
-  REACT_APP_HOST_BASE_URL = 'http://127.0.0.1:8000/';
+  REACT_APP_HOST_BASE_URL = 'http://localhost:8000/';
 } else {
   REACT_APP_HOST_BASE_URL = 'https://grademate.pythonanywhere.com/';
 }
