@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')#, 'django-insecure-&psk#na5l=p3
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-if socket.gethostname() == 'green-liveconsole4': # Deployed version
+if 'green-liveconsole' in socket.gethostname(): # Deployed version
     # security.W016
     CSRF_COOKIE_SECURE = True
 
@@ -53,7 +53,7 @@ if socket.gethostname() == 'green-liveconsole4': # Deployed version
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
 
-ALLOWED_HOSTS = ["laurauguc.pythonanywhere.com",
+ALLOWED_HOSTS = ["laurauguc.pythonanywhere.com", "www.laurauguc.pythonanywhere.com",
 "127.0.0.1", "localhost", "grademate.pythonanywhere.com", "www.grademate.pythonanywhere.com", "grade-mate.app",
 "www.grade-mate.app"]
 
