@@ -33,9 +33,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')#, 'django-insecure-&psk#na5l=p3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-if 'green-liveconsole' in socket.gethostname(): # Deployed version
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+SECURITY_SETTINGS = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
+if SECURITY_SETTINGS: # Deployed version
     # security.W016
     CSRF_COOKIE_SECURE = True
 
