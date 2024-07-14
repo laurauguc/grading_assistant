@@ -12,7 +12,7 @@ function ViewGradingRubricDetails(props) {
   if (process.env.NODE_ENV === 'development') {
     REACT_APP_HOST_BASE_URL = 'http://localhost:8000/';
   } else {
-    REACT_APP_HOST_BASE_URL = 'http://laurauguc.pythonanywhere.com/';
+    REACT_APP_HOST_BASE_URL = 'http://grademate.pythonanywhere.com/';
   }
 
   useEffect(() => {
