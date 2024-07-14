@@ -37,23 +37,34 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')#, 'django-insecure-&psk#na5l=p3
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 SECURITY_SETTINGS = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
+
 if SECURITY_SETTINGS: # Deployed version
     # security.W016
     CSRF_COOKIE_SECURE = True
-
     # security.W012
     SESSION_COOKIE_SECURE = True
-
     # security.W008
     SECURE_SSL_REDIRECT = True
-
     # security.W004
     SECURE_HSTS_SECONDS = 31536000 # One year in seconds
-
     # Another security settings
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+else:
+    # security.W016
+    CSRF_COOKIE_SECURE = False
+    # security.W012
+    SESSION_COOKIE_SECURE = False
+    # security.W008
+    SECURE_SSL_REDIRECT = False
+    # security.W004
+    SECURE_HSTS_SECONDS = None # One year in seconds
+    # Another security settings
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_HSTS_PRELOAD = False
+    SECURE_CONTENT_TYPE_NOSNIFF = False
 
 ALLOWED_HOSTS = ["laurauguc.pythonanywhere.com", "www.laurauguc.pythonanywhere.com",
 "127.0.0.1", "localhost", "grademate.pythonanywhere.com", "www.grademate.pythonanywhere.com", "grade-mate.app",

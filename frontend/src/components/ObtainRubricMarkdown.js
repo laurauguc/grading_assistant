@@ -9,9 +9,9 @@ function ObtainRubricMarkdown() {
   //http://localhost:8000/api/obtain-rubric/?rubric_id=1
   var REACT_APP_HOST_BASE_URL;
   if (process.env.NODE_ENV == 'development') {
-    REACT_APP_HOST_BASE_URL="http://localhost:8000/"
+    REACT_APP_HOST_BASE_URL="https://localhost:8000/"
   } else {
-    REACT_APP_HOST_BASE_URL="http://laurauguc.pythonanywhere.com/"
+    REACT_APP_HOST_BASE_URL="https://grademate.pythonanywhere.com/"
   }
 
   const docx_path = "../../external_data/rubric_markdown_test/us_history_rubric_test.docx"
