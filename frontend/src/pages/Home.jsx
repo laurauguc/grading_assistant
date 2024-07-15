@@ -2,12 +2,13 @@ import React, { useState, useRef } from 'react';
 import ObtainRubricNames from '../components/ObtainRubricNames';
 import axios from 'axios';
 import Markdown from 'react-markdown';
+import configData from "../config.json";
 
-var REACT_APP_HOST_BASE_URL;
+var BASE_URL;
 if (process.env.NODE_ENV === 'development') {
-  REACT_APP_HOST_BASE_URL = 'http://localhost:8000/';
+  BASE_URL = 'http://localhost:8000/'
 } else {
-  REACT_APP_HOST_BASE_URL = 'https://grademate.pythonanywhere.com/';
+  BASE_URL = configData['SERVER_URL'];
 }
 
 const Home = ({
@@ -32,7 +33,7 @@ const Home = ({
   const generate = (student_assignment, rubric_id) => {
     setGradingLoading(true);
     axios
-      .get(REACT_APP_HOST_BASE_URL.concat('api/grade-with-gemini/'), {
+      .get(BASE_URL.concat('api/grade-with-gemini/'), {
         params: {
           student_assignment,
           rubric_id,

@@ -24,8 +24,8 @@ genai.configure(api_key=GOOGLE_API_KEY)
 def grade_with_gemini(request):
     student_assignment = request.query_params['student_assignment']
     rubric_id = request.query_params['rubric_id']
-    grading_rubric = GradingRubric.objects.get(id = rubric_id).content
-
+    rubric = GradingRubric.objects.get(id = rubric_id).__dict__
+    grading_rubric = open(os.path.join(settings.BASE_DIR,rubric['content'])).read()
     model = genai.GenerativeModel('gemini-pro')
 
     prompt = """You are a teaching assistant, supporting the instructor with grading. \

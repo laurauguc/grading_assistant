@@ -3,21 +3,23 @@ import axios from 'axios';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ObtainRubricNames from '../components/ObtainRubricNames';
+import configData from "../config.json";
+
 
 function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
 
   //http://localhost:8000/api/obtain-rubric/?rubric_id=1
-  var REACT_APP_HOST_BASE_URL;
+  var BASE_URL;
   if (process.env.NODE_ENV === 'development') {
-    REACT_APP_HOST_BASE_URL = 'http://localhost:8000/';
+    BASE_URL = 'http://localhost:8000/'
   } else {
-    REACT_APP_HOST_BASE_URL = 'https://grademate.pythonanywhere.com/';
+    BASE_URL = configData['SERVER_URL'];
   }
 
   useEffect(() => {
     axios
-      .get(REACT_APP_HOST_BASE_URL.concat('api/obtain-rubric/'), {
+      .get(BASE_URL.concat('api/obtain-rubric/'), {
         params: props,
       }) // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
       .then(response => {
