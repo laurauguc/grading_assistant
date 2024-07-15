@@ -1,5 +1,5 @@
 import logo from './images/logo.png';
-import footer from './images/footer.png';
+//import footer from './images/footer.png';
 import React from 'react';
 import Home from '../src/pages/Home.jsx';
 import Rubric from '../src/pages/Rubric.jsx';
