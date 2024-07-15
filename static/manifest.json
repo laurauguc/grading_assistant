@@ -3,15 +3,10 @@
   "name": "Grading Assistant",
   "icons": [
     {
-      "src": "logoA.png",
+      "src": "logo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
-    {
-      "src": "logoA.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
   ],
   "start_url": ".",
   "display": "standalone",
