@@ -3,8 +3,7 @@ import axios from 'axios';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ObtainRubricNames from '../components/ObtainRubricNames';
-import configData from "../config.json";
-
+import configData from '../config.json';
 
 function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
@@ -12,7 +11,7 @@ function ViewGradingRubricDetails(props) {
   //http://localhost:8000/api/obtain-rubric/?rubric_id=1
   var BASE_URL;
   if (process.env.NODE_ENV === 'development') {
-    BASE_URL = 'http://localhost:8000/'
+    BASE_URL = 'http://localhost:8000/';
   } else {
     BASE_URL = configData['SERVER_URL'];
   }
@@ -29,8 +28,8 @@ function ViewGradingRubricDetails(props) {
         console.log(error);
       });
   }, [props]);
-
-  console.log(message.file_);
+  console.log('PROPS', props);
+  // console.log(message.file_);
 
   return (
     <div className="main_container">
@@ -38,7 +37,7 @@ function ViewGradingRubricDetails(props) {
         <div>
           <h2>Select Rubric Name</h2>
           <ObtainRubricNames
-            selected_rubric_id={props.selected_rubric_id}
+            selected_rubric_id={props.rubric_id}
             setRubricID={props.setRubricID}
           />
         </div>

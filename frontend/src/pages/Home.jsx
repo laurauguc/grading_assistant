@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import ObtainRubricNames from '../components/ObtainRubricNames';
 import axios from 'axios';
 import Markdown from 'react-markdown';
-import configData from "../config.json";
+import configData from '../config.json';
 
 var BASE_URL;
 if (process.env.NODE_ENV === 'development') {
-  BASE_URL = 'http://localhost:8000/'
+  BASE_URL = 'http://localhost:8000/';
 } else {
   BASE_URL = configData['SERVER_URL'];
 }
