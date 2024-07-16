@@ -7,7 +7,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root {
+  /* background: url(./images/footer.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: 90%; */
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -19,7 +24,7 @@ header {
   padding: 5px;
 }
 .App-logo {
-  height: 120px;
+  /* height: 220px; */
 }
 
 header h1 {
@@ -173,6 +178,9 @@ footer {
   text-align: center;
   font-size: 10px;
   margin: 20px 0;
+  /* color: aliceblue; */
+  /* background-color: aquamarine; */
+  /* height: 50px; */
 }
 
 .graded_feedback * {
@@ -212,6 +220,7 @@ footer {
 
 .rubric_details_container {
   margin-left: 20px;
+  /* width: 77%; */
 }
 .rubric_details {
   margin-top: 10px;
