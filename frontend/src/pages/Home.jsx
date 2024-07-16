@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import ObtainRubricNames from '../components/ObtainRubricNames';
 import axios from 'axios';
 import Markdown from 'react-markdown';
-import configData from "../config.json";
+import configData from '../config.json';
 
 var BASE_URL;
 if (process.env.NODE_ENV === 'development') {
-  BASE_URL = 'http://localhost:8000/'
+  BASE_URL = 'http://localhost:8000/';
 } else {
   BASE_URL = configData['SERVER_URL'];
 }
@@ -18,6 +18,7 @@ const Home = ({
   setStudentAssignment,
   graded_feedback,
   setGrading,
+  rubrics,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
@@ -59,10 +60,16 @@ const Home = ({
           <form onSubmit={handleSubmit}>
             <h2 className="step1">Step 1: Grading rubric</h2>
             <p>Select a curated grading rubric</p>
-            <ObtainRubricNames
-              selected_rubric_id={selected_rubric_id}
-              setRubricID={setRubricID}
-            />
+            {!rubrics ? (
+              <div className="spinner" />
+            ) : (
+              <ObtainRubricNames
+                selected_rubric_id={selected_rubric_id}
+                setRubricID={setRubricID}
+                rubrics={rubrics}
+              />
+            )}
+
             <h2 className="step2">Step 2: Student assignment</h2>
             <p>Insert the student assignment</p>
             <textarea ref={student_assignment_submission} cols={66} rows={10} />
