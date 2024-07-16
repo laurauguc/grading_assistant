@@ -39,6 +39,7 @@ function ViewGradingRubricDetails(props) {
           <ObtainRubricNames
             selected_rubric_id={props.rubric_id}
             setRubricID={props.setRubricID}
+            rubrics={props.rubrics}
           />
         </div>
         <div className="rubric_details_container">

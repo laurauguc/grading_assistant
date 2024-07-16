@@ -5,14 +5,15 @@ import Home from '../src/pages/Home.jsx';
 import Rubric from '../src/pages/Rubric.jsx';
 import Details from '../src/pages/Details.jsx';
 import Advanced from '../src/pages/Advanced.jsx';
-
-import { useState } from 'react';
+import configData from './config.json';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
   const [selected_rubric_id, setRubricID] = useState(1);
   const [student_assignment, setStudentAssignment] = useState(null);
   const [graded_feedback, setGrading] = useState('');
+  const [rubrics, setRubrics] = useState(null);
 
   const tabs = [
     {
@@ -27,6 +28,7 @@ function App() {
           setStudentAssignment={setStudentAssignment}
           graded_feedback={graded_feedback}
           setGrading={setGrading}
+          rubrics={rubrics}
         />
       ),
     },
@@ -38,6 +40,7 @@ function App() {
         <Rubric
           selected_rubric_id={selected_rubric_id}
           setRubricID={setRubricID}
+          rubrics={rubrics}
         />
       ),
     },
@@ -54,6 +57,20 @@ function App() {
       component: <Advanced />,
     },
   ];
+
+  const BASE_URL =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8000/'
+      : configData['SERVER_URL'];
+
+  useEffect(() => {
+    fetch(BASE_URL.concat('api/obtain-rubric-names/')) // 'http://localhost:8000/api/obtain-rubric-names/') // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
+      .then(rubric_response => rubric_response.json())
+      .then(setRubrics)
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <React.Fragment>
@@ -85,7 +102,9 @@ function App() {
             </button>
           ))}
         </div>
+
         <div className="tab-content">{tabs[activeTab].component}</div>
+
         {/* <img src={footer} className="App-logo" alt="logo" height={200} /> */}
       </div>
       <footer>
