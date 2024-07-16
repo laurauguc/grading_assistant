@@ -121,3 +121,18 @@ Note: As of the release 0.0.1, the _load_grading_rubric_data_ module assumes a s
 The recommended way to modify the database is through the admin site. Make sure that the backend server is running, and then, from a browser, navigate to the admin site: http://127.0.0.1:8000/admin. The admin site allows both viewing and modifying the data. It also allows managing users and user groups authentication and authorization. Superuser credentials have been shared on Slack.
 
 It is also possible to view and modify the _db.sqlite3_ database with a database browsing App, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, I recommend using the admin site instead.
+
+## Deploying Application
+
+
+Production ready.
+
+What the backend detects to adjust security settings.
+
+What the frontend detects. Local of API server needs to be added to config file (location) (even if the same as frontend).
+But can detect if running locally.
+
+
+* Security settings applied and configured to be applied when running in production.
+
+* In order to reduce disk space, it is possible to run the application on a server using only Python, avoiding the need to install Node.js. Following steps performed by script ...
