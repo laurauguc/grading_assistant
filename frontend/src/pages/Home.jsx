@@ -59,7 +59,7 @@ const Home = ({
       <div className="main_container">
         <div className="assignment_section">
           <form onSubmit={handleSubmit}>
-            <h2 className="step1">Step 1: Grading rubric</h2>
+            <h2 className="step1">Step 1: Grading Rubric</h2>
             <div className="curated-rubric">
               <p>Select a curated grading rubric:</p>
               {!rubrics ? (
@@ -71,12 +71,10 @@ const Home = ({
                   rubrics={rubrics}
                 />
               )}
-            </div>
-            <div className="curated-rubric">
               <p>Or load your own:</p>
               <FileLoader />
             </div>
-            <h2 className="step2">Step 2: Student assignment</h2>
+            <h2 className="step2">Step 2: Student Assignment</h2>
             <p>Insert the student assignment</p>
             <textarea ref={student_assignment_submission} cols={66} rows={10} />
             <br />
@@ -89,7 +87,7 @@ const Home = ({
           </form>
         </div>
         <div className="grading_section">
-          <h2>Result: Graded feedback</h2>
+          <h2>Result: Graded Feedback</h2>
           <p>The grade and feedback will appear here</p>
           <div className="graded_feedback">
             {grading_loading ? (

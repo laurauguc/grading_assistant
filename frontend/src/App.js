@@ -77,7 +77,7 @@ function App() {
       <header>
         <img src={logo} className="App-logo" alt="logo" height={120} />
         <div>
-          <h1>GradeMate: Simplify Grading, Amplify Teaching</h1>
+          <h1>GradeMate</h1>
           <h2>Gemini-powered Grading Assistant for teachers and students</h2>
         </div>
       </header>

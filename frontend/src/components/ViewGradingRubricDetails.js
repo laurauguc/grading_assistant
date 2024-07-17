@@ -4,6 +4,7 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import ObtainRubricNames from '../components/ObtainRubricNames';
 import configData from '../config.json';
+import FileLoader from '../components/FileLoader';
 
 function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
@@ -34,16 +35,8 @@ function ViewGradingRubricDetails(props) {
   return (
     <div className="main_container">
       <div className="select_rubric">
-        <div>
-          <h2>Select Rubric Name</h2>
-          <ObtainRubricNames
-            selected_rubric_id={props.rubric_id}
-            setRubricID={props.setRubricID}
-            rubrics={props.rubrics}
-          />
-        </div>
         <div className="rubric_details_container">
-          <h2>Selected Rubric Details</h2>
+          <h2>Step 1: Review Grading Rubric</h2>
           <div className="rubric_details">
             <p>
               <strong>Name: </strong>
@@ -66,6 +59,22 @@ function ViewGradingRubricDetails(props) {
               {message.language}
             </p>
           </div>
+        </div>
+        <div className="confirm-change">
+          <h2>Step 2: Confirm or Change Grading Rubric </h2>
+          <p>Select a curated grading rubric:</p>
+          <ObtainRubricNames
+            selected_rubric_id={props.rubric_id}
+            setRubricID={props.setRubricID}
+            rubrics={props.rubrics}
+          />
+          <div className="curated-rubric">
+            <p>Or load your own:</p>
+            <FileLoader />
+          </div>
+          <button type="submit" className="grade-button">
+            Confirm
+          </button>
         </div>
       </div>
       <div className="view_rubric">
