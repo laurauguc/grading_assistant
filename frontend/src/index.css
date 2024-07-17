@@ -8,10 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #root {
-  /* background: url(./images/footer.png);
+  background: url(./images/footer_text.png);
   background-repeat: no-repeat;
   background-size: 30%;
-  background-position: 90%; */
+  background-position: 100%;
+  background-position-y: 100%;
+}
+:root {
+  --transparent-bg-color: rgba(255, 255, 255, 0.37);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -22,9 +26,6 @@ header {
   align-items: center;
   justify-content: flex-start;
   padding: 5px;
-}
-.App-logo {
-  /* height: 220px; */
 }
 
 header h1 {
@@ -150,6 +151,7 @@ textarea {
   box-sizing: border-box;
   white-space: pre-wrap;
   border-radius: 10px;
+  background-color: var(--transparent-bg-color);
   /* flex: 1; */
   /* min-width: 0; */
 }
@@ -190,12 +192,18 @@ select {
 }
 
 footer {
-  text-align: center;
   font-size: 10px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   /* color: aliceblue; */
-  /* background-color: aquamarine; */
-  /* height: 50px; */
+  /* background-color: rgb(133, 152, 158); */
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* bottom: 0; */
+  /* position: absolute; */
+  /* left: 0; */
+  z-index: -2;
 }
 
 .graded_feedback * {
@@ -251,6 +259,7 @@ footer {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 0 15px;
+  background-color: var(--transparent-bg-color);
 }
 .confirm-change {
   width: 35%;
