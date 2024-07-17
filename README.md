@@ -4,7 +4,7 @@ The Gemini-powered Grading assistant application, GradeMate, aids teachers in gr
 
 ## Architecture
 
-The GradeMate is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS App while the backend is a Django app, functioning as an API endpoint for the frontend. The calls to the Gemini API are made from the backend.
+The GradeMate is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS app while the backend is a Django app, functioning as an API endpoint for the frontend. The calls to the Gemini API are made from the backend.
 
 ## Requirements
 
@@ -100,54 +100,16 @@ npm install
 7. Open your web browser and navigate to: http://localhost:3000/
 
 
-## Instructions for modifying the _db.sqlite3_ database
+## Additional Instructions
+
+### Modifying the _db.sqlite3_ database
 
 The recommended way to modify the database is through the admin site. Make sure that the backend server is running, and then, from a browser, navigate to the admin site: http://localhost:8000/admin. The admin site allows both viewing and modifying the data. It also allows managing users and user group authentication and authorization. Superuser credentials have been shared on Slack.
 
 It is also possible to view and modify the _db.sqlite3_ database with a database browsing app, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, using the admin site is recommended.
 
 
-
-
-
-
-
-7. Load grading rubric data.
-
-   Run the provided Python script to load the grading rubric data from the _external_data_ folder into this database. It will also move the grading rubrics to a specified folder.
-
-   Note: As of release 0.0.1, the _load_grading_rubric_data_ module assumes a specific location for the _external_data_ folder. For future versions, we should pass the location as an argument to the command.
-
-
-
-
-
-
-## Managing data
-
-The data can be loaded and changed in a few different ways. Note: if changes are made to the field names, the data model in _backend/models.py_ need to be updated accordingly.
-
-### Instructions for loading external data for the first time.
-
-The project on this GitHub repository already contains loaded data. So, this step is only needed if wanting to load data from scratch. In this scenario, the _db.sqlite3_ database would first need to be deleted.
-
-
-```console
-python manage.py migrate
-python manage.py load_grading_rubric_data
-````
-
-These commands create the _db.sqlite3_ database and load the data contained in the _external_data_ folder into this database. It will also move the grading rubrics to a specified folder.
-
-Note: As of the release 0.0.1, the _load_grading_rubric_data_ module assumes a specific location for the _external_data_ folder. For future version, we should pass the location as an argument to the command.
-
-### Instructions for modifying the _db.sqlite3_ database
-
-The recommended way to modify the database is through the admin site. Make sure that the backend server is running, and then, from a browser, navigate to the admin site: http://127.0.0.1:8000/admin. The admin site allows both viewing and modifying the data. It also allows managing users and user groups authentication and authorization. Superuser credentials have been shared on Slack.
-
-It is also possible to view and modify the _db.sqlite3_ database with a database browsing App, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, I recommend using the admin site instead.
-
-## Instructions to prepare for deployment
+### Preparing for deployment
 
 Before running the code on a live website, use the .env file on the host server to turn on the security settings and turn off the Django debug mode.
 
@@ -157,8 +119,24 @@ DJANGO_DEBUG="False"
 SECURITY_SETTINGS="True"
 ```
 
-## Deployment instructions
+### Deployment
 
-Instead of installing Node.js on the App's hosting server, it is possible to use the static files generated from running `npm run build` locally. Since running the build locally does not allow accessing environment variables from the host server, we added a _frontend/src/config.json_ file to store the URL of the host server. This is needed by the frontend to make API requests to the backend.
+To avoid installing Node.js on the app's hosting server, it is possible to use the static files generated from running `npm run build` locally. Since running the build locally does not allow accessing environment variables from the host server, we added a _frontend/src/config.json_ file to store the URL of the host server. This is needed by the frontend to make API requests to the backend.
 
-The script _prepare_static_for_hosting.py_ automates the steps to obtain and collect required static files, including obtain the host base URL, running the React build, and collecting static files. If hosting on a different site, the URLs specified in the script for the development and production sites need to be updated accordingly.
+The script _prepare_static_for_hosting.py_ automates the steps to obtain and collect required static files, including obtain the host base URL, running the ReactJS build, and collecting Django static files. If hosting on a different site, the URLs specified in the script for the development and production sites need to be updated accordingly.
+
+## Helpful Resources
+
+We consulted the following tutorials and documentation to help us integrate ReactJS with Django framework and prepare to deploy on PythonAnywhere.
+
+* The Perfect Match: How to Integrate ReactJS with Django Framework for Stunning Web Apps: https://medium.com/@devsumitg/how-to-connect-reactjs-django-framework-c5ba268cb8be
+
+* Modern JavaScript for Django developers: https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/
+
+* Streaming LLM Output with Django, React, and LangChain: https://medium.com/@m.moshek/streaming-llm-output-with-django-react-and-langchain-tutorial-2963275b4f9c
+
+* Deploying Django to production: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
+
+* PythonAnywhere: Deploying an existing Django project on PythonAnywhere: https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+
+* PythonAnywhere: How to connect production React frontend with a Python backend: https://help.pythonanywhere.com/pages/React/
