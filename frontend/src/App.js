@@ -1,5 +1,5 @@
 import logo from './images/logo.png';
-// import footer from './images/footer.png';
+import footer from './images/footer_text.png';
 import React from 'react';
 import Home from '../src/pages/Home.jsx';
 import Rubric from '../src/pages/Rubric.jsx';
@@ -104,10 +104,9 @@ function App() {
         </div>
 
         <div className="tab-content">{tabs[activeTab].component}</div>
-
-        {/* <img src={footer} className="App-logo" alt="logo" height={200} /> */}
       </div>
       <footer>
+        {/* <img src={footer} className="backpack" alt="logo" /> */}
         The Grading Assistant may display inaccurate info so double-check its
         responses. It is powered by the{' '}
         <a href="https://ai.google.dev/gemini-api/terms">Gemini API</a>
