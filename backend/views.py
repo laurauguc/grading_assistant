@@ -38,20 +38,26 @@ def grade_with_gemini(request):
     - 404: Grading rubric file not found or rubric ID does not exist.
     """
 
-    student_assignment = request.query_params['student_assignment']
-    rubric_id = request.query_params['rubric_id']
+    if 'student_assignment' in request.query_params.keys():
+        student_assignment = request.query_params['student_assignment']
+    else:
+        return Response({'error': 'Missing student_assignment in query parameters'}, status=400)
 
-    if not student_assignment or not rubric_id:
-        return Response({'error': 'Missing student_assignment or rubric_id in query parameters'}, status=400)
+    if 'rubric_content' in request.query_params.keys():
+        rubric_content = request.query_params['rubric_content']
+    else:
+        if 'rubric_id' in request.query_params.keys():
+            rubric_id = request.query_params['rubric_id']
+        else:
+            return Response({'error': 'Missing rubric_content and rubric_id in query parameters'}, status=400)
+        rubric_with_metadata = GradingRubric.objects.get(id = rubric_id).__dict__
+        rubric_path = os.path.join(settings.BASE_DIR,rubric_with_metadata['content'])
 
-    rubric_with_metadata = GradingRubric.objects.get(id = rubric_id).__dict__
-    rubric_path = os.path.join(settings.BASE_DIR,rubric_with_metadata['content'])
+        if not os.path.exists(rubric_path):
+            return Response({'error': 'Grading rubric file not found'}, status=404)
 
-    if not os.path.exists(rubric_path):
-        return Response({'error': 'Grading rubric file not found'}, status=404)
-
-    with open(rubric_path, 'r') as file:
-        rubric_content = file.read()
+        with open(rubric_path, 'r') as file:
+            rubric_content = file.read()
 
     model = genai.GenerativeModel('gemini-pro')
 
