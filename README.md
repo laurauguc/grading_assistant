@@ -1,29 +1,30 @@
-# Grading Assistant Application
+# GradeMate
 
-The Gemini-powered Grading Assistant Application aids teachers in grading written work. Teachers can apply curated rubrics or upload their own.
+The Gemini-powered Grading assistant application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own.
 
 ## Architecture
 
-The Grading Assistant is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS App while the backend is a Django App, functioning as an api endpoint. The calls to the Gemini API are made from the backend.
+The GradeMate is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS App while the backend is a Django app, functioning as an API endpoint for the frontend. The calls to the Gemini API are made from the backend.
 
 ## Requirements
 
-The required programming languages are Node.js and Python. Versions: Python 3.12.3, node v22.3.0, npm 10.8.1.
+The required programming languages are Node.js and Python. Versions used: Python 3.12.3, node v22.3.0, npm 10.8.1.
 
-For installation of Javascript and Python dependencies, see the set-up instructions below.
+For installation of Javascript and Python dependencies, see the setup instructions below.
+
 
 ## Set-Up Instructions
 
 1. (Optional) Create and activate a virtual environment.
 
-  A. Using the command line, install virtualenv:
+  1.A. Using the command line, install virtualenv:
 
   ```console
   pip install virtualenv
   ```
   Note: if using Homebrew to manage packages, the command is likely `brew install virtualenv`, instead.
 
-  B. Create a virtual environment, by first navigating to the project folder and then running this command:
+  1.B. Create a virtual environment, by first navigating to the project folder and then running this command:
 
   ```console
   virtualenv venv
@@ -31,7 +32,7 @@ For installation of Javascript and Python dependencies, see the set-up instructi
 
   This command creates a virtual environment called "venv" contained in the homonymous folder. By using the same name for the virtual environment, git will know to ignore it (since listed in the .gitignore file).
 
-  C. Activate the virtual environment:
+  1.C. Activate the virtual environment:
 
   ```console
   source venv/bin/activate
@@ -39,64 +40,88 @@ For installation of Javascript and Python dependencies, see the set-up instructi
 
 2. Create and store the GOOGLE_API_KEY.
 
-  A. Obtain a Google API KEY here: https://aistudio.google.com/app/apikey
+  Obtain a Google API KEY here: https://aistudio.google.com/app/apikey
 
-  B. Add the API key to a new _.env_ file.
 
-  Create a .env file in the project directory.
+3. Prepare the _.env_ file
+
+  Create a Django secret key by running the following command.
+
+  ```console
+  python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+  ```
+
+  Create a .env file in the project directory. Run the following commands to add the GOOGLE_API_KEY, DJANGO_SECRET_KEY, DJANGO_DEBUG, and SECURITY_SETTINGS environment variables.
 
   ```console
   echo 'GOOGLE_API_KEY="<Insert-API-Key-here>"' >> .env
+  echo 'DJANGO_SECRET_KEY="<Insert-Django-Key-here>"' >> .env
+  echo 'DJANGO_DEBUG="True"' >> .env
+  echo 'SECURITY_SETTINGS="False"' >> .env
   ```
 
-3. Check that node, npm, and python are installed:
+4. Install the JavaScript dependencies.
 
-  ```console
-  node -v
-  npm -v
-  python3 -V
-  ```
+First, ensure that npm is installed and up to date:
 
-4. Install dependencies:
+```console
+npm install -g npm@latest
+```
 
-  A. To install the python dependencies, first navigate to the project folder, and then run the following command.
+Then navigate to the frontend directory, within the project directory, and run:
 
-  ```console
-  pip install -e .
-  ```
+```console
+npm install
+```
 
-  Note: this command installs the packages listed in the _grading_assistant.toml_ file.
+5. Install the Python dependencies.
 
-  B. To install Javascript dependencies, first navigate to the _frontend_ folder (within project the folder):
+   Ensure that the virtual environment is activated, then run:
 
-  ```console
-  cd ./frontend
-  ```
+   ```console
+   pip install -e .
+   ```
 
-  And then run the following command:
+  6. Run the development servers.
 
-  ```console
-  npm install
-  ```
+    To start the backend server, run:
 
-  Note: this command installs the packages listed in the _package.json_ file.
+    ```console
+    python manage.py runserver
+    ```
 
-5. Run the project
+    To start the frontend server, navigate to the frontend folder (within the project folder), and run:
 
-  Two terminal windows are needed to start the Django development server and the React development server.
+    ```console
+    npm start
+    ```
+    Note: Since the two development servers need to run a the same time, open each in a separate Terminal window.
 
-  A. To start the Django development server, navigate to the project folder and run:
+7. Open your web browser and navigate to: http://localhost:3000/
 
-  ```console
-  python manage.py runserver
-  ```
-  B. To start the React development server, navigate to the React app folder (_grading_assistant/frontend_) and run:
 
-  ```console
-  npm start
-  ````
+## Instructions for modifying the _db.sqlite3_ database
 
-6. Open your web browser and navigate to http://localhost:3000/
+The recommended way to modify the database is through the admin site. Make sure that the backend server is running, and then, from a browser, navigate to the admin site: http://localhost:8000/admin. The admin site allows both viewing and modifying the data. It also allows managing users and user group authentication and authorization. Superuser credentials have been shared on Slack.
+
+It is also possible to view and modify the _db.sqlite3_ database with a database browsing app, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, using the admin site is recommended.
+
+
+
+
+
+
+
+7. Load grading rubric data.
+
+   Run the provided Python script to load the grading rubric data from the _external_data_ folder into this database. It will also move the grading rubrics to a specified folder.
+
+   Note: As of release 0.0.1, the _load_grading_rubric_data_ module assumes a specific location for the _external_data_ folder. For future versions, we should pass the location as an argument to the command.
+
+
+
+
+
 
 ## Managing data
 
@@ -122,17 +147,18 @@ The recommended way to modify the database is through the admin site. Make sure 
 
 It is also possible to view and modify the _db.sqlite3_ database with a database browsing App, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, I recommend using the admin site instead.
 
-## Deploying Application
+## Instructions to prepare for deployment
 
+Before running the code on a live website, use the .env file on the host server to turn on the security settings and turn off the Django debug mode.
 
-Production ready.
+_.env_ file:
+```txt
+DJANGO_DEBUG="False"
+SECURITY_SETTINGS="True"
+```
 
-What the backend detects to adjust security settings.
+## Deployment instructions
 
-What the frontend detects. Local of API server needs to be added to config file (location) (even if the same as frontend).
-But can detect if running locally.
+Instead of installing Node.js on the App's hosting server, it is possible to use the static files generated from running `npm run build` locally. Since running the build locally does not allow accessing environment variables from the host server, we added a _frontend/src/config.json_ file to store the URL of the host server. This is needed by the frontend to make API requests to the backend.
 
-
-* Security settings applied and configured to be applied when running in production.
-
-* In order to reduce disk space, it is possible to run the application on a server using only Python, avoiding the need to install Node.js. Following steps performed by script ...
+The script _prepare_static_for_hosting.py_ automates the steps to obtain and collect required static files, including obtain the host base URL, running the React build, and collecting static files. If hosting on a different site, the URLs specified in the script for the development and production sites need to be updated accordingly.
