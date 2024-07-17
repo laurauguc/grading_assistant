@@ -39,6 +39,12 @@ def grade_with_gemini(request):
     """
 
     student_assignment = request.query_params['student_assignment']
+
+    rubric_content = request.query_params['rubric_content']
+
+
+
+    ###
     rubric_id = request.query_params['rubric_id']
 
     if not student_assignment or not rubric_id:
