@@ -50,7 +50,22 @@ h2 {
   display: flex;
   /* border-bottom: 2px solid #b01616;   */
 }
-
+.curated-rubric {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.curated-rubric p {
+  margin: 0 10px 0 0;
+}
+.upload-icon {
+  font-size: 44px;
+  color: #2c2c2c;
+}
+.upload-icon:hover {
+  color: #000000;
+  cursor: pointer;
+}
 .tab-button {
   padding: 12px 10px;
   width: 180px;
