@@ -62,17 +62,17 @@ For installation of Javascript and Python dependencies, see the setup instructio
 
 4. Install the JavaScript dependencies.
 
-First, ensure that npm is installed and up to date:
+  First, ensure that npm is installed and up to date:
 
-```console
-npm install -g npm@latest
-```
+  ```console
+  npm -v
+  ```
 
-Then navigate to the frontend directory, within the project directory, and run:
+  Then navigate to the frontend directory, within the project directory, and run:
 
-```console
-npm install
-```
+  ```console
+  npm install
+  ```
 
 5. Install the Python dependencies.
 
@@ -82,20 +82,20 @@ npm install
    pip install -e .
    ```
 
-  6. Run the development servers.
+6. Run the development servers.
 
-    To start the backend server, run:
+  To start the backend server, run:
 
-    ```console
-    python manage.py runserver
-    ```
+  ```console
+  python manage.py runserver
+  ```
 
-    To start the frontend server, navigate to the frontend folder (within the project folder), and run:
+  To start the frontend server, navigate to the frontend folder (within the project folder), and run:
 
-    ```console
-    npm start
-    ```
-    Note: Since the two development servers need to run a the same time, open each in a separate Terminal window.
+  ```console
+  npm start
+  ```
+  Note: Since the two development servers need to run a the same time, open each in a separate Terminal window.
 
 7. Open your web browser and navigate to: http://localhost:3000/
 
@@ -108,6 +108,17 @@ The recommended way to modify the database is through the admin site. Make sure 
 
 It is also possible to view and modify the _db.sqlite3_ database with a database browsing app, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, using the admin site is recommended.
 
+### Replacing the _db.sqlite3_ database with other external data
+
+The developer can also replace the existing _db.sqlite3_ database with new data in the format expected by the _backend/management/commands/load_grading_rubric_data.py_ file.
+
+To run this loading function, first deleted the _db.sqlite3_ database and then run the following command.
+
+```console
+python manage.py load_grading_rubric_data
+```
+
+Note: As of release 0.0.1, the _load_grading_rubric_data_ module assumes a specific location for the _rubrics_data_for_loading_ directory. For future versions, we should pass the location of this directory as an argument to the command.
 
 ### Preparing for deployment
 
