@@ -29,7 +29,7 @@ class Command(BaseCommand):
             print(ALREDY_LOADED_ERROR_MESSAGE)
             return
 
-        for row in DictReader(open('./external_data/grading_rubric_table.csv')):
+        for row in DictReader(open('./external_data/rubrics_data_for_loading/grading_rubric_table.csv')):
             # grading rubrics in markdown loaded here based on name?
             # or??: folder with grading rubrics. each grading rubric file contains a JSON (??) with the info
             # parse that info here
