@@ -50,7 +50,22 @@ h2 {
   display: flex;
   /* border-bottom: 2px solid #b01616;   */
 }
-
+.curated-rubric {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.curated-rubric p {
+  margin: 0 10px 0 0;
+}
+.upload-icon {
+  font-size: 44px;
+  color: #2c2c2c;
+  cursor: pointer;
+}
+.upload-icon:hover {
+  color: #000000;
+}
 .tab-button {
   padding: 12px 10px;
   width: 180px;
@@ -210,8 +225,8 @@ footer {
 .select_rubric {
   /* flex: 1; */
   display: flex;
-  align-items: top;
-  /* flex-wrap: wrap; */
+  /* align-items: top; */
+  flex-wrap: wrap;
   box-sizing: border-box;
 }
 .select_rubric h2 {
@@ -219,8 +234,9 @@ footer {
 }
 
 .rubric_details_container {
-  margin-left: 20px;
-  /* width: 77%; */
+  margin-right: 50px;
+  width: 60%;
+  /* min-width: 20px; */
 }
 .rubric_details {
   margin-top: 10px;
@@ -235,6 +251,9 @@ footer {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 0 15px;
+}
+.confirm-change {
+  width: 35%;
 }
 
 .coming {

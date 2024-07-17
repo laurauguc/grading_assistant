@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ObtainRubricNames from '../components/ObtainRubricNames';
+import FileLoader from '../components/FileLoader';
 import axios from 'axios';
 import Markdown from 'react-markdown';
 import configData from '../config.json';
@@ -58,19 +59,22 @@ const Home = ({
       <div className="main_container">
         <div className="assignment_section">
           <form onSubmit={handleSubmit}>
-            <h2 className="step1">Step 1: Grading rubric</h2>
-            <p>Select a curated grading rubric</p>
-            {!rubrics ? (
-              <div className="spinner" />
-            ) : (
-              <ObtainRubricNames
-                selected_rubric_id={selected_rubric_id}
-                setRubricID={setRubricID}
-                rubrics={rubrics}
-              />
-            )}
-
-            <h2 className="step2">Step 2: Student assignment</h2>
+            <h2 className="step1">Step 1: Grading Rubric</h2>
+            <div className="curated-rubric">
+              <p>Select a curated grading rubric:</p>
+              {!rubrics ? (
+                <div className="spinner" />
+              ) : (
+                <ObtainRubricNames
+                  selected_rubric_id={selected_rubric_id}
+                  setRubricID={setRubricID}
+                  rubrics={rubrics}
+                />
+              )}
+              <p>Or load your own:</p>
+              <FileLoader />
+            </div>
+            <h2 className="step2">Step 2: Student Assignment</h2>
             <p>Insert the student assignment</p>
             <textarea ref={student_assignment_submission} cols={66} rows={10} />
             <br />
@@ -83,7 +87,7 @@ const Home = ({
           </form>
         </div>
         <div className="grading_section">
-          <h2>Result: Graded feedback</h2>
+          <h2>Result: Graded Feedback</h2>
           <p>The grade and feedback will appear here</p>
           <div className="graded_feedback">
             {grading_loading ? (
