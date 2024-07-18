@@ -20,6 +20,7 @@ const Home = ({
   graded_feedback,
   setGrading,
   rubrics,
+  setRubricMarkdown,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
@@ -73,10 +74,8 @@ const Home = ({
                   />
                 )}
               </div>
-              <div className="load">
-                <label>Or load your own:</label>
-                <FileLoader />
-              </div>
+
+              <FileLoader setRubricMarkdown={setRubricMarkdown} />
             </div>
             <h2 className="step2">Step 2: Student Assignment</h2>
             <p>Insert the student assignment</p>

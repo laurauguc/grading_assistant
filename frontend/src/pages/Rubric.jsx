@@ -6,6 +6,7 @@ const Rubric = ({
   setRubricID,
   rubrics,
   handleTabChange,
+  rubricMarkdown,
 }) => {
   return (
     <div className="container">
@@ -16,6 +17,7 @@ const Rubric = ({
         setRubricID={setRubricID}
         rubrics={rubrics}
         handleTabChange={handleTabChange}
+        rubricMarkdown={rubricMarkdown}
       />
     </div>
   );

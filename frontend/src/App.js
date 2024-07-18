@@ -14,6 +14,7 @@ function App() {
   const [student_assignment, setStudentAssignment] = useState(null);
   const [graded_feedback, setGrading] = useState('');
   const [rubrics, setRubrics] = useState(null);
+  const [rubricMarkdown, setRubricMarkdown] = useState('');
 
   const tabs = [
     {
@@ -30,6 +31,7 @@ function App() {
           setGrading={setGrading}
           rubrics={rubrics}
           handleTabChange={index => setActiveTab(index)}
+          setRubricMarkdown={setRubricMarkdown}
         />
       ),
     },
@@ -43,6 +45,7 @@ function App() {
           setRubricID={setRubricID}
           rubrics={rubrics}
           handleTabChange={index => setActiveTab(index)}
+          rubricMarkdown={rubricMarkdown}
         />
       ),
     },

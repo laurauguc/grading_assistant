@@ -68,10 +68,9 @@ function ViewGradingRubricDetails(props) {
             setRubricID={props.setRubricID}
             rubrics={props.rubrics}
           />
-          <div className="load">
-            <p>Or load your own:</p>
-            <FileLoader />
-          </div>
+
+          <FileLoader />
+
           <button
             type="submit"
             className="grade-button"
