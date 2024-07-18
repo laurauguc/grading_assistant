@@ -13,8 +13,10 @@ function ObtainRubricNames({ selected_rubric_id, setRubricID, rubrics }) {
   if (rubrics)
     return (
       <select value={selected_rubric_id} onChange={handleChange_rubric}>
-        {rubrics.map(rubric => (
-          <option value={rubric.id}>{rubric.name}</option>
+        {rubrics.map((rubric, key) => (
+          <option value={rubric.id} key={key}>
+            {rubric.name}
+          </option>
         ))}
       </select>
     );

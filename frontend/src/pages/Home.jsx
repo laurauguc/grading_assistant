@@ -21,6 +21,9 @@ const Home = ({
   setGrading,
   rubrics,
   setRubricMarkdown,
+  rubricMarkdown,
+  rubricMarkdownFileName,
+  setRubricMarkdownFileName,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
@@ -40,6 +43,7 @@ const Home = ({
         params: {
           student_assignment,
           rubric_id,
+          rubricMarkdown,
         },
       })
       .then(response => {
@@ -75,7 +79,11 @@ const Home = ({
                 )}
               </div>
 
-              <FileLoader setRubricMarkdown={setRubricMarkdown} />
+              <FileLoader
+                setRubricMarkdown={setRubricMarkdown}
+                rubricMarkdownFileName={rubricMarkdownFileName}
+                setRubricMarkdownFileName={setRubricMarkdownFileName}
+              />
             </div>
             <h2 className="step2">Step 2: Student Assignment</h2>
             <p>Insert the student assignment</p>

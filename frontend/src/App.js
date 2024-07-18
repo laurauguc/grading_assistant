@@ -15,6 +15,7 @@ function App() {
   const [graded_feedback, setGrading] = useState('');
   const [rubrics, setRubrics] = useState(null);
   const [rubricMarkdown, setRubricMarkdown] = useState('');
+  const [rubricMarkdownFileName, setRubricMarkdownFileName] = useState('');
 
   const tabs = [
     {
@@ -32,6 +33,9 @@ function App() {
           rubrics={rubrics}
           handleTabChange={index => setActiveTab(index)}
           setRubricMarkdown={setRubricMarkdown}
+          rubricMarkdown={rubricMarkdown}
+          rubricMarkdownFileName={rubricMarkdownFileName}
+          setRubricMarkdownFileName={setRubricMarkdownFileName}
         />
       ),
     },
@@ -45,7 +49,10 @@ function App() {
           setRubricID={setRubricID}
           rubrics={rubrics}
           handleTabChange={index => setActiveTab(index)}
+          setRubricMarkdown={setRubricMarkdown}
           rubricMarkdown={rubricMarkdown}
+          rubricMarkdownFileName={rubricMarkdownFileName}
+          setRubricMarkdownFileName={setRubricMarkdownFileName}
         />
       ),
     },
@@ -77,6 +84,10 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    setRubricMarkdownFileName('');
+    setRubricMarkdown('');
+  }, [selected_rubric_id]);
   return (
     <React.Fragment>
       <header>

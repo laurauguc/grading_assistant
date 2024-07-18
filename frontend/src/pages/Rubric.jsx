@@ -7,6 +7,9 @@ const Rubric = ({
   rubrics,
   handleTabChange,
   rubricMarkdown,
+  rubricMarkdownFileName,
+  setRubricMarkdownFileName,
+  setRubricMarkdown,
 }) => {
   return (
     <div className="container">
@@ -18,6 +21,9 @@ const Rubric = ({
         rubrics={rubrics}
         handleTabChange={handleTabChange}
         rubricMarkdown={rubricMarkdown}
+        rubricMarkdownFileName={rubricMarkdownFileName}
+        setRubricMarkdownFileName={setRubricMarkdownFileName}
+        setRubricMarkdown={setRubricMarkdown}
       />
     </div>
   );

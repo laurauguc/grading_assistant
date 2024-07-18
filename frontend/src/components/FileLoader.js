@@ -1,24 +1,33 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MdUploadFile } from 'react-icons/md';
 import configData from '../config.json';
 import axios from 'axios';
 
-const FileLoader = ({ setRubricMarkdown }) => {
+const FileLoader = ({
+  setRubricMarkdown,
+  rubricMarkdownFileName,
+  setRubricMarkdownFileName,
+}) => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (file) {
+      uploadCustomRubricFile();
+    }
+  }, [file]);
+
   const handleFileChange = event => {
     setFile(event.target.files[0]);
-    handleFileUpload(event.target.files[0]);
+    setRubricMarkdownFileName(event.target.files[0].name);
     console.log('1', event.target.files[0]);
   };
 
-  const handleFileUpload = () => {
-    if (!file) return;
+  const uploadCustomRubricFile = () => {
+    // if (!file) return;
 
     const formData = new FormData();
     formData.append('file', file);
-    console.log('2', file);
     setLoading(true);
 
     const BASE_URL =
@@ -26,8 +35,13 @@ const FileLoader = ({ setRubricMarkdown }) => {
         ? 'http://localhost:8000/'
         : configData['SERVER_URL'];
 
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+    };
+    console.log('3', formData.getAll('file'));
+
     axios
-      .get(BASE_URL.concat('api/convert-docx-to-md/'), formData)
+      .post(BASE_URL.concat('api/convert-docx-to-md/'), formData, headers)
       .then(response => {
         setRubricMarkdown(response.data);
         console.log(response.data);
@@ -53,7 +67,7 @@ const FileLoader = ({ setRubricMarkdown }) => {
         <MdUploadFile className="upload-icon" />
       </label>
       {loading && <p>Uploading...</p>}
-      {file && !loading && <p className="filename">{file.name}</p>}
+      {<p className="filename">{rubricMarkdownFileName}</p>}
     </div>
   );
 };
