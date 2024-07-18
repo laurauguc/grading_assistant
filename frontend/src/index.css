@@ -161,7 +161,7 @@ textarea {
 
 .graded_feedback {
   width: 100%;
-  height: 390px;
+  height: 400px;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;

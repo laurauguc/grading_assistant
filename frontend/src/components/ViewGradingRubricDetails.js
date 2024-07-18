@@ -72,7 +72,11 @@ function ViewGradingRubricDetails(props) {
             <p>Or load your own:</p>
             <FileLoader />
           </div>
-          <button type="submit" className="grade-button">
+          <button
+            type="submit"
+            className="grade-button"
+            onClick={() => props.handleTabChange(0)}
+          >
             Confirm
           </button>
         </div>

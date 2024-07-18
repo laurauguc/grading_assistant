@@ -29,6 +29,7 @@ function App() {
           graded_feedback={graded_feedback}
           setGrading={setGrading}
           rubrics={rubrics}
+          handleTabChange={index => setActiveTab(index)}
         />
       ),
     },
@@ -41,6 +42,7 @@ function App() {
           selected_rubric_id={selected_rubric_id}
           setRubricID={setRubricID}
           rubrics={rubrics}
+          handleTabChange={index => setActiveTab(index)}
         />
       ),
     },
