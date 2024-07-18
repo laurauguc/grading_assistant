@@ -14,7 +14,10 @@ function ObtainRubricMarkdown() {
   } else {
     BASE_URL = configData['SERVER_URL'];
   }
-  const docx_path = "../../external_data/rubric_markdown_test/us_history_rubric_test.docx"
+
+  // change line below. used for testing
+  const docx_path = "./external_data/rubric_markdown_test/us_history_rubric_test.docx"
+
 
   useEffect(() => {
     axios
