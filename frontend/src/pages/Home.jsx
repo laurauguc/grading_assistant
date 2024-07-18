@@ -20,6 +20,10 @@ const Home = ({
   graded_feedback,
   setGrading,
   rubrics,
+  setRubricMarkdown,
+  rubricMarkdown,
+  rubricMarkdownFileName,
+  setRubricMarkdownFileName,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
@@ -39,6 +43,7 @@ const Home = ({
         params: {
           student_assignment,
           rubric_id,
+          rubricMarkdown,
         },
       })
       .then(response => {
@@ -61,18 +66,24 @@ const Home = ({
           <form onSubmit={handleSubmit}>
             <h2 className="step1">Step 1: Grading Rubric</h2>
             <div className="curated-rubric">
-              <p>Select a curated grading rubric:</p>
-              {!rubrics ? (
-                <div className="spinner" />
-              ) : (
-                <ObtainRubricNames
-                  selected_rubric_id={selected_rubric_id}
-                  setRubricID={setRubricID}
-                  rubrics={rubrics}
-                />
-              )}
-              <p>Or load your own:</p>
-              <FileLoader />
+              <div className="flex-row">
+                <p>Select a curated grading rubric:</p>
+                {!rubrics ? (
+                  <div className="spinner" />
+                ) : (
+                  <ObtainRubricNames
+                    selected_rubric_id={selected_rubric_id}
+                    setRubricID={setRubricID}
+                    rubrics={rubrics}
+                  />
+                )}
+              </div>
+
+              <FileLoader
+                setRubricMarkdown={setRubricMarkdown}
+                rubricMarkdownFileName={rubricMarkdownFileName}
+                setRubricMarkdownFileName={setRubricMarkdownFileName}
+              />
             </div>
             <h2 className="step2">Step 2: Student Assignment</h2>
             <p>Insert the student assignment</p>

@@ -18,6 +18,18 @@ function ViewGradingRubricDetails(props) {
   }
 
   useEffect(() => {
+    if (props.rubricMarkdown) {
+      setMessage({
+        file_: props.rubricMarkdown,
+        name: 'Custom Rubric',
+        description: 'Taken from the uploaded file',
+        class_name: '',
+        level: '',
+        language: '',
+      });
+
+      return;
+    }
     axios
       .get(BASE_URL.concat('api/obtain-rubric/'), {
         params: props,
@@ -68,11 +80,18 @@ function ViewGradingRubricDetails(props) {
             setRubricID={props.setRubricID}
             rubrics={props.rubrics}
           />
-          <div className="curated-rubric">
-            <p>Or load your own:</p>
-            <FileLoader />
-          </div>
-          <button type="submit" className="grade-button">
+
+          <FileLoader
+            setRubricMarkdown={props.setRubricMarkdown}
+            rubricMarkdownFileName={props.rubricMarkdownFileName}
+            setRubricMarkdownFileName={props.setRubricMarkdownFileName}
+          />
+
+          <button
+            type="submit"
+            className="grade-button"
+            onClick={() => props.handleTabChange(0)}
+          >
             Confirm
           </button>
         </div>

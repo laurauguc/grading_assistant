@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -53,11 +57,19 @@ h2 {
 }
 .curated-rubric {
   display: flex;
+  flex-direction: column;
+  /* align-items: left; */
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.flex-row {
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 .curated-rubric p {
-  margin: 0 10px 0 0;
+  margin: 0 0px 0 0;
 }
 .upload-icon {
   font-size: 44px;
@@ -104,9 +116,10 @@ h2 {
 .assignment_section,
 .grading_section {
   flex: 1;
-  box-sizing: border-box;
   width: 100%;
+  min-width: 40ch;
 }
+
 textarea {
   border: 1px solid #ccc;
   outline: none;
@@ -119,7 +132,11 @@ textarea {
 }
 
 .assignment_section {
-  border-right: 1px solid #ccc;
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 0;
+  border-block-end-width: 1px;
+  padding-block-end: 10px;
 }
 
 .step1 {
@@ -144,7 +161,7 @@ textarea {
 
 .graded_feedback {
   width: 100%;
-  height: 390px;
+  height: 400px;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
@@ -233,26 +250,35 @@ footer {
 .select_rubric {
   /* flex: 1; */
   display: flex;
-  /* align-items: top; */
   flex-wrap: wrap;
   box-sizing: border-box;
+  gap: 20px;
 }
 .select_rubric h2 {
   margin-top: 0;
 }
 
 .rubric_details_container {
-  margin-right: 50px;
+  /* margin-right: 50px; */
   width: 60%;
   /* min-width: 20px; */
+
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 0;
+  /* border-block-end-width: 1px; */
+  padding-block-end: 10px;
 }
 .rubric_details {
   margin-top: 10px;
   border: 1px solid #ccc;
   padding: 0 10px;
   border-radius: 10px;
+  margin-right: 20px;
 }
-
+.filename {
+  display: inline-block;
+}
 .view_rubric {
   flex: 3;
   box-sizing: border-box;
@@ -263,8 +289,14 @@ footer {
 }
 .confirm-change {
   width: 35%;
+  min-width: 28ch;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 10px;  */
 }
-
+.confirm-change .load {
+  margin: 10px 0;
+}
 .coming {
   text-align: center;
   font-style: italic;
@@ -275,4 +307,28 @@ footer {
 }
 .coming p {
   margin: 0;
+}
+.load {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+@media (min-width: 909px) {
+  .assignment_section {
+    /* border-right: 1px solid #ccc; */
+    border-block-end-width: 0;
+    border-inline-end-width: 1px;
+  }
+  .rubric_details_container {
+    /* border-right: 1px solid #ccc; */
+    border-block-end-width: 0;
+    border-inline-end-width: 1px;
+  }
+}
+
+@media (min-width: 960px) {
+  .main_container {
+    /* background-color: #521b1b; */
+  }
 }
