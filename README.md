@@ -1,6 +1,6 @@
 # GradeMate
 
-The Gemini-powered Grading assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this App is available at: https://wwww.grade-mate.app.
+The Gemini-powered Grading assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this App is available at: https://www.grade-mate.app.
 
 ## Architecture
 
