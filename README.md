@@ -1,10 +1,10 @@
 # GradeMate
 
-The Gemini-powered Grading assistant application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own.
+The Gemini-powered Grading assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this App is available at: https://wwww.grade-mate.app.
 
 ## Architecture
 
-The GradeMate is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS app while the backend is a Django app, functioning as an API endpoint for the frontend. The calls to the Gemini API are made from the backend.
+The GradeMate is built using Javascript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS App while the backend is a Django App, functioning as an API endpoint for the frontend. The calls to the Gemini API are made from the backend.
 
 ## Requirements
 
@@ -106,7 +106,7 @@ For installation of Javascript and Python dependencies, see the setup instructio
 
 The recommended way to modify the database is through the admin site. Make sure that the backend server is running, and then, from a browser, navigate to the admin site: http://localhost:8000/admin. The admin site allows both viewing and modifying the data. It also allows managing users and user group authentication and authorization. Superuser credentials have been shared on Slack.
 
-It is also possible to view and modify the _db.sqlite3_ database with a database browsing app, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, using the admin site is recommended.
+It is also possible to view and modify the _db.sqlite3_ database with a database browsing App, such as DB Browser for SQLite (downloadable here: https://sqlitebrowser.org/). However, using the admin site is recommended.
 
 ### Replacing the _db.sqlite3_ database with other external data
 
@@ -132,7 +132,7 @@ SECURITY_SETTINGS="True"
 
 ### Deployment
 
-To avoid installing Node.js on the app's hosting server, it is possible to use the static files generated from running `npm run build` locally. Since running the build locally does not allow accessing environment variables from the host server, we added a _frontend/src/config.json_ file to store the URL of the host server. This is needed by the frontend to make API requests to the backend.
+To avoid installing Node.js on the App's hosting server, it is possible to use the static files generated from running `npm run build` locally. Since running the build locally does not allow accessing environment variables from the host server, we added a _frontend/src/config.json_ file to store the URL of the host server. This is needed by the frontend to make API requests to the backend.
 
 The script _prepare_static_for_hosting.py_ automates the steps to obtain and collect required static files, including obtain the host base URL, running the ReactJS build, and collecting Django static files. If hosting on a different site, the URLs specified in the script for the development and production sites need to be updated accordingly.
 
