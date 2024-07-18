@@ -61,18 +61,22 @@ const Home = ({
           <form onSubmit={handleSubmit}>
             <h2 className="step1">Step 1: Grading Rubric</h2>
             <div className="curated-rubric">
-              <p>Select a curated grading rubric:</p>
-              {!rubrics ? (
-                <div className="spinner" />
-              ) : (
-                <ObtainRubricNames
-                  selected_rubric_id={selected_rubric_id}
-                  setRubricID={setRubricID}
-                  rubrics={rubrics}
-                />
-              )}
-              <p>Or load your own:</p>
-              <FileLoader />
+              <div className="flex-row">
+                <p>Select a curated grading rubric:</p>
+                {!rubrics ? (
+                  <div className="spinner" />
+                ) : (
+                  <ObtainRubricNames
+                    selected_rubric_id={selected_rubric_id}
+                    setRubricID={setRubricID}
+                    rubrics={rubrics}
+                  />
+                )}
+              </div>
+              <div className="load">
+                <label>Or load your own:</label>
+                <FileLoader />
+              </div>
             </div>
             <h2 className="step2">Step 2: Student Assignment</h2>
             <p>Insert the student assignment</p>

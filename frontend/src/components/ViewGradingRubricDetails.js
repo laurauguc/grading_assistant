@@ -68,7 +68,7 @@ function ViewGradingRubricDetails(props) {
             setRubricID={props.setRubricID}
             rubrics={props.rubrics}
           />
-          <div className="curated-rubric">
+          <div className="load">
             <p>Or load your own:</p>
             <FileLoader />
           </div>
