@@ -135,7 +135,7 @@ def obtain_rubric(request):
 
 @api_view(['POST'])
 def convert_docx_to_md(request):
-      """
+    """
     Converts a DOCX file to Markdown content.
 
     Query Parameters:
@@ -150,9 +150,9 @@ def convert_docx_to_md(request):
 
     if 'file' not in request.FILES:
         return Response({"error": "No file provided"}, status=400)
-    
+
     uploaded_file = request.FILES['file']
-    
+
     # Create a temporary file in /tmp
     with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp_file:
         for chunk in uploaded_file.chunks():
@@ -166,5 +166,5 @@ def convert_docx_to_md(request):
     finally:
         # Delete the temporary file
         os.remove(tmp_file_path)
-    
+
     return Response(md_content)
