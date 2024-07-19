@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdUploadFile } from 'react-icons/md';
 import configData from '../config.json';
 import axios from 'axios';
@@ -9,7 +9,13 @@ const FileLoader = ({
   setRubricMarkdownFileName,
 }) => {
   const [file, setFile] = useState(null);
-  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const storedFileName = localStorage.getItem('rubricMarkdownFileName');
+    if (storedFileName) {
+      setRubricMarkdownFileName(storedFileName);
+    }
+  }, [setRubricMarkdownFileName]);
 
   useEffect(() => {
     if (file) {
@@ -18,9 +24,11 @@ const FileLoader = ({
   }, [file]);
 
   const handleFileChange = event => {
-    setFile(event.target.files[0]);
-    setRubricMarkdownFileName(event.target.files[0].name);
-    console.log('1', event.target.files[0]);
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    const fileName = selectedFile.name;
+    setRubricMarkdownFileName(fileName);
+    localStorage.setItem('rubricMarkdownFileName', fileName);
   };
 
   const uploadCustomRubricFile = () => {
@@ -28,7 +36,6 @@ const FileLoader = ({
 
     const formData = new FormData();
     formData.append('file', file);
-    setLoading(true);
 
     const BASE_URL =
       process.env.NODE_ENV === 'development'
@@ -44,19 +51,15 @@ const FileLoader = ({
       .post(BASE_URL.concat('api/convert-docx-to-md/'), formData, headers)
       .then(response => {
         setRubricMarkdown(response.data);
-        console.log(response.data);
       })
       .catch(error => {
         console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   };
 
   return (
     <div className="load">
-      <label>Or load your own:</label>
+      <label>Or load your own. Formats accepted: docx</label>
       <input
         type="file"
         id="file-upload"
@@ -66,8 +69,12 @@ const FileLoader = ({
       <label htmlFor="file-upload" className="upload-label">
         <MdUploadFile className="upload-icon" />
       </label>
-      {loading && <p>Uploading...</p>}
-      {<p className="filename">{rubricMarkdownFileName}</p>}
+
+      {rubricMarkdownFileName && (
+        <p className="filename">
+          Successfully loaded: {rubricMarkdownFileName}
+        </p>
+      )}
     </div>
   );
 };
