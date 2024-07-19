@@ -62,8 +62,26 @@ def grade_with_gemini(request):
 
     model = genai.GenerativeModel('gemini-pro')
 
-    prompt = """You are a teaching assistant, supporting the instructor with grading. \
-    Use the grading rubric to grade the student response. \
+    prompt = """
+
+    Role: You are a Teaching Assistant. Your task is to grade a student assignment using the provided grading rubric and justify the final grade.    
+    
+    Steps:
+    
+    1. Validate the task:
+        - Ensure the assignment aligns with the rubric.
+        - Check for any issues such as essays with only a few sentences, off-topic content, inappropriate or violent content, or missing information.
+        - If issues are found, stop grading and report the issue(s).    
+        
+    2. Grade the assignment:
+        - Assign scores per criterion and a final score.
+        - Provide specific feedback based on the rubric and the assignment.
+        - Avoid subjective comments.    
+        
+    3. Review your feedback:
+        - Ensure all feedback is factually accurate.
+        - Verify that any mentioned elements (e.g., citations) are present.
+        
     Format the output as markdown and include a final grade with justification. \
 
     Grading Rubric: {}
@@ -135,7 +153,7 @@ def obtain_rubric(request):
 
 @api_view(['POST'])
 def convert_docx_to_md(request):
-    """
+      """
     Converts a DOCX file to Markdown content.
 
     Query Parameters:
@@ -150,9 +168,9 @@ def convert_docx_to_md(request):
 
     if 'file' not in request.FILES:
         return Response({"error": "No file provided"}, status=400)
-
+    
     uploaded_file = request.FILES['file']
-
+    
     # Create a temporary file in /tmp
     with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp_file:
         for chunk in uploaded_file.chunks():
@@ -166,5 +184,5 @@ def convert_docx_to_md(request):
     finally:
         # Delete the temporary file
         os.remove(tmp_file_path)
-
+    
     return Response(md_content)
