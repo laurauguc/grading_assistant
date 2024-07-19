@@ -56,7 +56,7 @@ const FileLoader = ({
 
   return (
     <div className="load">
-      <label>Or load your own:</label>
+      <label>Or load your own. Formats accepted: docx</label>
       <input
         type="file"
         id="file-upload"

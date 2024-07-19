@@ -48,7 +48,7 @@ function ViewGradingRubricDetails(props) {
     <div className="main_container">
       <div className="select_rubric">
         <div className="rubric_details_container">
-          <h2>Step 1: Review Grading Rubric</h2>
+          <h2>Selected Grading Rubric Info</h2>
           <div className="rubric_details">
             <p>
               <strong>Name: </strong>
@@ -72,7 +72,7 @@ function ViewGradingRubricDetails(props) {
             </p>
           </div>
         </div>
-        <div className="confirm-change">
+        {/* <div className="confirm-change">
           <h2>Step 2: Confirm or Change Grading Rubric </h2>
           <p>Select a curated grading rubric:</p>
           <ObtainRubricNames
@@ -94,7 +94,7 @@ function ViewGradingRubricDetails(props) {
           >
             Confirm
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="view_rubric">
         <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>
