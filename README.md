@@ -1,4 +1,6 @@
+<p>
 <img align="right" src="./frontend/src/images/logo.png" alt="drawing" width="200"/>
+</p>
 
 # GradeMate
 
