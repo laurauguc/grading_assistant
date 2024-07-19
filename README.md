@@ -1,6 +1,7 @@
-<p>
-<img clear="both" align="right" src="./frontend/src/images/logo.png" alt="drawing" width="200"/>
-</p>
+
+<img align="right" src="./frontend/src/images/logo.png" alt="drawing" width="200"/>
+
+<br clear="both"/>
 
 # GradeMate
 
