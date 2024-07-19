@@ -36,7 +36,7 @@ class Command(BaseCommand):
             grading_rubric = GradingRubric()
             grading_rubric.name = row['Rubric Name']
             grading_rubric.class_name = row['Class Name']
-            grading_rubric.level = row['Grade Level']
+            grading_rubric.level = row['Grade Level(s)']
             grading_rubric.country = row['Country']
             grading_rubric.language = row['Language']
             grading_rubric.description = row['Description']
@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 datetime.strptime(raw_update_date, DATETIME_FORMAT))
             grading_rubric.last_updated = update_date
 
-            content_path = Path("./external_data/" + row['Rubric Name'] + '.md')
+            content_path = Path("./external_data/rubrics_data_for_loading/" + row['Rubric Name'] + '.md')
             with content_path.open(mode="r") as f:
                 grading_rubric.content = File(f, name=content_path.name)
                 grading_rubric.save()
