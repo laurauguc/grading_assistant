@@ -7,9 +7,16 @@ const FileLoader = ({
   setRubricMarkdown,
   rubricMarkdownFileName,
   setRubricMarkdownFileName,
+  resetLabel,
 }) => {
   const [file, setFile] = useState(null);
   const [fileTypeError, setFileTypeError] = useState(false);
+
+  useEffect(() => {
+    if (resetLabel) {
+      localStorage.removeItem('rubricMarkdownFileName');
+    }
+  }, [resetLabel]);
 
   useEffect(() => {
     const storedFileName = localStorage.getItem('rubricMarkdownFileName');
