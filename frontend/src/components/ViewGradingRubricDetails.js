@@ -45,31 +45,41 @@ function ViewGradingRubricDetails(props) {
   // console.log(message.file_);
 
   return (
-    <div className="main_container">
+    <div className="main_container_2">
       <div className="select_rubric">
         <div className="rubric_details_container">
           <h2>Selected Grading Rubric Info</h2>
           <div className="rubric_details">
-            <p>
-              <strong>Name: </strong>
-              {message.name}
-            </p>
-            <p>
-              <strong>Description: </strong>
-              {message.description}
-            </p>
-            <p>
-              <strong>Class names: </strong>
-              {message.class_name}
-            </p>
-            <p>
-              <strong>Level: </strong>
-              {message.level}
-            </p>
-            <p>
-              <strong>Language: </strong>
-              {message.language}
-            </p>
+            {message.name && (
+              <p>
+                <strong>Language: </strong>
+                {message.name}
+              </p>
+            )}
+            {message.description && (
+              <p>
+                <strong>Language: </strong>
+                {message.description}
+              </p>
+            )}
+            {message.class_name && (
+              <p>
+                <strong>Language: </strong>
+                {message.class_name}
+              </p>
+            )}
+            {message.level && (
+              <p>
+                <strong>Language: </strong>
+                {message.level}
+              </p>
+            )}
+            {message.language && (
+              <p>
+                <strong>Language: </strong>
+                {message.language}
+              </p>
+            )}
           </div>
         </div>
         {/* <div className="confirm-change">
@@ -96,6 +106,8 @@ function ViewGradingRubricDetails(props) {
           </button>
         </div> */}
       </div>
+      <h2>Content:</h2>
+
       <div className="view_rubric">
         <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>
       </div>

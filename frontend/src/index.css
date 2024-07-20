@@ -68,8 +68,18 @@ h2 {
   flex-wrap: wrap;
   gap: 10px;
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .curated-rubric p {
   margin: 0 0px 0 0;
+}
+.error {
+  color: #f44336;
 }
 .upload-icon {
   font-size: 44px;
@@ -109,6 +119,12 @@ h2 {
 .main_container {
   display: flex;
   flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+}
+.main_container_2 {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   padding: 20px;
   gap: 20px;
 }
@@ -268,10 +284,12 @@ footer {
 }
 .rubric_details {
   margin-top: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   padding: 0 10px;
   border-radius: 10px;
   /* margin-right: 20px; */
+
+  width: 100%;
 }
 .filename {
   display: inline-block;
