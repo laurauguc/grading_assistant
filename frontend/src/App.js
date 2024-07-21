@@ -17,6 +17,11 @@ function App() {
   const [rubricMarkdown, setRubricMarkdown] = useState('');
   const [rubricMarkdownFileName, setRubricMarkdownFileName] = useState('');
 
+  const resetLabel = () => {
+    setRubricMarkdownFileName('');
+    setRubricMarkdown('');
+  };
+
   const tabs = [
     {
       label: 'Home',
@@ -36,6 +41,7 @@ function App() {
           rubricMarkdown={rubricMarkdown}
           rubricMarkdownFileName={rubricMarkdownFileName}
           setRubricMarkdownFileName={setRubricMarkdownFileName}
+          resetLabel={resetLabel}
         />
       ),
     },

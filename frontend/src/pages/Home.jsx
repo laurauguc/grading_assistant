@@ -24,6 +24,7 @@ const Home = ({
   rubricMarkdown,
   rubricMarkdownFileName,
   setRubricMarkdownFileName,
+  resetLabel,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
@@ -57,10 +58,6 @@ const Home = ({
 
   return (
     <div className="container">
-      {/* <p className="center">
-        The Grading Assistant applies curated grading rubrics, or user-uploaded
-        ones, to writing assignments to provide graded feedback.
-      </p> */}
       <div className="main_container">
         <div className="assignment_section">
           <form onSubmit={handleSubmit}>
@@ -75,6 +72,7 @@ const Home = ({
                     selected_rubric_id={selected_rubric_id}
                     setRubricID={setRubricID}
                     rubrics={rubrics}
+                    resetLabel={resetLabel}
                   />
                 )}
               </div>
@@ -83,6 +81,7 @@ const Home = ({
                 setRubricMarkdown={setRubricMarkdown}
                 rubricMarkdownFileName={rubricMarkdownFileName}
                 setRubricMarkdownFileName={setRubricMarkdownFileName}
+                resetLabel={resetLabel}
               />
             </div>
             <h2 className="step2">Step 2: Student Assignment</h2>
