@@ -1,5 +1,14 @@
 import docx
 import os
+import json
+import pathlib
+import textwrap
+import google.generativeai as genai
+from IPython.display import display, Markdown, HTML
+from dotenv import load_dotenv, find_dotenv
+from pathlib import Path
+import re
+import tiktoken
 
 class DocxToMarkdownConverter:
     """
@@ -97,3 +106,148 @@ class DocxToMarkdownConverter:
         self.read_word_file()
         md_content = self.convert_docx_to_md()
         return md_content  # Return the Markdown content to the console
+
+def format_suggestions_and_rewrite_prompt(grading_feedback, student_assignment):
+    return f"""
+    Based on the following grading feedback,
+
+    1. Provide suggestions for improvement
+    2. Rewrite the essay using the suggested improvements
+
+    Grading Feedback:
+    {grading_feedback}
+
+    Student Assignment:
+    {student_assignment}
+
+    Take each improvement provided and identify,
+    a. the smallest chunk of the original text where it was applied
+    b. the criterion from the rubric
+    c. the reason for the suggested improvement
+
+    Provide steps a, b, and c in the following JSON format:
+    [
+        {{"improvement": "improvement_1", "criterion_from_rubric": "criterion_from_rubric_1", "reason_for_suggestion": "reason_for_suggestion_1", "original_text": "original_text_1", "revised_text": "revised_text_1"}},
+        ...
+        {{"improvement": "improvement_n", "criterion_from_rubric": "criterion_from_rubric_n", "reason_for_suggestion": "reason_for_suggestion_n", "original_text": "original_text_n", "revised_text": "original_text_n"}}
+    ]
+    """
+
+def generate_suggestions_and_rewrite_essay(model, grading_feedback, student_assignment):
+    prompt = format_suggestions_and_rewrite_prompt(grading_feedback, student_assignment)
+
+    response = model.generate_content(prompt)
+
+    # Ensure the response streaming completes
+    response.resolve()
+
+    if response and response.text:
+        print("Full response from model:\n", response.text)  # Debugging statement
+        return response.text
+    else:
+        print("Error: No response from model")
+        return None
+
+def clean_json_string(json_string):
+    # Remove Markdown formatting and trailing commas
+    json_string = json_string.replace('```json', '').replace('```', '').strip()
+    json_string = re.sub(r',\s*([}\]])', r'\1', json_string)  # Remove trailing commas before closing braces
+    # Ensure all objects are closed properly
+    json_string = re.sub(r'\s*}\s*{', '},{', json_string)
+    # Add missing closing brackets if necessary
+    if json_string.count('[') > json_string.count(']'):
+        json_string += ']'
+    if json_string.count('{') > json_string.count('}'):
+        json_string += '}'
+    return json_string
+
+def extract_json_improvements(response):
+    if response is None:
+        print("Error: No response provided for JSON extraction")
+        return {'improvements': [], 'response_without_json': ''}
+    try:
+        json_match = re.search(r'\[\s*\{.*\}\s*\]', response, re.DOTALL)
+        if not json_match:
+            raise ValueError("No valid JSON found in response.")
+
+        cleaned_json_string = clean_json_string(json_match.group(0))
+        print("Cleaned JSON string:", cleaned_json_string)  # Debugging statement
+
+        improvements = json.loads(cleaned_json_string)
+        response_without_json = response.replace(json_match.group(0), '')
+        return {'improvements': improvements, 'response_without_json': response_without_json}
+    except (ValueError, json.JSONDecodeError) as e:
+        print("Error extracting JSON from response:", e)
+        print(f"Failed to decode JSON string: {response}")  # Print the entire response for debugging
+        return {'improvements': [], 'response_without_json': response}
+
+def create_improvements_html_with_css(improvements, original_text):
+    """
+    Displays the improvements in the original essay text with hover effects.
+    Highlights the revised text in the essay and provides a tooltip with the details of the improvement.
+    """
+    if not improvements:
+        print("No improvements to display.")
+        return
+
+    css = """
+    <style>
+    .improvement-tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background-color: yellow;
+        margin-bottom: 10px;  /* Adds space between highlighted sections */
+        padding: 5px;  /* Adds padding for better visibility */
+        border: 1px solid black;  /* Adds a border to the highlighted section */
+        border-radius: 4px;  /* Adds rounded corners */
+    }
+    .improvement-tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        background-color: white;
+        color: black;
+        text-align: left;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        margin-left: -150px;
+    }
+    .improvement-tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+    </style>
+    """
+
+    html_content = original_text
+
+    for improvement in improvements:
+        original = improvement.get('original_text', '')
+        revised = improvement.get('revised_text', '')
+        improvement_text = improvement['improvement']
+        reason_for_suggestion = improvement['reason_for_suggestion']
+        criterion = improvement['criterion_from_rubric']
+
+        tooltip_html = f"""
+        <div class="improvement-tooltip">
+            {revised}
+            <span class="tooltiptext">
+                <strong>Criterion:</strong> {criterion}<br>
+                <strong>Improvement:</strong> {improvement_text}<br>
+                <strong>Reason:</strong> {reason_for_suggestion}
+            </span>
+        </div>
+        """
+
+        if original:
+            html_content = html_content.replace(original, tooltip_html)
+        else:
+            html_content = html_content + tooltip_html
+
+    return css + html_content
+    #display(HTML(css + html_content))

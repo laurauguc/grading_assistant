@@ -1,17 +1,11 @@
-#from django.shortcuts import render
 
-#from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from backend.models import GradingRubric
-#from django.core import serializers
-
-#import pathlib ## needed?
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 from pathlib import Path
-#import os
 from django.conf import settings
 from . import utils
 import tempfile
@@ -60,7 +54,25 @@ def grade_with_gemini(request):
         with open(rubric_path, 'r') as file:
             rubric_content = file.read()
 
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-1.5-pro')
+
+    # check if advanced options provided. otherwise use default.
+    if 'additional_info' in request.query_params.keys():
+        additional_info = request.query_params['additional_info']
+    else:
+        additional_info = ''
+    if 'mode' in request.query_params.keys():
+        model = request.query_params['mode']
+    else:
+        mode = 'fast'
+
+    # LLM orchestration
+    if mode == "fast":
+        None # replace this
+        # use single-LLM function (a stremlined version of current function -- just the grading step )
+    else:
+        None # replace this
+        # use multi LLMs (agentic workflows that reflect the steps in current function)
 
     prompt = """
 
@@ -95,9 +107,28 @@ def grade_with_gemini(request):
 
     response = model.generate_content(prompt)
 
-
     return Response({'message': response.text })
     #return Response({'message': "Graded essay."})
+
+
+@api_view(['GET'])
+def suggestions_with_gemini(request):
+    if 'student_assignment' in request.query_params.keys():
+        student_assignment = request.query_params['student_assignment']
+    else:
+        return Response({'error': 'Missing student_assignment in query parameters'}, status=400)
+
+    if 'graded_feedback' in request.query_params.keys():
+        graded_feedback = request.query_params['graded_feedback']
+    else:
+        return Response({'error': 'Missing student_assignment in query parameters'}, status=400)
+
+    model = genai.GenerativeModel('gemini-1.5-pro')
+
+    suggestions_and_rewrite = utils.generate_suggestions_and_rewrite_essay(model, graded_feedback, student_assignment)
+    extracted_data = utils.extract_json_improvements(suggestions_and_rewrite)
+    html_with_css = utils.create_improvements_html_with_css(extracted_data['improvements'], student_assignment)
+    return Response({'message': html_with_css })
 
 @api_view(['GET'])
 def obtain_rubric_names(request):

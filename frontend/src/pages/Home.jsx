@@ -57,6 +57,7 @@ const Home = ({
   };
 
   return (
+    <>
     <div className="container">
       <div className="main_container">
         <div className="assignment_section">
@@ -109,6 +110,7 @@ const Home = ({
         </div>
       </div>
     </div>
+    </>
   );
 };
 
