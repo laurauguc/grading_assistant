@@ -52,25 +52,25 @@ function ViewGradingRubricDetails(props) {
           <div className="rubric_details">
             {message.name && (
               <p>
-                <strong>Language: </strong>
+                <strong>Name: </strong>
                 {message.name}
               </p>
             )}
             {message.description && (
               <p>
-                <strong>Language: </strong>
+                <strong>Description: </strong>
                 {message.description}
               </p>
             )}
             {message.class_name && (
               <p>
-                <strong>Language: </strong>
+                <strong>Class Name: </strong>
                 {message.class_name}
               </p>
             )}
             {message.level && (
               <p>
-                <strong>Language: </strong>
+                <strong>Level: </strong>
                 {message.level}
               </p>
             )}
