@@ -4,7 +4,6 @@ import json
 import pathlib
 import textwrap
 import google.generativeai as genai
-from IPython.display import display, Markdown, HTML
 from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 import re
