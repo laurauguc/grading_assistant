@@ -19,7 +19,7 @@ body {
   background-position-y: 100%;
 }
 :root {
-  --transparent-bg-color: rgba(255, 255, 255, 0.37);
+  --transparent-bg-color: rgba(255, 255, 255, 0.66);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
