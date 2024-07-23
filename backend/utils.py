@@ -2,12 +2,12 @@ import docx
 import os
 import json
 import pathlib
-import textwrap
+#import textwrap
 import google.generativeai as genai
 from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 import re
-import tiktoken
+#import tiktoken
 
 class DocxToMarkdownConverter:
     """
