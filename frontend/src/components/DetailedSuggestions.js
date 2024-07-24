@@ -54,7 +54,7 @@ function DetailedSuggestions({ student_assignment, graded_feedback }) {
         //   </Button>
         // </ConfigProvider>
         <button onClick={generate} className={'get_details_button'}>
-          Get Detailed Suggestions
+          Get Detailed Feedback
         </button>
       )}
       {suggestions_loading && (

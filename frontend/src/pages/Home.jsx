@@ -45,7 +45,7 @@ const Home = ({
     generate(assignment, selected_rubric_id, additionalInput);
   };
 
-  const generate = (student_assignment, rubric_id) => {
+  const generate = (student_assignment, rubric_id, additionalInput) => {
     setGradingLoading(true);
     axios
       .get(BASE_URL.concat('api/grade-with-gemini/'), {
@@ -53,6 +53,7 @@ const Home = ({
           student_assignment,
           rubric_id,
           rubricMarkdown,
+          additionalInput,
         },
       })
       .then(response => {
@@ -130,7 +131,7 @@ const Home = ({
                     },
                   }}
                 >
-                  <Spin tip="Loading" size="large">
+                  <Spin tip="Analyzing" size="large">
                     <div
                       style={{
                         padding: 50,
