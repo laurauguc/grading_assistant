@@ -184,7 +184,7 @@ def create_improvements_html_with_css(improvements, original_text):
     Highlights the revised text in the essay and provides a tooltip with the details of the improvement.
     """
     if not improvements:
-        return "No improvements identified. Please check your inputs and try again."
+        return "Unable to generate the Detailed Feedback. Please check your inputs and try again"
 
     css = """
     <style>
