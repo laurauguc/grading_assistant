@@ -66,7 +66,12 @@ function App() {
       label: 'Detailed View',
       defaultColor: '#C8E6C9', // Example color (light green)
       activeColor: '#4CAF50', // Example color (green)
-      component: <Details />,
+      component: (
+        <Details
+          student_assignment={student_assignment}
+          graded_feedback={graded_feedback}
+        />
+      ),
     },
     {
       label: 'Advanced Options',
@@ -131,7 +136,7 @@ function App() {
         {/* <img src={footer} className="backpack" alt="logo" /> */}
         The Grading Assistant may display inaccurate info so double-check its
         responses. It is powered by the{' '}
-        <a href="https://ai.google.dev/gemini-api/terms">Gemini API</a>
+        <a href="https://ai.google.dev/gemini-api/terms"> Gemini API</a>
       </footer>
     </React.Fragment>
   );

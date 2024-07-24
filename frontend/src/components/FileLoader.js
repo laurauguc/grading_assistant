@@ -72,8 +72,8 @@ const FileLoader = ({
 
   return (
     <div className="load">
-      <label>Or load your own. </label>
-      <label> Formats accepted: docx</label>
+      <p>Or load your own. </p>
+      <p> Formats accepted: docx</p>
 
       <input
         type="file"
