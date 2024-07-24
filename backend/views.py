@@ -60,19 +60,7 @@ def grade_with_gemini(request):
     if 'additional_info' in request.query_params.keys():
         additional_info = request.query_params['additional_info']
     else:
-        additional_info = ''
-    if 'mode' in request.query_params.keys():
-        model = request.query_params['mode']
-    else:
-        mode = 'fast'
-
-    # LLM orchestration
-    if mode == "fast":
-        None # replace this
-        # use single-LLM function (a stremlined version of current function -- just the grading step )
-    else:
-        None # replace this
-        # use multi LLMs (agentic workflows that reflect the steps in current function)
+        additional_info = 'the feedback should be constructive, professional, and supportive.'
 
     prompt = """
 
@@ -98,18 +86,18 @@ def grade_with_gemini(request):
 
     Provide only the final grade with justification and feedback. Don't output intermediary steps.
 
+    Consider the following request from the teacher: {}.
+
     Format the output as markdown.
 
     Grading Rubric: {}
 
     Student Response: {}
-    """.format(rubric_content, student_assignment)
+    """.format(additional_info, rubric_content, student_assignment)
 
     response = model.generate_content(prompt)
 
     return Response({'message': response.text })
-    #return Response({'message': "Graded essay."})
-
 
 @api_view(['GET'])
 def suggestions_with_gemini(request):
