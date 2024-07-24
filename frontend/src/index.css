@@ -56,7 +56,7 @@ header h2 {
   font-size: 20px;
 }
 h2 {
-  font-size: 20px;
+  font-size: 19px;
 }
 
 /* tabs interface */
@@ -159,7 +159,7 @@ textarea {
   border: 1px solid #ccc;
   outline: none;
   border-radius: 10px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   /* flex: 1; */
   box-sizing: border-box;
   resize: none;
@@ -180,7 +180,7 @@ textarea {
 }
 .step2 {
   margin-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .assignment_section p {
@@ -196,7 +196,7 @@ textarea {
 
 .graded_feedback {
   width: 100%;
-  height: 400px;
+  height: 430px;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
@@ -246,6 +246,7 @@ textarea {
   align-items: center;
   flex-direction: column;
   padding-right: 20px;
+  margin-top: 10px;
 }
 select {
   padding: 10px 20px;
@@ -336,8 +337,7 @@ footer {
   background-color: var(--transparent-bg-color);
 }
 
-.view_rubric h1,
-h2 {
+.view_rubric h1 h2 {
   font-size: 20px;
 }
 

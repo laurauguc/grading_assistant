@@ -29,16 +29,20 @@ const Home = ({
   rubricMarkdownFileName,
   setRubricMarkdownFileName,
   resetLabel,
+  additionalInput,
+  setAdditionalInput,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
   const student_assignment_submission = useRef();
+  const additional_input = useRef();
 
   const handleSubmit = e => {
     e.preventDefault();
     const assignment = student_assignment_submission.current.value;
+    setAdditionalInput(additional_input.current.value);
     setStudentAssignment(assignment);
-    generate(assignment, selected_rubric_id);
+    generate(assignment, selected_rubric_id, additionalInput);
   };
 
   const generate = (student_assignment, rubric_id) => {
@@ -96,7 +100,15 @@ const Home = ({
                 cols={66}
                 rows={10}
               />
-              <br />
+              <h2 className="step2">Step 3 (optional):</h2>
+              <p>Personalize the output with additional input</p>
+              <textarea
+                ref={additional_input}
+                cols={66}
+                rows={3}
+                placeholder="Examples: add encouraging remarks; concise but specific."
+              />
+
               <div className="button-container">
                 <p>Click Grade to submit the grading rubric and assignment</p>
                 <button type="submit" className="grade-button">
