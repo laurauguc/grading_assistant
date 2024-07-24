@@ -16,6 +16,7 @@ function App() {
   const [rubrics, setRubrics] = useState(null);
   const [rubricMarkdown, setRubricMarkdown] = useState('');
   const [rubricMarkdownFileName, setRubricMarkdownFileName] = useState('');
+  const [additionalInput, setAdditionalInput] = useState(null);
 
   const resetLabel = () => {
     setRubricMarkdownFileName('');
@@ -42,6 +43,8 @@ function App() {
           rubricMarkdownFileName={rubricMarkdownFileName}
           setRubricMarkdownFileName={setRubricMarkdownFileName}
           resetLabel={resetLabel}
+          additionalInput={additionalInput}
+          setAdditionalInput={setAdditionalInput}
         />
       ),
     },

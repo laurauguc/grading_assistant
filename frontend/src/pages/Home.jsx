@@ -29,19 +29,23 @@ const Home = ({
   rubricMarkdownFileName,
   setRubricMarkdownFileName,
   resetLabel,
+  additionalInput,
+  setAdditionalInput,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
   const student_assignment_submission = useRef();
+  const additional_input = useRef();
 
   const handleSubmit = e => {
     e.preventDefault();
     const assignment = student_assignment_submission.current.value;
+    setAdditionalInput(additional_input.current.value);
     setStudentAssignment(assignment);
-    generate(assignment, selected_rubric_id);
+    generate(assignment, selected_rubric_id, additionalInput);
   };
 
-  const generate = (student_assignment, rubric_id) => {
+  const generate = (student_assignment, rubric_id, additionalInput) => {
     setGradingLoading(true);
     axios
       .get(BASE_URL.concat('api/grade-with-gemini/'), {
@@ -49,6 +53,7 @@ const Home = ({
           student_assignment,
           rubric_id,
           rubricMarkdown,
+          additionalInput,
         },
       })
       .then(response => {
@@ -96,31 +101,20 @@ const Home = ({
                 cols={66}
                 rows={10}
               />
-              <br />
+              <h2 className="step2">Step 3 (optional):</h2>
+              <p>Personalize the output with additional input</p>
+              <textarea
+                ref={additional_input}
+                cols={66}
+                rows={3}
+                placeholder="Examples: add encouraging remarks; concise but specific."
+              />
+
               <div className="button-container">
                 <p>Click Grade to submit the grading rubric and assignment</p>
-
-                <ConfigProvider
-                  theme={{
-                    token: {
-                      colorPrimary: '#F44336',
-                      borderRadius: 6,
-                    },
-                  }}
-                >
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    size="large"
-                    className="grade-button"
-                  >
-                    Grade
-                  </Button>
-                </ConfigProvider>
-                {/* 
                 <button type="submit" className="grade-button">
                   Grade
-                </button> */}
+                </button>
               </div>
             </form>
           </div>
@@ -137,7 +131,7 @@ const Home = ({
                     },
                   }}
                 >
-                  <Spin tip="Loading" size="large">
+                  <Spin tip="Analyzing" size="large">
                     <div
                       style={{
                         padding: 50,
@@ -153,10 +147,6 @@ const Home = ({
           </div>
         </div>
       </div>
-      {/* <DetailedSuggestions
-        student_assignment={student_assignment}
-        graded_feedback={graded_feedback}
-      /> */}
     </>
   );
 };
