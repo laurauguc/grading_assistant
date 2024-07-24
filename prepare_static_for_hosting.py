@@ -22,7 +22,7 @@ def prepare_project(site_type):
 
     API_urls = {
         'dev_site': 'https://grademate.pythonanywhere.com/',
-        'prod_site': 'https://grade-mate.app/'
+        'prod_site': 'https://www.grade-mate.app/'
     }
 
     # Step 1: select URL for API
