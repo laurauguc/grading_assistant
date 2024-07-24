@@ -77,6 +77,7 @@ def grade_with_gemini(request):
         - Assign scores per criterion and a final score.
         - Provide specific feedback based on the rubric and the assignment.
         - Avoid subjective comments.
+        - Only assign a letter grade if explicitly described in the grading rubric
 
     3. Review the analysis in step 2:
         - Ensure all justification is factually accurate.
