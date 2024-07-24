@@ -12,6 +12,8 @@ if (process.env.NODE_ENV === 'development') {
   BASE_URL = configData['SERVER_URL'];
 }
 
+//const BASE_URL = configData['SERVER_URL'];
+
 const Home = ({
   selected_rubric_id,
   setRubricID,
