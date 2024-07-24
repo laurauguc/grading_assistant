@@ -35,25 +35,27 @@ function DetailedSuggestions({ student_assignment, graded_feedback }) {
   return (
     <div>
       {!suggestions_loading && !detailed_suggestions && (
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#4CAF50',
-              borderRadius: 6,
-            },
-          }}
-        >
-          <Button
-            type="primary"
-            htmlType="submit"
-            size="large"
-            className="grade-button"
-            onClick={generate}
-          >
-            Get Detailed Suggestions
-          </Button>
-        </ConfigProvider>
-        // <button onClick={generate}>Get Detailed Suggestions</button>
+        // <ConfigProvider
+        //   theme={{
+        //     token: {
+        //       colorPrimary: '#4CAF50',
+        //       borderRadius: 6,
+        //     },
+        //   }}
+        // >
+        //   <Button
+        //     type="primary"
+        //     htmlType="submit"
+        //     size="large"
+        //     className="grade-button"
+        //     onClick={generate}
+        //   >
+        //     Get Detailed Suggestions
+        //   </Button>
+        // </ConfigProvider>
+        <button onClick={generate} className={'get_details_button'}>
+          Get Detailed Suggestions
+        </button>
       )}
       {suggestions_loading && (
         <ConfigProvider

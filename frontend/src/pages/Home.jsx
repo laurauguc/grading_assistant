@@ -99,28 +99,9 @@ const Home = ({
               <br />
               <div className="button-container">
                 <p>Click Grade to submit the grading rubric and assignment</p>
-
-                <ConfigProvider
-                  theme={{
-                    token: {
-                      colorPrimary: '#F44336',
-                      borderRadius: 6,
-                    },
-                  }}
-                >
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    size="large"
-                    className="grade-button"
-                  >
-                    Grade
-                  </Button>
-                </ConfigProvider>
-                {/* 
                 <button type="submit" className="grade-button">
                   Grade
-                </button> */}
+                </button>
               </div>
             </form>
           </div>
@@ -153,10 +134,6 @@ const Home = ({
           </div>
         </div>
       </div>
-      {/* <DetailedSuggestions
-        student_assignment={student_assignment}
-        graded_feedback={graded_feedback}
-      /> */}
     </>
   );
 };

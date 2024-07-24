@@ -10,8 +10,9 @@ p {
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(80.99% 100% at 50% 0%, #83d485 0%, #008e39 100%),
-    radial-gradient(50% 123.47% at 50% 50%, #efe7c8 0%, #b9e5b8 100%),
+  background: #eefeef;
+  background: radial-gradient(80.99% 100% at 50% 0%, #fbfffb 0%, #eefcf4 100%);
+  /* radial-gradient(50% 123.47% at 50% 50%, #efe7c8 0%, #b9e5b8 100%),
     linear-gradient(301.28deg, #00ff00 0%, #5948dd 100%),
     linear-gradient(294.84deg, #5ce45a 0%, #d30000 100%),
     linear-gradient(52.29deg, #958ed4 0%, #00ff85 100%),
@@ -23,7 +24,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
 #root {
   background: url(./images/footer_text.png);
@@ -212,7 +213,8 @@ textarea {
   margin: 0;
   padding: 15px 0 0 0;
 }
-
+.button {
+}
 .grade-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -220,10 +222,23 @@ textarea {
   border-radius: 10px;
   border: 1px solid #ccc;
   cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
 }
 .grade-button:hover {
   background-color: #ffcdd2;
-  transition: background-color 0.5s ease, color 0.5s ease;
+}
+.get_details_button {
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+}
+.get_details_button:hover {
+  background-color: #c8e6c9;
+  /* color: white; */
 }
 .button-container {
   display: flex;
@@ -320,6 +335,15 @@ footer {
   padding: 0 15px;
   background-color: var(--transparent-bg-color);
 }
+
+.view_rubric h1,
+h2 {
+  font-size: 20px;
+}
+
+.view_rubric td {
+  padding: 5px;
+}
 .confirm-change {
   width: 35%;
   min-width: 28ch;
@@ -347,6 +371,32 @@ footer {
   flex-wrap: wrap;
   gap: 5px;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  /* background-color: white; */
+}
+
+table thead th {
+  color: #000000;
+  background: #bbdefb;
+}
+
+table td,
+table th {
+  text-align: center;
+  padding: 10px;
+}
+
+table td {
+  border: 1px solid #f1f1f1;
+}
+
+table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
 @media (min-width: 909px) {
   .assignment_section {
     /* border-right: 1px solid #ccc; */
