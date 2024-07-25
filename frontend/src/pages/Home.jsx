@@ -119,7 +119,7 @@ const Home = ({
             </form>
           </div>
           <div className="grading_section">
-            <h2>Result: Graded Feedback</h2>
+            <h2>Grade with Feedback</h2>
             <p>The grade and feedback will appear here</p>
             <div className="graded_feedback">
               {grading_loading ? (

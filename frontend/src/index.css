@@ -125,7 +125,8 @@ h2 {
 
 .tab-button.active {
   /* border-bottom: 2px solid #007bff; */
-  font-weight: bold;
+  /* font-weight: bold; */
+  color: white;
 }
 
 .tab-content {
@@ -357,7 +358,7 @@ footer {
 .coming {
   text-align: center;
   /* font-style: italic; */
-  height: 497px;
+  min-height: 500px;
   display: flex;
   justify-content: center;
   /* align-items: center; */
