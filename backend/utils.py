@@ -119,7 +119,7 @@ def format_suggestions_and_rewrite_prompt(grading_feedback, student_assignment):
 
     Take each improvement provided and identify,
     a. the smallest chunk of the original text where it was applied
-    b. the criterion from the rubric
+    b. the criterion from the rubric. If the criterion is not available, use the category or create one.
     c. the reason for the suggested improvement
 
     Provide steps a, b, and c in the following JSON format:
@@ -184,8 +184,7 @@ def create_improvements_html_with_css(improvements, original_text):
     Highlights the revised text in the essay and provides a tooltip with the details of the improvement.
     """
     if not improvements:
-        print("No improvements to display.")
-        return
+        return "Unable to generate the Detailed Feedback. Please check your inputs and try again"
 
     css = """
     <style>
@@ -234,7 +233,7 @@ def create_improvements_html_with_css(improvements, original_text):
         <div class="improvement-tooltip">
             {revised}
             <span class="tooltiptext">
-                <strong>Criterion:</strong> {criterion}<br>
+                <strong>Category:</strong> {criterion}<br>
                 <strong>Improvement:</strong> {improvement_text}<br>
                 <strong>Reason:</strong> {reason_for_suggestion}
             </span>
