@@ -152,7 +152,9 @@ function App() {
           ))}
         </div>
 
-        <div className="tab-content">{tabs[activeTab].component}</div>
+        <div className={'tab-content ' + 'border'}>
+          {tabs[activeTab].component}
+        </div>
       </div>
       <footer>
         {/* <img src={footer} className="backpack" alt="logo" /> */}

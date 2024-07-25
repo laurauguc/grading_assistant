@@ -8,7 +8,7 @@ const Details = ({
   detailed_suggestions,
 }) => {
   return (
-    <div className={'coming ' + 'main_container'}>
+    <div className={'detailed_container ' + 'main_container'}>
       <DetailedSuggestions
         student_assignment={student_assignment}
         graded_feedback={graded_feedback}

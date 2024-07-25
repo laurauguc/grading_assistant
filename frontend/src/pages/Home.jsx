@@ -114,7 +114,7 @@ const Home = ({
 
               <div className="button-container">
                 <p>Click Grade to submit the grading rubric and assignment</p>
-                <button type="submit" className="grade-button">
+                <button type="submit" className={'grade-button ' + 'border'}>
                   Grade
                 </button>
               </div>
@@ -123,7 +123,7 @@ const Home = ({
           <div className="grading_section">
             <h2>Grade with Feedback</h2>
             <p>The grade and feedback will appear here</p>
-            <div className="graded_feedback">
+            <div className={'graded_feedback ' + 'border'}>
               {grading_loading ? (
                 // <div className="spinner"></div>
                 <ConfigProvider
@@ -149,7 +149,7 @@ const Home = ({
             <div className="button-container">
               <button
                 type="submit"
-                className="grade-button"
+                className={'grade-button ' + 'border'}
                 onClick={() => {
                   setStudentAssignment('');
                   setGrading('');

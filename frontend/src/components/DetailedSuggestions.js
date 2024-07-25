@@ -55,7 +55,7 @@ function DetailedSuggestions({
         with explanations and the relevant rubric category.
       </p>
       {!suggestions_loading && !detailed_suggestions && (
-        <button onClick={generate} className={'get_details_button'}>
+        <button onClick={generate} className={'get_details_button ' + 'border'}>
           Get Detailed Feedback
         </button>
       )}
@@ -89,29 +89,14 @@ function DetailedSuggestions({
       )}
       {detailed_suggestions && (
         <div className="flex-column">
-          {/* <p>Hover over the result to see the details:</p> */}
           <div
             dangerouslySetInnerHTML={{ __html: detailed_suggestions }}
-            className="graded_feedback"
+            className={'detailed_feedback ' + 'border'}
           />
         </div>
       )}
     </div>
   );
-  //   if (suggestions_loading)
-  //     return (
-  //       <>
-  //         <button onClick={generate}>Get Detailed Suggestions</button>
-  //         <p>Loading...</p>
-  //       </>
-  //     );
-
-  //   return (
-  //     <>
-  //       <button onClick={generate}>Get Detailed Suggestions</button>
-  //       <div dangerouslySetInnerHTML={{ __html: detailed_suggestions }} />
-  //     </>
-  //   );
 }
 
 export default DetailedSuggestions;
