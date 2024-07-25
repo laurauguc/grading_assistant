@@ -106,7 +106,7 @@ function ViewGradingRubricDetails(props) {
       </div>
       <h2>Content:</h2>
 
-      <div className="view_rubric">
+      <div className={'view_rubric ' + 'border'}>
         <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>
       </div>
     </div>
