@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import ObtainRubricNames from '../components/ObtainRubricNames';
 import configData from '../config.json';
-import FileLoader from '../components/FileLoader';
 
 function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');

@@ -35,6 +35,12 @@ body {
 }
 :root {
   --transparent-bg-color: rgba(255, 255, 255, 0.716);
+  --red-light: #ffcdd2;
+  --red: #f44336;
+  --green-light: #c8e6c9;
+  --green: #4caf50;
+  --blue-light: #bbdefb;
+  --blue: #2196f3;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -96,15 +102,16 @@ h2 {
   margin: 0 0px 0 0;
 }
 .error {
-  color: #f44336;
+  color: var(--red);
 }
 .upload-icon {
   font-size: 44px;
   color: #2c2c2c;
   cursor: pointer;
+  transition: color 0.4s ease-in-out;
 }
 .upload-icon:hover {
-  color: #000000;
+  color: var(--red);
 }
 .tab-button {
   padding: 12px 10px;
@@ -205,6 +212,7 @@ textarea {
   white-space: pre-wrap;
   border-radius: 10px;
   background-color: var(--transparent-bg-color);
+  margin-bottom: 46px;
   /* flex: 1; */
   /* min-width: 0; */
 }
@@ -226,7 +234,7 @@ textarea {
   transition: background-color 0.4s ease-in-out;
 }
 .grade-button:hover {
-  background-color: #ffcdd2;
+  background-color: var(--red-light);
 }
 .get_details_button {
   padding: 10px 20px;
@@ -238,8 +246,7 @@ textarea {
   transition: background-color 0.4s ease-in-out;
 }
 .get_details_button:hover {
-  background-color: #c8e6c9;
-  /* color: white; */
+  background-color: var(--green-light);
 }
 .button-container {
   display: flex;
@@ -381,7 +388,7 @@ table {
 
 table thead th {
   color: #000000;
-  background: #bbdefb;
+  background: var(--blue-light);
 }
 
 table td,

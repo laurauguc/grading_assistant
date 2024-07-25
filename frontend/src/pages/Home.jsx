@@ -4,8 +4,7 @@ import FileLoader from '../components/FileLoader';
 import axios from 'axios';
 import Markdown from 'react-markdown';
 import configData from '../config.json';
-import { Button, ConfigProvider, Space, Alert, Flex, Spin } from 'antd';
-import DetailedSuggestions from '../components/DetailedSuggestions';
+import { ConfigProvider, Spin } from 'antd';
 
 var BASE_URL;
 if (process.env.NODE_ENV === 'development') {
@@ -31,6 +30,7 @@ const Home = ({
   resetLabel,
   additionalInput,
   setAdditionalInput,
+  setDetailedSuggestions,
 }) => {
   // to collect the student assignment
   const [grading_loading, setGradingLoading] = useState(false);
@@ -100,6 +100,7 @@ const Home = ({
                 ref={student_assignment_submission}
                 cols={66}
                 rows={10}
+                value={student_assignment}
               />
               <h2 className="step2">Step 3 (optional):</h2>
               <p>Personalize the output with additional input</p>
@@ -108,6 +109,7 @@ const Home = ({
                 cols={66}
                 rows={3}
                 placeholder="Examples: add encouraging remarks; concise but specific."
+                // defaultValue={additional_input}
               />
 
               <div className="button-container">
@@ -143,6 +145,20 @@ const Home = ({
               ) : (
                 <Markdown>{graded_feedback}</Markdown>
               )}
+            </div>
+            <div className="button-container">
+              <button
+                type="submit"
+                className="grade-button"
+                onClick={() => {
+                  setStudentAssignment('');
+                  setGrading('');
+                  setAdditionalInput('');
+                  setDetailedSuggestions('');
+                }}
+              >
+                Clear to Restart
+              </button>
             </div>
           </div>
         </div>

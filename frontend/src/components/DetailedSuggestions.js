@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Markdown from 'react-markdown';
 import configData from '../config.json';
-import { Button, ConfigProvider, Space, Alert, Flex, Spin } from 'antd';
+import { ConfigProvider, Spin } from 'antd';
 
-function DetailedSuggestions({ student_assignment, graded_feedback }) {
+function DetailedSuggestions({
+  student_assignment,
+  graded_feedback,
+  setDetailedSuggestions,
+  detailed_suggestions,
+}) {
   // States to manage Gemini suggestions & loading message
   const [suggestions_loading, setSuggestionsLoading] = useState(false);
-  const [detailed_suggestions, setDetailedSuggestions] = useState('');
   const [missingAssignment, setMissingAssignment] = useState(false);
 
   const BASE_URL =
