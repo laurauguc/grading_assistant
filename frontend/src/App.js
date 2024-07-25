@@ -66,7 +66,7 @@ function App() {
       ),
     },
     {
-      label: 'Detailed View',
+      label: 'Detailed Feedback',
       defaultColor: '#C8E6C9', // Example color (light green)
       activeColor: '#4CAF50', // Example color (green)
       component: (
