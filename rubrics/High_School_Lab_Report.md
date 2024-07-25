@@ -1,6 +1,6 @@
-# High School Science Course Lab Report Rubric
+## High School Science Course Lab Report Rubric
 
-| Criterion                                                         | 1                                        | 2                                       | 3                                    | 4                                         | 5                                                                     |
+| Category                                                          | Poor                                     | Fair                                    | Satisfactory                         | Good                                      | Excellent                                                             |
 |-------------------------------------------------------------------|------------------------------------------|-----------------------------------------|--------------------------------------|-------------------------------------------|-----------------------------------------------------------------------|
 | **1. Developing and Using Models (20%)**                          | No model developed or used.              | Minimal model developed; lacks clarity. | Basic model developed; some clarity. | Clear model developed; some synthesis.    | Highly detailed and synthesized model with clear relationships.       |
 | **2. Planning and Carrying Out Investigations (25%)**             | No investigation planned or carried out. | Minimal planning and execution.         | Basic planning; limited execution.   | Adequate planning and execution.          | Highly thorough and well-executed planning and investigation.         |
