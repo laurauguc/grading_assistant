@@ -1,5 +1,4 @@
 import logo from './images/logo.png';
-import footer from './images/footer_text.png';
 import React from 'react';
 import Home from '../src/pages/Home.jsx';
 import Rubric from '../src/pages/Rubric.jsx';
@@ -17,17 +16,34 @@ function App() {
   const [rubricMarkdown, setRubricMarkdown] = useState('');
   const [rubricMarkdownFileName, setRubricMarkdownFileName] = useState('');
   const [additionalInput, setAdditionalInput] = useState(null);
+  const [detailed_suggestions, setDetailedSuggestions] = useState('');
 
   const resetLabel = () => {
     setRubricMarkdownFileName('');
     setRubricMarkdown('');
   };
+  // const colors = {
+  //   'red-light': '#ffcdd2',
+  //   red: '#f44336',
+  //   'green-light': '#c8e6c9',
+  //   green: '#4caf50',
+  //   'blue-light': '#bbdefb',
+  //   blue: '#2196f3;',
+  // };
+  const colors = {
+    'red-light': '#ffa69e',
+    red: '#ff6457',
+    'green-light': '#b8f2e6',
+    green: '#25cdaa',
+    'blue-light': '#aed9e0',
+    blue: '#46a7b7;',
+  };
 
   const tabs = [
     {
       label: 'Home',
-      defaultColor: '#FFCDD2', // Example color (light red)
-      activeColor: '#F44336', // Example color (red)
+      defaultColor: colors['red-light'], // Example color (light red)
+      activeColor: colors.red, // Example color (red)
       component: (
         <Home
           selected_rubric_id={selected_rubric_id}
@@ -45,6 +61,7 @@ function App() {
           resetLabel={resetLabel}
           additionalInput={additionalInput}
           setAdditionalInput={setAdditionalInput}
+          setDetailedSuggestions={setDetailedSuggestions}
         />
       ),
     },
@@ -73,6 +90,8 @@ function App() {
         <Details
           student_assignment={student_assignment}
           graded_feedback={graded_feedback}
+          detailed_suggestions={detailed_suggestions}
+          setDetailedSuggestions={setDetailedSuggestions}
         />
       ),
     },
