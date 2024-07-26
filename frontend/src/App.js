@@ -3,7 +3,7 @@ import React from 'react';
 import Home from '../src/pages/Home.jsx';
 import Rubric from '../src/pages/Rubric.jsx';
 import Details from '../src/pages/Details.jsx';
-import Advanced from '../src/pages/Advanced.jsx';
+import Tips from '../src/pages/Tips.jsx';
 import configData from './config.json';
 import { useState, useEffect } from 'react';
 
@@ -96,10 +96,10 @@ function App() {
       ),
     },
     {
-      label: 'Advanced Options',
+      label: 'Usage Tips',
       defaultColor: '#FFECB3', // Example color (light orange)
       activeColor: '#FFC107', // Example color (orange)
-      component: <Advanced />,
+      component: <Tips />,
     },
   ];
 
@@ -152,14 +152,12 @@ function App() {
           ))}
         </div>
 
-        <div className={'tab-content ' + 'border'}>
-          {tabs[activeTab].component}
-        </div>
+        <div className="tab-content">{tabs[activeTab].component}</div>
       </div>
       <footer>
         {/* <img src={footer} className="backpack" alt="logo" /> */}
         The Grading Assistant may display inaccurate info so double-check its
-        responses. It is powered by the{' '}
+        responses. It is powered by the <span id="value">&nbsp;</span>
         <a href="https://ai.google.dev/gemini-api/terms"> Gemini API</a>
       </footer>
     </React.Fragment>

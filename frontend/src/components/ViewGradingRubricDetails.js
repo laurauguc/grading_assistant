@@ -45,42 +45,41 @@ function ViewGradingRubricDetails(props) {
   return (
     <div className="main_container_2">
       <div className="select_rubric">
-        <div className="rubric_details_container">
+        <div className="rubric_details">
           <h2>Selected Grading Rubric Info</h2>
-          <div className="rubric_details">
-            {message.name && (
-              <p>
-                <strong>Name: </strong>
-                {message.name}
-              </p>
-            )}
-            {message.description && (
-              <p>
-                <strong>Description: </strong>
-                {message.description}
-              </p>
-            )}
-            {message.class_name && (
-              <p>
-                <strong>Class Name: </strong>
-                {message.class_name}
-              </p>
-            )}
-            {message.level && (
-              <p>
-                <strong>Level: </strong>
-                {message.level}
-              </p>
-            )}
-            {message.language && (
-              <p>
-                <strong>Language: </strong>
-                {message.language}
-              </p>
-            )}
-          </div>
+          {message.name && (
+            <p>
+              <strong>Name: </strong>
+              {message.name}
+            </p>
+          )}
+          {message.description && (
+            <p>
+              <strong>Description: </strong>
+              {message.description}
+            </p>
+          )}
+          {message.class_name && (
+            <p>
+              <strong>Class Name: </strong>
+              {message.class_name}
+            </p>
+          )}
+          {message.level && (
+            <p>
+              <strong>Level: </strong>
+              {message.level}
+            </p>
+          )}
+          {message.language && (
+            <p>
+              <strong>Language: </strong>
+              {message.language}
+            </p>
+          )}
         </div>
-        {/* <div className="confirm-change">
+      </div>
+      {/* <div className="confirm-change">
           <h2>Step 2: Confirm or Change Grading Rubric </h2>
           <p>Select a curated grading rubric:</p>
           <ObtainRubricNames
@@ -103,8 +102,6 @@ function ViewGradingRubricDetails(props) {
             Confirm
           </button>
         </div> */}
-      </div>
-      <h2>Content:</h2>
 
       <div className={'view_rubric ' + 'border'}>
         <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>
