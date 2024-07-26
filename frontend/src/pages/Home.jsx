@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ObtainRubricNames from '../components/ObtainRubricNames';
 import FileLoader from '../components/FileLoader';
 import axios from 'axios';
@@ -44,7 +44,12 @@ const Home = ({
     setStudentAssignment(assignment);
     generate(assignment, selected_rubric_id, additionalInput);
   };
-
+  const handleStudentAssignmentChange = e => {
+    setStudentAssignment(e.target.value);
+  };
+  const handleAdditionalInputChange = e => {
+    setAdditionalInput(e.target.value);
+  };
   const generate = (student_assignment, rubric_id, additionalInput) => {
     setGradingLoading(true);
     axios
@@ -101,6 +106,7 @@ const Home = ({
                 cols={66}
                 rows={10}
                 value={student_assignment}
+                onChange={handleStudentAssignmentChange}
               />
               <h2 className="step2">Step 3 (optional):</h2>
               <p>Personalize the output with additional input</p>
@@ -109,7 +115,8 @@ const Home = ({
                 cols={66}
                 rows={3}
                 placeholder="Examples: add encouraging remarks; concise but specific."
-                // defaultValue={additional_input}
+                value={additionalInput}
+                onChange={handleAdditionalInputChange}
               />
 
               <div className="button-container">
