@@ -14,7 +14,7 @@ const Tips = () => {
           <ConfigProvider
             theme={{
               token: {
-                colorPrimary: '#FFC107',
+                colorPrimary: '6f5403',
                 borderRadius: 6,
               },
             }}
@@ -46,18 +46,48 @@ const Tips = () => {
                   <strong>Understand the App’s Limitations:</strong>
                   <ul>
                     <li>
-                      <strong>Be Aware of Hallucinations: </strong> GradeMate is
-                      powered by Google’s Gemini, an Artificial Intelligence
-                      model. As is common with these types of models, it may
-                      sometimes generate incorrect or irrelevant information
-                      that look feasible (“hallucinations”). Always review the
-                      grades and feedback provided by the app to ensure accuracy
-                      and relevance.
+                      <strong>Be Aware of “Hallucinations”: </strong> GradeMate
+                      is powered by Google’s Gemini, a type of Artificial
+                      Intelligence model called a Large Language Model (LLM). As
+                      is common with LLMs, it may sometimes generate incorrect
+                      or irrelevant information that looks feasible (called
+                      “hallucinations” in AI jargon). Always review the grades
+                      and feedback provided by the app to ensure accuracy and
+                      relevance.
+                    </li>
+                    <li>
+                      <strong>College Graduate Analogy: </strong> Think of
+                      GradeMate as a “fresh college grad.” As a recent college
+                      graduate, GradeMate has general background knowledge but
+                      does not have specialized training in your subject. It
+                      also has no memory of previous assignments (think of a
+                      different college grad grading each assignment).
+                      Therefore, expect some variations in grading and
+                      limitations in uncovering specialized ideas and concepts
+                      (such as a poem with intricate hidden meanings and
+                      intentional but subtle misuse of conventions; though
+                      sometimes it can interpret these). In other words,
+                      GradeMate can effectively apply the poetry grading rubric
+                      to a high school poem but is more limited in discovering
+                      the brilliance in T.S. Eliot’s poems.{' '}
+                      <i>
+                        (Note: The “fresh college grad” mental model was
+                        borrowed from{' '}
+                        <a
+                          href="https://www.coursera.org/learn/generative-ai-for-everyone/lecture/VYXx5/what-llms-can-and-cannot-do"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Andrew Ng’s discussion on the capabilities and
+                          limitations of LLMs
+                        </a>
+                        ).
+                      </i>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <strong>Personalize the Feedback: </strong>
+                  <strong>Personalize the Feedback:</strong>
                   <ul>
                     <li>
                       <strong>Tailor Output to the Student: </strong> Use your
@@ -66,8 +96,9 @@ const Tips = () => {
                     </li>
                     <li>
                       <strong>Customize GradeMate: </strong> Utilize the
-                      'Additional Instructions' settings to fine-tune the
-                      grading process according to your specific requirements.
+                      'Additional Instructions’ settings (step 3 in Home tab) to
+                      calibrate the grading process according to your specific
+                      requirements.
                     </li>
                   </ul>
                 </li>
@@ -75,17 +106,9 @@ const Tips = () => {
                   <strong>Use Precise Grading Rubrics:</strong>
                   <ul>
                     <li>
-                      <strong>Ensure Grading Consistency: </strong> When using
+                      <strong>Ensure Grading Consistency </strong> When using
                       custom rubrics, upload rubrics with clear criteria and
                       grading scales to maintain consistency.
-                    </li>
-                    <li>
-                      <strong>Heuristic Approach: </strong> Think of GradeMate
-                      as a "fresh college grad." Does it have all the necessary
-                      inputs to grade consistently? (Source: borrowed heuristic
-                      from Andrew Ng’s discussion on the capabilities of
-                      Artificial Intelligence models similar to Gemini, called
-                      Large Language Models)
                     </li>
                   </ul>
                 </li>
@@ -95,6 +118,9 @@ const Tips = () => {
                 time, and allow you to focus on personalized teaching and
                 student interactions.
               </p>
+              <i>
+                <p style={{ textAlign: 'right' }}>The GradeMate Team</p>
+              </i>
             </div>
           )}
           {role === 'student' && (
@@ -112,13 +138,40 @@ const Tips = () => {
                   <strong>Understand the App’s Limitations:</strong>
                   <ul>
                     <li>
-                      <strong>Be Aware of Hallucinations: </strong> GradeMate is
-                      powered by Google’s Gemini, an Artificial Intelligence
-                      model. As is common with these types of models, it may
-                      sometimes generate incorrect or irrelevant information
-                      that look feasible (“hallucinations”). Always review the
-                      grades and feedback provided by the app to ensure accuracy
-                      and relevance.
+                      <strong>Be Aware of “Hallucinations”: </strong> GradeMate
+                      is powered by Google’s Gemini, a type of Artificial
+                      Intelligence model called a Large Language Model (LLM). As
+                      is common with LLMs, it may sometimes generate incorrect
+                      or irrelevant information that looks feasible (called
+                      “hallucinations” in AI jargon). So, take the feedback with
+                      a grain of salt!
+                    </li>
+                    <li>
+                      <strong>College Graduate Analogy: </strong> Think of
+                      GradeMate as a “fresh college grad.” As a recent college
+                      graduate, GradeMate has general background knowledge but
+                      does not have specialized training in your subject. It
+                      also has no memory of previous assignments (think of a
+                      different college grad grading each assignment).
+                      Therefore, expect some variations in grading and
+                      limitations in uncovering advanced ideas and concepts
+                      (such as a poem with intricate hidden meanings and
+                      intentional but subtle misuse of conventions; though
+                      sometimes it can interpret these). So, take the feedback
+                      only as a second pair of eyes, and examine it critically.{' '}
+                      <i>
+                        (Note: The “fresh college grad” mental model was
+                        borrowed from{' '}
+                        <a
+                          href="https://www.coursera.org/learn/generative-ai-for-everyone/lecture/VYXx5/what-llms-can-and-cannot-do"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Andrew Ng’s discussion on the capabilities and
+                          limitations of LLMs
+                        </a>
+                        ).
+                      </i>
                     </li>
                   </ul>
                 </li>
@@ -164,6 +217,9 @@ const Tips = () => {
                 </li>
               </ul>
               <p>We hope this tool improves your study experience!</p>
+              <i>
+                <p style={{ textAlign: 'right' }}>The GradeMate Team</p>
+              </i>
             </div>
           )}
         </div>

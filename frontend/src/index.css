@@ -4,9 +4,12 @@
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
-p {
+
+p,
+label {
   font-size: 15px;
 }
+
 html {
   height: 100%;
 }
@@ -44,6 +47,10 @@ body {
   --green: #4caf50;
   --blue-light: #bbdefb;
   --blue: #2196f3;
+}
+
+a {
+  color: #145b94;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -183,7 +190,8 @@ textarea {
   /* flex: 1; */
   resize: none;
   width: 96%;
-  padding: 5px 8px;
+  padding: 5px 7px;
+  margin-top: 10px;
 }
 
 .assignment_section {
@@ -203,9 +211,10 @@ textarea {
   margin-top: 10px;
 }
 
-.assignment_section p {
-  margin-top: 0px;
+label {
+  display: inline-block;
 }
+
 .grading_section h2 {
   margin-bottom: 10px;
   margin-top: 0px;
@@ -230,6 +239,7 @@ textarea {
   padding: 10px;
   background-color: var(--transparent-bg-color);
   text-align: left;
+  margin-top: 20px;
 }
 
 .center {
@@ -245,6 +255,7 @@ textarea {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.4s ease-in-out;
+  background-color: #efefef;
 }
 .grade-button:hover {
   background-color: var(--red-light);
@@ -256,6 +267,7 @@ textarea {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.4s ease-in-out;
+  background-color: #efefef;
 }
 .get_details_button:hover {
   background-color: var(--green-light);
@@ -367,8 +379,8 @@ li {
 }
 .tips {
   background-color: var(--transparent-bg-color);
-  max-width: 850px;
-  min-height: 560px;
+  max-width: 880px;
+  min-height: 740px;
   padding: 5px 20px;
   text-align: left;
   margin-top: 18px;

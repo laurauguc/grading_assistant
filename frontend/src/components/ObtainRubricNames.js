@@ -36,6 +36,7 @@ function ObtainRubricNames({
             value={selected_rubric_id}
             onChange={handleChange_rubric}
             style={{ width: 220 }}
+            aria-label="Select a grading rubric"
           >
             {rubrics.map((rubric, key) => (
               <Option value={rubric.id} key={rubric.id}>

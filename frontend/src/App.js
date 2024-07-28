@@ -42,8 +42,8 @@ function App() {
   const tabs = [
     {
       label: 'Home',
-      defaultColor: colors['red-light'], // Example color (light red)
-      activeColor: colors.red, // Example color (red)
+      defaultColor: colors['red-light'],
+      activeColor: colors.red,
       component: (
         <Home
           selected_rubric_id={selected_rubric_id}
@@ -115,7 +115,7 @@ function App() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [BASE_URL]);
 
   useEffect(() => {
     setRubricMarkdownFileName('');
@@ -124,15 +124,22 @@ function App() {
   return (
     <React.Fragment>
       <header>
-        <img src={logo} className="App-logo" alt="logo" height={120} />
+        <img
+          src={logo}
+          className="App-logo"
+          alt="GradeMate logo"
+          height={120}
+        />
         <div>
           <h1>GradeMate</h1>
-          <h2>Gemini-powered Grading Assistant for teachers and students</h2>
+          <h2>Gemini-powered grading assistant for teachers and students</h2>
         </div>
       </header>
       <div className="tabs">
         <div
           className="tab-buttons"
+          role="tablist"
+          aria-label="GradeMate navigation tabs"
           style={{
             borderBottom: `2px solid ${tabs[activeTab].activeColor}`,
           }}
@@ -140,6 +147,10 @@ function App() {
           {tabs.map((tab, index) => (
             <button
               key={index}
+              id={`tab-${index}`}
+              role="tab"
+              aria-selected={activeTab === index}
+              aria-controls={`tabpanel-${index}`}
               className={`tab-button ${activeTab === index ? 'active' : ''}`}
               onClick={() => setActiveTab(index)}
               style={{
@@ -152,12 +163,18 @@ function App() {
           ))}
         </div>
 
-        <div className="tab-content">{tabs[activeTab].component}</div>
+        <div
+          className="tab-content"
+          id={`tabpanel-${activeTab}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeTab}`}
+        >
+          {tabs[activeTab].component}
+        </div>
       </div>
       <footer>
-        {/* <img src={footer} className="backpack" alt="logo" /> */}
-        The Grading Assistant may display inaccurate info so double-check its
-        responses. It is powered by the <span id="value">&nbsp;</span>
+        GradeMate may display inaccurate info so double-check its responses. It
+        is powered by the <span id="value">&nbsp;</span>
         <a href="https://ai.google.dev/gemini-api/terms"> Gemini API</a>
       </footer>
     </React.Fragment>
