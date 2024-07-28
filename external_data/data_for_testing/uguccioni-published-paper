@@ -1,0 +1,162 @@
+Twitter sentiment in New York City parks as a measure of well-being
+
+Contents lists available at ScienceDirect
+
+Landscape and Urban Planning
+
+journal homepage: www.elsevier.com/locate/landurbplan
+
+Research Paper
+
+Twitter sentiment in New York City parks as a measure of well-being
+Richard A. Plunz, Yijia Zhou, Maria Isabel Carrasco Vintimilla, Kathleen Mckeown, Tao Yu, Laura Uguccioni, Maria Paola Suttoa
+
+Urban Design Lab, Earth Institute, Columbia University, USA
+
+475 Riverside Drive, Suite 520 E, New York, NY 10115, USA
+
+Data Science Institute, Columbia University, USA
+
+Department of Computer Science, Yale University, USA
+
+A B S T R A C T
+
+While there is an extensive literature regarding the benefits of natural environments within urban settings, there is relatively little statistical research on the correlation of well-being with urban green space. This research uses social media to develop a methodology for understanding the varying levels of feelings in urban green space. Using a geolocated Twitter database, this research correlates quantified sentiment levels inside parks in New York City. It addresses the following: are people more positive when they are in parks as compared to when they are in other places? Specifically, among Twitter users in New York City do people who visit parks have more positive Twitter-sentiment expression compared to their sentiment in other places? Our results show that sentiment expressed in tweets varies between areas inside and outside of parks. We find that in Manhattan in-park tweets express less positive sentiment as compared to tweets outside of parks, but park visitors in the other boroughs of New York City generate more positive in-park tweets as compared to those outside of parks. We discuss the use of tweets as an indicator of the public expressed sentiment and derive suggestions for further research.
+
+1. Introduction
+
+1.1. Urban green space and well-being
+
+For the purposes of this study, urban green space is defined as a component of urban green infrastructure, comprising urban public space, completely or partially covered with grass, trees, or other vegetation, which is accessible and available for leisure, play, or sport as well as for walking and cycling. Urban parks are publicly accessible and conventionally meet “vegetation” criteria. For this study, New York City parks have been considered synonymous with the category of urban green space.
+
+Urban green space has been an important consideration in recent research into next-generation indicators that correlate the well-being of urban residents with Environmental, Health, and Livability (EHL) criteria (Van Kamp, Leidelmeijer, Marsman, & de Hollander, 2003; Taylor & Hochuli, 2016); to be added to a long history of concepts and applications. For city residents, well-being is deeply influenced by various components of urban green infrastructure that can play an essential role (Sandström, 2002; Tzoulas et al., 2007; Benedict & McMahon, 2012). Benedict and McMahon (2002) define green infrastructure as “an interconnected network of green space that conserves natural ecosystem values and functions and provides associated benefits to human populations.” In the age of the Internet, urban green infrastructure still offers unique opportunities for community members to exchange “real, social interactions” in an open and green environment, and Internet use within public spaces has the potential to be used to promote social engagement (Thompson, 2002; Hampton, Livio, & Sessions Goulet, 2010).
+
+While various studies have acknowledged the psychological benefits of urban green infrastructure at the scale of local communities, there are relatively few studies that directly examine the sentiment that individual visitors may experience in urban parks.
+
+As stated in Kaplan and Kaplan’s (1989) foundational work, natural environments have played an indispensable role in human lives since ancient times, and urban green infrastructure today specifically offers residents an opportunity to connect to green space without having to leave the city, and with associated physical and psychological health benefits at a community level.
+
+In modern urban history, the exposure of urban residents to green space has been promoted as beneficial to well-being at least since the massive urbanization around industrial production in the nineteenth century fed by smokestack industry and inordinately high residential propinquity. At the same time modern medicine evolved, such that germ theory would lead to geospatial correlation between disease and environmental contexts. In this context, New York City is of particular interest. By mid-nineteenth century data had emerged that correlated domestic living conditions and water supply with geospatial mapping of diseases such as cholera, yellow fever, tuberculosis, and malaria (Griscom, 1845; Griscom, 1850; Rosenberg & Rosenberg, 1968; Citizen's Association of New York, 1865a, 1865b; Plunz, 2016).
+
+The urban parks movement grew from air quality concerns and from the connection between tuberculosis and its “cure” which involved extra-urban residence in sanatoria. Within cities, increased green space through the construction of public parks was considered a preventative strategy. In New York City by mid-nineteenth century, construction of Central Park was the first large such intervention as a metaphorical “urban lung” (Jones, 2018). Over the next century in New York City, the urban parks movement morphed into de-urbanist strategies around green space concepts; as well as urban “slum” clearance and replacement with parks or ultimately with “tower-in-the-park” urbanism that combined high-rise densities integrated with green open space (Plunz, 2016). However, the scientific correlation of benefits related to this urbanism and well-being was little corroborated and, at least for tuberculosis, an eventual decline had to do with other causes including the widespread use of penicillin (Wilkinson, Sendstad, Parnell, & Schewenius, 2013).
+
+A number of quantitative studies have explored the relationships between the residents' physical well-being and urban green infrastructure, especially parks (Kaplan, 1995; Grahn & Stigsdotter, 2003; Giles-Corti et al., 2005; Benedict & McMahon, 2012). de Vries, Verheij, Groenewegen, and Spreeuwenberg (2003) discover a causal relationship between green space and health mediated by socioeconomic factors in the Netherlands. Similar results are also found in qualitative studies that use focus groups and semi-structured interviews (Henderson et al., 2001; Krenichyn, 2006).
+
+There is an abundance of studies that focus on the benefits of green space for psychological well-being, that includes but is not limited to stress levels, self-esteem, and sense of community. As Kaplan (1995) writes, being in “a nearby, highly accessible natural environment” like urban parks reduces fatigue and redirects people’s attention to nature, which consequently helps to reduce stress level for park visitors (Ulrich, 1984; Grahn & Stigsdotter, 2003; Stigsdotter et al., 2010). Thompson et al. (2012) measure stress levels using biomarkers in salivary cortisol, finding that a higher percentage of green space in an environment is associated with lower stress levels, which is consistent across the biomarkers and self-reported survey results. Similarly, other scholars have argued that performing physical activity in urban green space in particular–as opposed to other urban areas – boosts self-esteem for participants (Gladwell, Brown, Wood, Sandercock, & Barton, 2013; Pretty, Peacock, Sellens, & Griffin, 2005).
+
+Aside from offering individual personal mental health benefits, urban parks as public spaces also provide opportunities for social interaction among members of a community, which in turn improves a sense of belonging for individuals and enhances neighborhood ties inside communities: “one vital role that urban parks play is providing space for the expression of diversity, both personal and cultural” (Thompson, 2002, p. 59). Kuo, Sullivan, Coley, and Brunson (1998) specifically examine the relationship between local green space and neighborhood social ties, finding that individuals living in close proximity to green space perceive a stronger sense of belonging to their communities than those who do not. Peters, Elands, and Buijs (2010) similarly find that by stimulating social cohesion, urban parks help various ethnic groups to develop feelings of comfort and familiarity in their local neighborhoods.
+
+Psychological studies related to local park users can produce conflicted results, and seldom offer a comparison of sentiment when users are in parks as opposed to other non-green urban spaces, a particularly meaningful distinction in discussion of the immediate positive effects that parks have on visitors’ moods (Godbey & Blazey, 1983; Hull & Michael, 1995). For instance, Beheshti (2010) surveyed randomly chosen participants in public parks, with the majority of them feeling more relaxed during their stay in parks. By contrast, Hull and Michael (1995) compared the restorative effects of outdoor and indoor recreational activities, and did not find a difference in mood change experienced by participants. The lack of studies comparing sentiment in urban green spaces versus non-green spaces is not surprising, given that traditionally the majority of research on parks and psychological well-being relies on self-reported survey studies, a method that makes it inherently difficult to follow a large group of park users across time and to compare their feeling of happiness in and outside of parks (Tzoulas et al., 2007).
+
+1.2. Public Urban Parks, Twitter, and sentiment
+
+The rise of social media with location-sharing services since the late 2000s has made large-scale comparison of the expression of sentiment in-park and out-of-park for urban residents not only possible, but also meaningful in our age of social media’s popularity, real-time data streaming and information sharing (Noulas, Scellato, Mascolo, & Pontil, 2011). Starting from 2011, users have begun to share their posts and reviews about local parks on various online platforms such as Facebook, Twitter, and Yelp, expressing their happiness, frustration, or satisfaction related to the parks they visit, and documenting their urban park experiences with tweets, check-ins, pictures, and short reviews (Zhou & Xu, 2017). There are several examples of Twitter data being used to study the sentiment expressed in public spaces (Hollenstein & Purves, 2010; Janssens, Fulgencio, Smoreda, & Barthelemy, 2018).
+
+Publicly available, real-time Twitter data offers a wide variety of potential applications for understanding the use of urban green infrastructure in contemporary cities, especially in New York City where almost every park visitor owns a smartphone, and park-related tweets cover every corner of the five boroughs. These applications allow us to ask meaningful questions regarding the public sentiment towards urban parks, such as “do park users have different levels of sentiment inside versus outside of parks?”, “are some parks better received than others?”, and “are there different responses between parks of different scales in Manhattan and the other boroughs?” In this study, we use Twitter data to develop a methodology for measuring the sentiment of tweets inside and outside of parks. By comparing in-park and out-of-park tweets, our results can help us understand how local green space in New York City influences residents’ sentiment, and by extension their general well-being. Although tweets are limited in representing people's moods (one individual may have both positive and negative tweets at different times in the park), an aggregated sentiment score can offer us useful insights into the overall impact of urban green space on city residents' moods.
+
+Here, we use the term sentiment to indicate the “attitude, thought, or judgment prompted by feeling” of a given individual (Merriam-Webster, 2018). Recent computer science studies employ automated sentiment analysis tools to quantify the overall positive or negative valence of text data, including but not limited to tweets, and derive meaningful results from it (Bollen, Pepe, & Mao, 2009; Dodds et al., 2011). While a wide range of sentiment analysis methodologies have been developed and tested in the last decade, almost all of them attempt to analyze the latent emotions and opinions embedded in tweets and other online data sources by using a lexicon-based approach, a machine learning approach, or a combination of both (Kouloumpis, Wilson, & Moore, 2011; Pang, Lee, & Vaithyanathan, 2002). The first approach uses pre-defined lexicons, such as the “happy” word list, to detect the overall emotional polarity of a document (Bing Liu, 2015); while the second approach trains an automatic classifier to detect emotions by using large-scale text data (Pak & Paroubek, 2010). Specifically for sentiment analysis of tweets, an automatic classifier can be trained by using a large-scale training data set containing both positive and negative tweets, and by constructing a model of the sentiment features (e.g., n-grams and hashtags) that characterize tweets expressing different sentiments. Following this line of research, our study uses the lexicon-based approach by building a sentiment classifier and training it on a corpus of manually annotated tweets, and then applies it to our Twitter data set for measuring the sentiment of tweets inside and outside of parks.
+
+In the next section, we describe the methodology used for collecting Twitter data in New York City, developing the sentiment classifier, and comparing sentiment inside and outside of parks. Section 3 presents the results of our sentiment analysis, with a discussion of the implications of our findings in section 4. We conclude with suggestions for future research directions.
+
+2. Methodology
+
+2.1. Data Collection
+
+For 549 days between June 17th, 2016 and December 17th, 2017, tweets were collected using the filter method of Twitter's streaming API. A python wrapper called Tweepy was used to handle the connection. The only filter provided in the query was location.
+
+This method captures geolocated tweets from within a user-specific bounding box, which in this paper is defined by the latitude range [40:41] and longitude range [−74:−73] corresponding to New York City, with the exception of Staten Island, due to its negligible density of tweets. See Figs. 1 and 2.
+
+Tweets come as JSON objects that contain tweet text and metadata, such as timestamp, user profile description, source, and volunteered geolocations. For geolocations, some tweets are geotagged with actual coordinates based on the GPS location of the device, while others are delivered with a “Place” object which includes a location associated with the tweet but does not necessarily represent where the user is at that time. For the purpose of our study, after filtering, only tweets with exact geo-coordinates are included in the dataset. Though Twitter defines a maximum data rate per minute for APIs, the fact that this study only collects geolocated tweets within a relatively small bounding box renders the rate-limiting errors insignificant for this dataset.
+
+To avoid gaps in collection due to power failures or cyber-attacks, we duplicate our data recording on differing independent platforms. The data is recorded both on local computers on the East Coast and on an Amazon Linux Machine located on the West Coast. As a result, while we lost a day of recording on one machine during the massive cyber-attack on October 21st, 2016 that resulted in numerous popular sites being inaccessible to East Coast users, we were able to obtain the data via the duplicate recording.
+
+2.2. Data Processing
+
+Raw tweets collected from the Twitter API are subsequently processed to focus on English tweet texts generated by Twitter users who tweeted at least once in New York City parks. Language was limited to English because of the reliability of text analysis tools and dictionaries, such as Wordnet, for English texts. This analysis aimed to compare sentiment reflected by tweets inside of parks versus outside of parks by the same group of Twitter users. New York City parks were defined based on the shapefiles given the Open Space (Parks) layer from the Department of Parks and Recreation. To capture the effect of parks, in-park tweets are defined as tweets geolocated either inside or within 50 feet (15.24 m) of the park boundary. The buffer averages for the secondary effect of vegetation and accounts for the margin of error for tweet geo-location.
+
+This research aimed to study how residents use parks as opposed to tourists who only experience the city in a short period of time, following the assumption that tourist visits tend to be less than two weeks. Analysis of the location field under the user attribute showed the use of unstandardized text with many variations in spelling, location type, and content. For our purposes, only users who have at least a 15-day gap between their first and last geolocated tweet were selected. However imperfect, resulting statistics provide evidence that the measure does offer a reasonable proxy for distinguishing residents from tourists.
+
+2.3. Sentiment Analysis
+
+In this paper, we adopt Naive Bayes Logistic Regression with embedding features (NBLR + POSwemb model) developed by Yu, Hidey, Rambow, and McKeown (2017), to classify tweets into three categories of sentiment: positive (p = 1), neutral (p = 0), or negative (p = −1). As an extension of Naive Bayes Support Vector Machine (Wang & Manning, 2012), the NBLR + POSwemb model uses sparse and dense feature combinations. First, it appends positive or negative sentiment indicator tokens at the end of each sentence corresponding to the words used in the tweets. These indicators are determined by the sentiment lexicons of MPQA (Wilson, Wiebe, & Hoffmann, 2005) and Liu (Hu & Liu, 2004). If the sentence includes negators and adversatives, it adds additional indicators to the end as well. After this step, the model tokenizes each sentence into ngrams up to length 3. An ngram is a single word, a pair of words, or a triple of words, where pairs and triples occur consecutively in a twitter post (e.g., “New York City” is an ngram of length 3). For each ngram, the model counts the number of times that the ngrams appear in the possible training sentences. For each label l, it defines two count vectors \(p_l\) and \(q_l\) for ngrams with label l:
+
+\[ p_l = \alpha + \sum_{i: y_i = l} f_i \]
+\[ q_l = \alpha + \sum_{i: y_i = l} f_i \]
+
+where α is a smoothing parameter and \(f_i\) is a count vector for training case i with label \(y_i \in \{−1, 0, 1\}\). We set α = 1. Then the log-count ratio for class l is computed:
+
+\[ r_l = \log \frac{p_l / ||p_l||_1}{q_l / ||q_l||_1} \]
+
+where \(||q_l||_1\) is the L1 norm of vector \(q_l\). Finally, the model generates a sparse feature vector \(r(x)\) by concatenating the log-count ratios of each class:
+
+\[ r(x) = [r_−1, r_0, r_1] \]
+
+where ∘ represents the concatenation operator. To create the dense feature representation, the model first groups words in the sentence x into the set \(W = \{NOUN, VERB, ADJECTIVE\}\) based on their part-of-speech (POS) tags. It then uses word embeddings for these words as additional features. The embeddings are averaged for each POS tag group to create dense representations. These dense features are concatenated with the sparse features to create the final feature representation used for classification.
+
+3. Results
+
+The goal of this analysis was to assess if tweets generated in parks may express a more positive sentiment than tweets generated in other places in New York City, as stated in the RQ. Two hypotheses were tested, and the results suggest that tweets in Manhattan exhibit a lower level of positivity in Twitter sentiment in parks than outside of parks, but park visitors in other boroughs have a more positive sentiment in parks as compared to what they reveal in tweets geolocated in other places (Figs. 4 and 5). Manhattan also generates the majority of geolocated tweets in New York City, which makes its tweet pattern a substantial influence in the results of New York City as a whole. Within Manhattan, however, tweet density varies considerably, with most located in the southern half of the island. See Fig. 2.
+
+3.1. Outcome
+
+Table 2 presents the descriptive statistics for daily tweet counts by boroughs as well as by location in or outside of parks. As the table shows, Manhattan (M = 3687, SD = 724) accounts for 61.49% of geolocated tweets in New York City (M = 5996, SD = 1008) on daily average, which is not unexpected considering the population density of Manhattan as compared to the other boroughs. Similarly, Manhattan (M = 681, SD = 163) generates 68.17% of in-park tweets in the city (M = 999, SD = 309). The other three boroughs combined have a lower daily average tweet count (M = 2309, SD = 500) as well as a lower percentage of in-park tweets (31.83%) relative to all of New York City. They also account for a lower borough percentage of in-park tweets (13.77%) as compared to Manhattan (18.47%). See Fig. 3. Therefore, the variation in t
+
+3.2. Sentiment Discrepancy in Manhattan
+
+A follow-up analysis was conducted to test Hypothesis 2, which suggests that the presence of tourists in Manhattan may contribute to the sentiment discrepancy observed in the overall dataset. For this analysis, tweets from users identified as residents and tourists were separately analyzed. Residents were identified based on the previously mentioned 15-day gap criterion. Tourists were users who tweeted within a shorter time frame.
+
+The sentiment analysis results for residents and tourists in Manhattan are presented in Table 4. For residents, the average sentiment in parks (M = 0.311, SD = 0.028) was slightly less positive than outside of parks (M = 0.314, SD = 0.020); \(t(1000) = −1.994, p < 0.05\). For tourists, the sentiment in parks (M = 0.328, SD = 0.032) was more positive than outside of parks (M = 0.325, SD = 0.025); \(t(1000) = 2.119, p < 0.05\). These results suggest that the presence of tourists in Manhattan parks contributes to the overall negative sentiment observed in the dataset.
+
+4. Discussion
+
+4.1. Implications
+
+The findings from this study provide several important implications for urban planning and public policy. First, the overall negative sentiment expressed in Manhattan parks suggests a need for targeted interventions to improve the park experience for both residents and tourists. Urban planners should consider enhancing park amenities and addressing safety concerns to create a more positive environment. Additionally, the positive sentiment observed in parks in other boroughs indicates that these parks are fulfilling their role as recreational spaces effectively. Public policy should aim to maintain and further enhance these spaces to continue supporting the well-being of residents.
+
+4.2. Limitations
+
+This study has several limitations that should be acknowledged. First, the reliance on geolocated tweets limits the generalizability of the findings to Twitter users who enable location services. Additionally, the use of sentiment analysis tools, while robust, may not capture the full complexity of human emotions expressed in tweets. Future research should consider using more advanced natural language processing techniques to address this limitation. Finally, the study's focus on New York City parks may limit the applicability of the findings to other urban areas with different park characteristics and user demographics.
+
+5. Conclusion
+
+This study provides valuable insights into the sentiment expressed in tweets generated in New York City parks compared to other locations in the city. The findings suggest that while parks in Manhattan exhibit a lower level of positive sentiment, parks in other boroughs contribute to a more positive experience for residents. These insights have important implications for urban planning and public policy aimed at enhancing the quality of urban parks and the well-being of city residents. Future research should build on these findings by exploring the factors that influence park sentiment and examining the impact of specific interventions on park user experiences.
+
+Appendix A. Supplementary Data
+
+Supplementary data associated with this article can be found in the online version at https://doi.org/10.1016/j.landurbplan.2020.103874.
+
+References
+
+- Hu, M., & Liu, B. (2004). Mining and summarizing customer reviews. In Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining (pp. 168-177). ACM.
+- Wilson, T., Wiebe, J., & Hoffmann, P. (2005). Recognizing contextual polarity in phrase-level sentiment analysis. In Proceedings of the conference on human language technology and empirical methods in natural language processing (pp. 347-354). Association for Computational Linguistics.
+- Yu, L. C., Wu, J. L., Chang, P. C., & Chu, H. C. (2013). Using a contextual entropy model to expand emotion words and their intensity for the sentiment classification of stock market news. Knowledge-Based Systems, 41, 89-97.
+- Yu, V., Hidey, C., Rambow, O., & McKeown, K. (2017). Detecting Causality in Event Sentences. In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (pp. 1680-1689). Association for Computational Linguistics.
+- Wang, S., & Manning, C. D. (2012). Baselines and bigrams: Simple, good sentiment and topic classification. In Proceedings of the 50th annual meeting of the association for computational linguistics: short papers-volume 2 (pp. 90-94). Association for Computational Linguistics.
+- Liu, B. (2010). Sentiment analysis and subjectivity. In N. Indurkhya & F. J. Damerau (Eds.), Handbook of natural language processing (2nd ed., pp. 627-666). Chapman & Hall/CRC.
+- Bollen, J., Mao, H., & Zeng, X. (2011). Twitter mood predicts the stock market. Journal of Computational Science, 2(1), 1-8.
+- Bruns, A., & Stieglitz, S. (2012). Quantitative approaches to comparing communication patterns on Twitter. Journal of Technology in Human Services, 30(3-4), 160-185.
+- Ferrara, E., & Yang, Z. (2015). Measuring emotional contagion in social media. PLOS ONE, 10(11), e0142390.
+- Mitchell, L., Frank, M. R., Harris, K. D., Dodds, P. S., & Danforth, C. M. (2013). The geography of happiness: Connecting Twitter sentiment and expression, demographics, and objective characteristics of place. PLOS ONE, 8(5), e64417.
+- Pak, A., & Paroubek, P. (2010). Twitter as a corpus for sentiment analysis and opinion mining. In Proceedings of the Seventh conference on International Language Resources and Evaluation (LREC'10) (pp. 1320-1326). European Language Resources Association (ELRA).
+- Pavalanathan, U., & Eisenstein, J. (2015). Confounds and Consequences in Geotagged Twitter Data. In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing (pp. 2138-2148). Association for Computational Linguistics.
+
+Figures
+
+**Figure 1:** A map showing the location of tweets collected in New York City.
+
+**Figure 2:** Distribution of geolocated tweets in Manhattan, highlighting the density variations.
+
+**Figure 3:** Comparison of daily average tweet counts by boroughs and location (in-park vs. outside of parks).
+
+**Figure 4:** Sentiment analysis results for tweets in parks versus outside of parks in Manhattan.
+
+**Figure 5:** Sentiment analysis results for tweets in parks versus outside of parks in other boroughs.
+
+Tables
+
+**Table 1:** Descriptive statistics for tweets collected during the study period.
+
+**Table 2:** Daily average tweet counts by boroughs and location.
+
+**Table 3:** Sentiment scores for tweets in parks versus outside of parks in New York City.
+
+**Table 4:** Sentiment analysis results for residents and tourists in Manhattan.

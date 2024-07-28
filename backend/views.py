@@ -10,11 +10,9 @@ from django.conf import settings
 from . import utils
 import tempfile
 
-
 load_dotenv(Path(".env"))
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
-
 
 @api_view(['GET'])
 def grade_with_gemini(request):
@@ -54,50 +52,58 @@ def grade_with_gemini(request):
         with open(rubric_path, 'r') as file:
             rubric_content = file.read()
 
-    model = genai.GenerativeModel('gemini-1.5-pro')
+    model = genai.GenerativeModel('gemini-1.5-pro-latest')
 
-    # check if advanced options provided. otherwise use default.
+    # check if advanced options provided or empty. otherwise use default.
     if 'additional_info' in request.query_params.keys():
-        additional_info = request.query_params['additional_info']
+        additional_info = str(request.query_params['additional_info']).stirp(" ")
     else:
+        additional_info = ""
+    if additional_info == "":
         additional_info = 'the feedback should be constructive, professional, and supportive.'
 
-    prompt = """
-
-    Role: You are a Teaching Assistant. Your task is to grade a student assignment using the provided grading rubric and justify the final grade.
-
-    Steps:
-
-    1. Validate the task:
-        - Ensure the assignment aligns with the rubric.
-        - Check for any issues such as essays with only a few sentences, off-topic content, inappropriate or violent content, or missing information.
-        - If issues are found, stop grading and report the issue(s).
-
-    2. Grade the assignment and provide a justification:
-        - Assign scores per criterion and a final score.
-        - Provide specific feedback based on the rubric and the assignment.
-        - Avoid subjective comments.
-        - Only assign a letter grade if explicitly described in the grading rubric
-
-    3. Review the analysis in step 2:
-        - Ensure all justification is factually accurate.
-        - Verify that any mentioned elements (e.g., citations) are present.
-
-    4. Based on your review, update the grade and justification. Add feedback for the student.
-
-    Provide only the final grade with justification and feedback. Don't output intermediary steps.
-
-    Consider the following request from the teacher: {}.
-
-    Format the output as markdown.
-
-    Grading Rubric: {}
-
-    Student Response: {}
-    """.format(additional_info, rubric_content, student_assignment)
-
+    # opted out of triple quotes for multi-line for better control of indentation
+    # made delimination more explicit with triple backticks.
+    # ensured consistent use of terminology (e.g. use only student assignment, instead of student assignment and student response)
+    prompt = ("Role: You are a Teaching Assistant. "
+    "Your task is to grade the provided student assignment using the provided grading rubric and justify the final grade.\n"
+    "Steps:\n"
+    "1. Validate the grading task:\n"
+    "   - Ensure the assignment aligns with the grading rubric.\n"
+    "   - Check for any issues such as very short essays, off-topic content, inappropriate or violent content, or missing information.\n"
+    "   - If issues are found, stop grading and output the issue(s).\n"
+    "2. Grade the assignment and provide a justification:\n"
+    "   - Assign an overall score as well as scores for each criteria in the grading rubric.\n"
+    "   - Identify both strengths and weaknesses, giving special emphasis to areas of excellence.\n"
+    "   - Provide specific justification based on the grading rubric and the assignment.\n"
+    "   - Ensure good work is identified and rewarded generously.\n"
+    "   - Avoid subjective comments.\n"
+    "   - Only assign a letter grade if explicitly described in the grading rubric.\n"
+    "   - Do not deduct points for issues related to formatting, tables, and figures.\n"
+    "3. Review the analysis in step 2:\n"
+    "   - Ensure all justifications are factually accurate.\n"
+    "   - Reassess if the grading was too harsh. Consider assigning higher points for effort and creativity.\n"
+    "   - Verify that all grading rubric categories are included and sum correctly to the total score.\n"
+    "   - Verify that any elements mentioned in the justification (e.g., citations) are present.\n"
+    "   - Look for opportunities to acknowledge strengths.\n"
+    "4. Adjust the grade and justification according to findings in step 3. Add feedback for the student.\n"
+    "\n"
+    "Additional instructions from the teacher: {}.\n"
+    "\n"
+    "Provide only the final grade with justification and feedback. Don't output intermediary steps.\n"
+    "\n"
+    "Format the output as markdown.\n"
+    "\n"
+    "The student assignment and grading rubric are provided below and delimited by triple backticks.\n"
+    "\n"
+    "Student Assignment: ```\n"
+    "{}\n"
+    "```\n\n"
+    "Grading Rubric: ```\n"
+    "{}\n"
+    "```").format(additional_info, student_assignment, rubric_content)
+    #print(prompt)
     response = model.generate_content(prompt)
-
     return Response({'message': response.text })
 
 @api_view(['GET'])

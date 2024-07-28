@@ -1,0 +1,377 @@
+Title: Social Media Interface and the Next Generation Cognitive Mapping in New York City
+
+In collaboration with:
+Prof. Richard Plunz
+
+Advisor:
+Dr. Gregory M. Eirich
+
+1. Abstract
+The social media revolution is producing a new generation of urban design and planning tools that can augment reading of urban public space and management of next generation distributed urban infrastructure. Deployment of social data analytics has the potential for real-time understanding of the occupation characteristics of public space; from real-time configurations of occupation densities to detailed understanding of diverse cognitive factors related to the users. While there is a long history of "mental mapping" relative to urban fabric, the present revolution on social media promises to significantly expand representative techniques, with new cognitive mapping tools that are more robust than any of the normative means now in common practice. In this research a crowd sourced platform is deployed for definition of public space usage through Twitter-based analytics. Several stages of analysis have been deployed with comparative application for three principal public parks in Manhattan.
+
+2. Introduction
+Fundamental to understanding cognition in the urban environment has been the concept of the "mental map," prevalent in psychological studies since the latter half of the 19th century. For example, the urban wanderer or flâneur of Charles Baudelaire, practiced a heightened experience of the city; and became formalized by Walter Benjamin as dérive, a methodological concept that lay the groundwork for the  evolution of exploration of mental mapping techniques (Hollevoet, 1992). Gradually environmental cognition evolved into diverse fields, including formalized spatial studies as a distinct subject inclusive of both perceptual and cognitive realms (Garling, 1995). After mid-20th century, the Situationist movement in Europe sought to further define cognitive mapping strategies within the activist political context of that period (Sadler, 1998). In particular the theoretical basis for the dérive concept was elaborated by Guy Debord as political action.
+In the United States new concepts for recording the city emerged at the same moment. The cognitive dimensions of urban spatial ordering was expanded by the mapping techniques developed by Kevin Lynch, who sought to add precision to previous practice (Lynch, 1960; Kuipers, 1982; Kitchin, 2000). Lynch's mapping of Boston, Los Angeles and Jersey City became the springboard for similar attempts in the following several decades with increasing speculation about the virtual environment and a consequent critical response (Žižek, 1992).
+Digital technologies related to environmental perception evolved exponentially in this same period, beginning with development of the first computer-aided algorithms for design in the late '50's, pioneered by Serge Chermayeff and Christopher Alexander using the IBM704 computer at MIT (Tzonis and White 1994). With this innovation neighborhood fabric configurations could be correlated with social behavioral characteristics. And with the passage of the next three decades, urban digital mapping techniques evolved to reach a definitive moment with the commercial release of the ESRI ArcGIS platform now in widespread use and particularly useful for its interactive layering of spatial and social data. The disciplines engaged with urban design benefitted from this new capacity (McGrath, 2008). The extent of data incorporated into GIS formatting is large and growing given new recording technology, however it remains static and with a geographic granularity limited most frequently to census tracts.
+
+The new developments in crowd-sourced data from social media promises to change these parameters. For the first time geo-spatial usage densities of urban public space can be monitored in real-time; and with the development of sentiment analytics the understanding of urban perceptual and cognitive realms will advance far beyond the capacity of the normative cognitive mapping practices until the present. This research explores sentiment analytic techniques based on Twitter usage in New York City public space.
+
+3. Literature Review
+The availability of Twitter data has opened new research opportunities. In A topology of Twitter research: disciplines, methods, and ethics, Zimmer et al. (2014) a rush in Twitter research in the past half-decade is reviewed, including the Library of Congress recognition of the value of this research and announcement that it is archiving every tweet since Twitter’s inception. Thus far, however, while hundreds of studies have explored content analysis, very few studies analyzed spatial patterning in geo-located tweets.
+Among the studies that have used geo-located Twitter data are  Digital Earth from Vision to Practice: Making Sense of Citizen-Generated Content (Caglia et al. 2012), which uses Twitter data to accurately identify major fires in France.
+Another study, Crowd-based Urban Characterization: Extracting Crowd Behavioral Patterns in Urban Areas from Twitter (Wakamiya et al., 2011) proposes an urban characterization method using data from social networking sites. The paper operationalizes crowd behavior in urban areas through a vector representing number of tweets, crowd (number of distinct users), and moving crowd (number of users found in multiple locations). Based on these patterns, the authors cluster urban areas and name them: “bedroom towns”, “office towns”, “nightlife towns”, and “multifunctional towns”.
+A few studies focused on New York City. In particular, Visualizing the “Heartbeat” of a City with Tweets (Daneshvar et al., 2014) analyzes patterns of tweet counts over time and space. It finds that the largest scale dynamics are the waking and sleeping cycle and commuting from the suburbs to office areas in Manhattan.  The study also identifies activities of interest at particular places and times.
+Another NYC-based study, Temporal Patterns of Happiness and Information in a Global Social Network: Hedonometrics and Twitter (Dodds, 2011), developed the labMT sentiment scoring system that we use in this study. The study’s overall objective is to use text analysis to remotely sense societal-scale levels of happiness using Twitter, with the finding that anomalously positive or negative days occur during particular national and global events.
+ Happiness and the Patterns of Life: A Study of Geolocated Tweets (Frank et. Al, 2013) builds on this methodology and finds that expressed happiness increases logarithmically with both distance from expected locations and gyradius, largely because individuals who travel farther use positive, food related words more frequently, and negative words and profanity less frequently.
+Very few applied studies delve beyond tweet counts and sentiment analysis. One such study distinguishes between tweets by tourists and residents, but only for filtering purposes. The study, Demography of Twitter Users in the City of London: An Exploratory Spatial Data Analysis Approach (Hofer et al., 2015), uses tweets counts in London’s wards to analyze whether socio-demographic characteristics are associated with the numbers of geo-located tweets.
+This study advances the field of cognitive mapping by making use of Twitter data to obtain cognitive GIS layers. In particular, we make the following contributions.  First, we go beyond tracking sentiment and particular words in space, to analyzing libraries of words (topics) in relation to sentiment. We also investigate patterns in user characteristics, such as distance between tweets and user residency type, and create GIS layers to understand the usage patterns of public spaces. Further, the application to creative cognitive maps using social media is novel.
+
+4. Twitter Data
+For this study, geo-tagged tweets and related metadata in New York City are collected for the 4-month period between June 18th and November 17th, 2016 (152 days). After filtering the data to include only tweets with precise geo-coordinates (approximately 1% of the total) , the resulting number of tweets is over 2.3 million from about 244,000 distinct users. The variables for each tweet include the text, date and time of publication, geo-coordinates, and number of followers, among other. By using usage patterns and by applying natural language processing techniques, additional variables are obtained for each tweet: sentiment score, topic, and user characteristics. The data collection and manipulation, the descriptive statistics, and initial visualizations are detailed below.
+
+4.1 Relevance of Twitter Data
+We select to work with social media because it provides measures that are nonreactive, real time, and spatial. Twitter data is best suited for our analytics including the advantages that it is easily available, inexpensive (as long as a certain threshold is not met), and relatively unexplored. Additionally, studies that use Twitter data can easily be scaled by exploring new locations or recording the data for longer time periods.
+
+4.2 Production
+For the data collection, connection to the Twitter API via a Python script automatically and continuously records all tweets within the latitude range [40:41] and longitude range [-74:-73], the bounding box corresponding to New York City. To avoid gaps in collection due to power failures or cyber-attacks, we duplicate our data recording on differing independent platforms. The data is recorded on local computers on the East Coast and, remotely, on an Amazon Linux Machine located on the West Coast. As a result, while we lost a day of recording on one machine during the massive cyber-attack on October 21st 2016 that resulted in numerous popular sites being inaccessible to East Coast users, we were able to obtain the data via the duplicate recording.
+	It is worth noting that the sampling that occurs for queries surpassing 1% of all tweets on Twitter does not affect this study given the small geographic bounding box and that we only collect geo-located tweets.
+
+4.3 Pre-Processing
+The pre-processing of the data involves the following steps.
+Parsing: We convert the data from the JSON format to tabular form.
+Filtering: To ensure relevance of the data we make the following selections.
+We only use tweets with precise geo-coordinates (rather than the ones known as ‘place’ coordinates, corresponding to the coordinates of a place referred to in the text of the tweet)
+ We filter out duplicate tweets from the same user.
+We filter out tweets for which the source is clearly a bot. Examples of bots include: simplybestcoupons, Jobs, NYC traffic, and user descriptions with the word “bot” in them.
+Text cleaning: To ensure that the natural language processing techniques can run smoothly, we lemmatize the words and eliminate stop words and punctuation.
+
+4.4 Natural Language Processing
+Two types of natural language processing (NLP) techniques are deployed: sentiment analysis and topic detection. We later use the output from these techniques to analyze patterns across space, time, and user type.
+
+SENTIMENT ANALYSIS
+For sentiment analysis, we use the Language Assessment by Mechanical Turk 1.0 word list, which abbreviates as labMT 1.0, developed in the article, Temporal Patterns of Happiness and Information in a Global Social Network: Hedonometrics and Twitter (2011). As described in the article, the authors selected 10,000 words based on frequency of usage and obtained 50 independent evaluations per word, or a scale from 0 to 10. The resulting scores are re-scaled by subtracting the mean of all scores. By using the LabMT 1.0 word list, we obtain a sentiment score for each tweet.
+
+TOPIC DETECTION
+We develop a simple topic detection method using pre-selected topics and WordNet, a lexical database. This system is the initial step toward a more rigorous system currently in development at the Urban Design Lab in collaboration with the Data Science Institute. The following steps describe the procedure of classification of tweets into topics.
+Using urban planning theory, we pre-select topics of interests: activities, events, vegetation, people, vegetation, arts & beauty, maintenance, security, weather, and food.
+We identify a library of words for each category using Wordnet. In particular, for each topic, we start with selection of a few words of interest, identification of the relevant WordNet synset, and obtain all synonyms, hyponyms, and meronyms related to the words. We then repeat the word selection recursively using the new set of words until exhausting the search. We make further adjustments by eliminating words that have a more common alternative meaning (such as the word ‘simple’ that can refer to a medicinal herb but is more commonly used as an adjective indicating that something is easily done or understood). The resulting library of words for each topic is available on GitHub (see Appendix for detail).
+We then categorize each tweet by topic, according to the presence of words that match the keywords of the pre-selected topics.
+
+This system allows for an initial, and flexible, classification of tweets into pre-selected topics. The system is flexible because the Python script used to create the library of words allows new topics to be selected with minimal adjustment to the script. Nevertheless, a more sophisticated system will use manually categorized tweets to train and test the classification algorithm.
+
+4.5 Additional Measures:  User Characteristics
+Additional measures are obtained through data manipulation. For example, we distinguish between tweets by tourists and residents, and measure the distance between individual tweets and the centroid of the user’s set of tweets.
+
+USER TYPE: TOURIST-RESIDENT DISTINCTION
+The distinction between New York City tourists and residents is based on the assumptions that: tourists remain in New York for less than 2 weeks, and that the time span during which a Twitter user is visible is representative of her stay in New York. Therefore, we measure whether a user is tourist or resident as follows.
+
+We calculate the time span of tweets by the same user.
+We group the tweets by user
+For each user, we obtain the time difference between the most recent and oldest tweet. Since all tweets in the dataset are geo-located in New York City, this time period is representative of the time that the user was present in the city.
+We categorize users into residency type according to the time span: if the time span is greater than 2 weeks, the user is categorized as a resident. Otherwise, the user is categorized as a tourist.
+
+The measure is imperfect, especially in consideration of those locals who rarely use Twitter (they might be mis-categorized as tourists), and for tourists who frequently return to New York City (they might be mis-categorized as locals). However, the resulting maps and statistics provide evidence that the measure does reflect known patterns in New York City. For example, tweets identified as tourists more highly concentrate close to the city’s landmarks.
+
+DISTANCE BETWEEN TWEETS
+Various distance measures are obtained as a function of the distance between a user’s tweets. First, we obtain the centroid of the user’s tweets. We then calculate the distance between each tweet and the user’s centroid. In addition to this measure of distance at the tweet-level, we also aggregate the distances to the centroid at the user level and obtain the average distance from the centroid and maximum distance to the centroid for each user.
+
+4.6 Summary Statistics
+The raw data is organized with individual tweets as the unit of observation. In addition, we group the data by user to obtain additional measures at the user level. In this section we provide descriptive statistics at both levels: Tables 1 – 4 are at the tweet level and Tables 5 is at the user level.
+We provide a view of the raw data available, such as time, location, and follower count, as well as other variables obtained through additional processing, such as topics and sentiment.
+
+TWEET AS UNIT OF OBSERVATION
+Using tweets as the unit, the following tweet-level statistics provide an initial overview of the data:
+Time range: 2016-06-18 to 2016-11-17 (152 days)
+Number of Tweets (post-filtering): 2,307,640
+Percent of Tweets by Tourists: 14.99%
+Percent of English Language Tweets: 90.31%
+
+TABLE 1 summarizes the tweets’ daily number, sentiment, and distance from the user’s centroid.  The interquartile range for daily number of tweets is 13,880 to 16,200 tweets per day, for sentiment is .03 to .33 units, and for the distance to the centroid is 3,274 to 15,340 meters.
+
+TABLE 1 Descriptive Statistics at the Tweet Level
+
+Most tweets are in English (90.31% of tweets).  The second most spoken language on Twitter in New York is Spanish (2.38%). All other languages amount to 6.92% of tweets and the language is undeclared for 2.76% of tweets. The language distribution is summarized below in TABLE 2.
+
+TABLE 2 Distribution of Languages
+
+TABLE 3 illustrates weekly cycles by grouping the data at the day level. As shown, the number of tweets by both residents and tourist increases on the weekend. Further, the proportion of tweets by tourists increases as the weekend approaches.
+
+TABLE 3 Weekly Patterns
+
+The frequencies of each topic by location are described in TABLE 4. The most common topic is ‘Events’, representing 1,490 tweets in Bryant Park (16.6 % of the total tweets in the park), 1,736 tweets in Washington Square Park (16.1 %), 2,602 tweets at the High Line (16 %), and 474,299 everywhere else (20.68%) . The topics of ‘People’ and ‘Food’ are close seconds. At the High Line, the ‘People’ topic is even more frequent than the ‘Event’ topic with 26% of tweets as opposed to 16%.
+
+TABLE 4 Topic Frequencies by Location
+
+USERS AS UNIT OF OBSERVATION
+TABLE 5 provides descriptive statistics using Twitter users as the unit of observations. Several patterns are of particular interest. First, it is clear that the number of tweets per user varies considerably. While the first quartile of users only posted one tweet in the entire 152-day period, the most active user tweeted 10,640 times (an average of 70 tweets per day). A quick scan of the more active users reveals that many are bots, providing information on topics such as traffic and weather. Others, in particular the most active user, appears to be a real account. On average, however, users tweeted 8.7 times.
+The average time between tweets from the same user ranges from seconds to 114.4 days. On average, the median user tweets once every 11.3 days. The number of followers also has a wide range, from -1 indicating incomplete data, to 12.46 million followers.
+It is worth noting that only tweets within the initial bounding box for New York City are being considered. Therefore, for the same user, particularly tourists, the geo-located tweets outside of bounding box are not captured. As a result, the frequency and distance statistics are underestimated especially for tourists.
+Given the upper bound on distances, it is impressive that the median tweeter’s distance from its centroid is about 8 km on average. This distance for the median user illustrates that twitter users are dynamic in their use of the platform – often tweeting from different locations.
+
+TABLE 5 Descriptive Statistics at User Level
+
+4.7 Visualizations
+The figures in this section provide a further view of the data. Figures 1 – 10 illustrate tweet counts and Figures 11 – 19 sentiment scores. For each of the two dimensions, we show patterns in time (frequencies) and space (densities).
+
+COUNT PATTERNS
+Figures 1 – 5 illustrate frequency patterns and FIGURES 6 – 10 illustrate density. The first plot shows the number of tweets per day for the recorded time period. It is clear that frequencies follow weekly cycles, with Sundays usually corresponding to peaks. September 11th stands out as the date with the highest number of tweets in a day. On this date, the number of geo-located tweets was almost 25,000, about 25% more than the second highest peak at about 20,000 tweets per day, and about twice the trough at about 12,000 tweets. June 26th, the second highest peak, corresponds to New York City’s Pride Parade, as revealed by a quick scan of the tweets on this date. 4th of July is the third highest peak.
+
+FIGURE 1 Daily Frequency of Tweets in New York City
+
+FIGURE 2 compares the daily frequencies of tourists to daily frequencies of residents. The chart groups 21 weeks of data by weekday and hour, and provides the average number of hourly tweets. To ease comparison to the number of tweets by tourists, the number of tweets by residents is divided by 5. The time series reveals that the patterns in resident counts are more stable, with the count of tourists following similar weekly cycles but with greater variation.  In particular, in the month of September, the number of tweets by tourists appears to first decline and then to grow relative to the number of tweets by residents. A huge spike in the number of tweets by tourists on September 11th stands-out. On the same day, there is also a spike in the number of tweets by residents but not of the same magnitude.
+FIGURE 2 Scaled Frequency by Residents and Tourists
+
+FIGURE 3 presents the time series as above, except that the number of tweets is segmented by the three public spaces of interest – Bryant Park, High Line, and Washington Square Park – rather than the user’s residency. Interestingly, even peaks at the park level are tied to particular events. For example, the most prominent tweet occurred on October 2nd in Bryant Park, which had 300 tweets in the day (about 5 times the average for this location). A scan of the tweets on this day reveals that the Roots Picnic concert occurred at the park on this occasion. The second highest peak for Bryant Park was on November 1st, which corresponds to the grand opening of the Winter Village within the park. The event included live performances by synchronized ice-skaters, free skating for first arrivals, and free food samples, explaining the large number of tweets.
+In Washington Square Park, the highest peak occurred on November 11th, the day of the anti-Trump rally that took place in the park. A review of the tweets reveals not only the emotions of the participants, but also allows the entire event to be reconstructed through space- and time-stamped photos, videos, and text descriptions. Given that such user-related information is available, it is further possible to learn about the event’s participants.
+The second highest peak in Washington Square Park occurred on November 7th, the day before the election, when Madonna performed at a surprise concert in the park in support of Hillary Clinton.
+The peaks that occurred at the High Line, mainly June 24th and September 9th, are less prominent, and are tied to surrounding events.
+FIGURE 3 Frequency by Location
+
+FIGURE 4 illustrates tweet frequency within-week cycles. The chart groups 21 weeks of data by weekday and hour, and provides the average number of hourly tweets. Again, we rescale the number of tweets by residents by dividing the amount by 5 to ease comparisons to the frequency of tweets by tourists. From this chart, it is clear that, in addition to the weekly cycles discussed above, there are also daily cycles. The lowest frequency occurs at around 3am on weekdays and 6am on weekends; and the highest point is at about 7pm. On weekdays there is another, lower, peak at around noon.
+FIGURE 4 Weekly Patterns for Residents and Tourists
+
+As in FIGURE 4, FIGURE 5 presents within week cycles, with average tweets per hour segmented by park rather than the user’s residency. The frequencies in the parks follow a similar daily pattern as the rest of the city. It also emerges that the High Line is particularly popular on Saturdays.
+
+FIGURE 5 Weekly Patterns by Location
+
+FIGURES 6 – 10 illustrate detailed density patterns for Lower Manhattan. Larger frames of the same maps are available in the Appendix. FIGURE 6 shows the density of all tweets in area. Some of the areas that stand out are Chelsea Market, Union Square, Webster Hall, Madison Square Park, and Washington Square Park.
+
+FIGURE 6 Density of Tweet
+
+FIGURE 7 and FIGURE 8 illustrate the density patterns of tweets by residents and tourists, respectively. Given the same scale, the lighter colors in the tourist map are an indication of fewer tourists as compared to residents. Nevertheless, similar locations stand out, indicating that the two groups tweet from similar location. One difference is the area surrounding Washington Square Park, which appears relatively more popular among residents.
+
+FIGURE 7 Density of Tweets by Residents
+
+FIGURE 8 Density of Tweets by Tourists
+
+FIGURE 9 and FIGURE 10 show the density of tweets about two select topics: Events and Food, respectively.
+
+FIGURE 9 Density of Tweets about Events
+
+FIGURE 10 Density of Tweets about Food
+
+Preliminarily, the density figures for Lower Manhattan suggest that the drivers of density are public spaces, metro stops, and entertainment venues.
+
+SENTIMENT PATTERNS
+FIGURES 11 – 14 illustrate sentiment over time and Figures 15 – 10 illustrate sentiment over space. As for density, sentiment patterns are also tied to particular events. Here, not only peaks are relevant, but also troughs are an indication of important, though sad, occurrences.
+FIGURE 11 portrays average daily sentiment scores for the recorded time period.  It shows that the largest peak occurred on the 4th of July holiday and the most pronounced trough occurred on November 9th, the day following the general election. Further, an overall negative trend can be observed from mid-June to mid-November.
+FIGURE 11 Sentiment Over Time
+
+In FIGURE 12, the sentiment scores are segmented by residency type. As summarized in TABLE 6, for residents, the most prominent peak and trough are the same as in FIGURE 11. However, for tourists, the highest peak is on June 19th, Father’s Day, closely followed by July 4th, and the most pronounced trough is September 11th, followed by November 9th. The figure also makes clear that sentiment is consistently higher for tourists. This outcome may be partially due to tourists having a more enhanced experience New York City.
+
+FIGURE 12 Sentiment by Tourists and Residents
+
+TABLE 6 Sentiment Peaks and Troughs
+
+In FIGURE 13, the sentiment scores are segmented by park. The highest peak and trough are both produced by Bryant Park and correspond respectively, to August 19th and November 9th. The trough on August 19th appears to be driven by a peak in the percentage of residents in the park, who compared to tourist tend to publish tweets with lower sentiment (though still positive on average). On November 9th, the tweets in Bryant Park were mostly by people working in the area tweeting about the election.
+
+FIGURE 13 Sentiment By Location
+
+FIGURE 14 illustrates sentiment patterns for the average week.  The peaks and trough are mostly driven by the low number of observations at the three park locations (combined with the noisiness of the measure). The blue line represents the average hourly sentiment for the rest of New York City and is less volatile. This line also shows daily cycles in the sentiment of tweets, including a dip in sentiment at around 2 A.M.
+FIGURE 14 Weekly Sentiment Patterns by Location
+
+Figures 15 – 19 illustrate the average sentiment score by block in Lower Manhattan. FIGURE 15 uses all the tweets in the area. The census blocks with fewer than 20 tweets are blocked out because the low number of observations introduces large errors in the output average sentiment scores. Some of the areas that stand out are Washington Square Park (part of Greenwich Village), the shopping area to the West of Union Square, the area north of Pier 46 and the west of the Hudson River Greenway, Stuyvesant park, and the New York University Alumni Hall.
+FIGURE 15 Sentiment Scores by Block in Lower Manhattan
+
+FIGURE 16 only uses tweets by residents and FIGURE 17, tweets by tourists. Washington Square Park is the only area in the highest sentiment level for both tourists and residents.
+
+FIGURE 16 Sentiment Scores for Tweets by Residents
+
+FIGURE 17 Sentiment Scores for Tweets by Tourists
+
+FIGURE 18 and FIGURE 19 show sentiment patterns for tweets about the Event topic and Food topic, respectively.
+
+FIGURE 18 Sentiment Scores for Tweets about Events
+
+Not surprisingly, the areas that stand out in FIGURE 19 are areas with high density of food establishments – such as the areas surrounding Chelsea Market and Washington Square Park.
+
+FIGURE 19 Sentiment Scores for Tweets about Food
+
+As for the density figures, public spaces appear to also be important for the sentiment figures. In a later phase of cognitive mapping, the density and sentiment layers developed here can be correlated to land use and socio-economic data.
+
+5. Methods
+
+5.1 Research Objective
+The overall objective of this study is to explore whether or not Twitter Data can provide meaningful insights about people’s experience and usage of public spaces. To this end, we test whether differences between park types and user types are statistically significant, to distinguish between real underlying patterns and random noise. In particular, we test the following sets of hypotheses.
+Differences between parks
+Differences between users
+Drivers of sentiment
+
+We then illustrate an application of the methods developed, by creating cognitive maps for three parks in Manhattan. Washington Square Park, Bryant Park, and the High Line were selected as test beds because they are large parks with high density of tweets. The three parks also represent the potential for an interesting comparative analysis given their differing spatial characteristics.  Bryant Park is located in Midtown and is primarily commercial. Washington Square is located in Lower Manhattan and is residential and academic. The High Line is a new park concept and passes through several differing neighborhood contexts.
+
+5.2 Hypotheses and Statistical Tests
+
+ANALYSIS BETWEEN PARKS
+We apply an Analysis of Variance (ANOVA) test to test whether overall sentiment, sentiment of residents, and sentiment of tourists are statistically different across the selected locations. The underlying model is represented by the following equation.
+
+We reject the null hypothesis in favor of the alternative hypothesis, that the mean sentiment is different for each park, when the p-value is less than 5%.
+
+ANALYSIS BETWEEN USER TYPE
+We apply a t-test to test differences for tourists and residents in the following parameters: distance to the centroid, time span, tweets per day, and topics. The underlying model is represented through the following equation.
+
+where  represents each of the parameters to be tested.
+
+We reject the null hypothesis in favor of the alternative hypothesis, that is, the mean value for each parameter is different for the two user types, when the p-value is less than 5%.
+
+ANALYSIS OF DRIVERS OF SENTIMENT
+We further investigate the topic drivers of sentiment through regression analysis. The statistical model is represented through the following equation and is applied to each of the selected park locations.
+
+This analysis allows us to obtain a preliminary view of the challenges and benefits of each site.  Further analysis in the next stage of cognitive mapping will more precisely identify the specific issues and design successes of each location.
+
+5.3 Park-level Maps / Cognitive Maps
+After testing the differences between parks and users to validate the methods, we apply these methods to obtain first phase cognitive maps of selected locations. To this end, we segment the park using two approaches:
+
+Grids: We initially divide the parks into cells of 1,000 ft2
+Customized Shapefile: We then use the Earth view map of the parks to divide the space by its spatial characteristics.
+
+Using each segmentation approach, we then summarize the data in the resulting polygons and visualize the results.
+
+6. Results
+
+Here we report the results of the statistical analysis with respect to differences between parks, differences between user types, and the drivers of sentiment. We further provide a first iteration of cognitive maps for three select locations.
+
+6.1 Comparison between Parks
+TABLE 7 reports the statistical results from the ANOVA test. Given a p-value of 2.2e-16 for each test, we conclude that each difference is statistically significant. In particular, the results indicate that overall sentiment, tourist sentiment, and resident sentiment are different across each park. For example, the sentiment is highest in Washington Square Park and lowest for the area of New York outside of the three selected locations. It is also clear that mean sentiment is higher for tourists as compared to residents at each location.
+For each park, TABLE 7 also provides the percentage of tweets by tourist and the dominant topics. As expected, the percentage of tourist is highest at the High Line and the lowest in the area of New York outside of the selected park locations. Further, the fact that the dominant topic for Bryant Park and Washington Square is the Event topic, while for the High Line it is the People topic, is consistent with the time series figures presented in the Data Section 4 of this paper. In the Data  Section, the figures show that particular events at Bryant Park and Washington Square Park are connected to peaks and troughs in density and sentiment patterns. Instead, the patterns present at the High Line are less pronounced and not directly connected to events.
+
+TABLE 7 Comparison of Parks
+
+FIGURE 20 illustrates the mean difference for sentiment by location, also reported and discussed above. It is clear that while the differences are statistically significant the magnitude of the differences is small.
+
+FIGURE 20 Sentiment Mean by Location
+
+6.2 Comparisons between Tourists and Locals
+TABLE 8 reports the t-tests for the mean difference between tourists and residents for the following parameters: average distance to the user’s centroid, maximum difference to user's centroid, the user’s time span in New York, and the user’s tweets per day.  Given a p-value of 2.2e-16 for each test, the differences in means are statistically significant. In particular, it is clear that the distance between tweets by residents is about 7 times larger than the distance by tourists, indicating longer commutes. Further, the time span in New York is 1.3 days for tourists and 84.8 for residents (out of the 152 day record). The time span results are particularly underestimated for users who rarely tweet (given that we operationalize time span as the time difference between the user’s most recent and earliest tweet). Not surprisingly, the number of tweets per day is highest for tourists.
+
+TABLE 8 Metrics by Residency
+
+The t-test results for the difference between tourists and residents in frequency of each topic are reported in TABLE 9. Given a p-value of 2.2e-16 for each test, we reject the null hypothesis that the frequencies are the same for tourists and residents. In particular, tweets by tourists discuss the topic of Arts & Beauty 40% more often and of Travel 1,666 % more often. They also contain the string “New York” 61% more often. On other hand, all the other topics – Activity, Event, Food, People, Vegetation, and Weather – are more frequently discussed by residents.
+
+TABLE 9 Topic Frequencies by Tourists and Locals
+
+6.3 Drivers of Sentiment by Location
+The regression results for the drivers of sentiment, showing the association between topics and sentiment in each park, are reported in TABLE 10. The Weekday dummies, which are part of regression equation, are omitted from the output. It is clear that several topics are correlated with sentiment and that the association varies across location. For example, relative to the rest of New York and, in particular the other two parks selected, the High Line exhibits a statistically significant and strong positive association between vegetation and positive sentiment. Specifically, the presence of words related to vegetation is associated on average with an increase in positive sentiment of .048 units. The People topic is also associated with high positive sentiment at the High Line, particularly with respect to the other parks where the effect is not statistically significant. Art and Beauty is also most strongly associated with positive sentiment at the High Line.
+In Bryant Park and in New York generally, discussions about weather are associated with negative sentiment. However, the effect is statistically insignificant at Washington Square Park and at the High Line.
+
+TABLE 10 Regression Results
+
+FIGURE 21 provides a visual representation of the results appearing in TABLE 10, discussed above.
+
+FIGURE 21 Box Plot of Sentiment Scores by Topic and Location
+
+6.4 Cognitive Maps
+
+GRIDS AND SPATIAL CHARACTERISTICS
+Figures 22 – 24 show the grid and customized polygon map versions, discussed in Methods Section 5, of Bryant Park. FIGURE 22 displays density patterns. It is clear that the density of tweets is highest in front of the Library Terrance and in the main yard between Fountain Terrace and the library.
+
+Figure 22 Density in Bryant Park
+
+FIGURE 23 shows the dominant topic for each polygon. The Events topic dominates most of the map; the Activities topic is mostly discussed on the sides of the yard area and the Food topic in the area surrounding the library.
+
+Figure 23 Dominant Topic in Bryant Park
+
+FIGURE 24 illustrates sentiment patterns. The areas with greatest sentiment are close to the Fountain Terrace (equivalently, close to the screen used in the HBO Bryant Park Summer Film Festival). The only cell that displays negative sentiment is the entrance to the film screening area where a line followed by a security check takes place.
+
+Figure 24 Sentiment in Bryant Park
+
+Grids and the customized shapefiles each have their own advantages. Grids are more neutral, with the colored cells creating their own patterns. Instead, the pre-defined polygons allow for the use of more information, the spatial characteristics of the location, but loose on neutrality. We continue with the customized shapefiles because they provide additional spatial information.
+
+HIGH LINE AND WASHINGHTON SQUARE PARK MAPs
+
+Figures 25 and 26 illustrate density patterns for Washington Square Park and the High Line, respectively.
+
+Figure 25 Density in Washington Square Park
+
+Figure 26 Density at the High Line
+
+Figures 27 and 28 illustrate the dominant topic in each polygon for Washington Square Park and the High Line, respectively.
+
+Figure 27 Dominant Topic at Washington Square Park
+
+Figure 28 Dominant Topic at the High Line
+
+Figures 29 and 30 illustrate sentiment in each polygon for Washington Square Park and the High Line, respectively.
+
+Figure 29 Sentiment in Washington Square Park
+
+Figure 30 Sentiment at the High Line
+
+FURTHER EXPLORATION OF BRYANT PARK
+We further explore Bryant Park by mapping sentiment relative to particular topics, Food and Events, and relative to particular user types, resident and tourists. The resulting maps are available in the Appendix.
+
+7. Discussion
+
+7.1 Implications for Cognitive Mapping
+The results indicate that geo-spatial Twitter data can be a useful tool in understanding and mapping the cognitive characteristics of urban public space. Furthermore this new generation of mapping can be correlated with GIS mapping such that the basis for decision-making in urban design and planning activity can be greatly enhanced.
+
+7.2 Potential and Next Steps
+The next phase of this exploration would begin to correlate the map patterns with social demographic data to determine the environmental factors that the current map patterns tend to legitimize; toward evaluation of the effectiveness of the topics selection and revision. The continuing recording of Twitter data will provide additional data with which to text this second generation of analytics. Ultimately planning and design templates can be devised for application in a broad range of urban problem sets.
+
+7.3 Limitations and Challenges
+Research using Twitter data, in particular to explore spatial patterning, is affected by unique challenges and limitations, outlined below.
+
+AVAILABILITY OF GEO-COORDINATES
+Tweets are accompanied by two types of geo-coordinates: “place” coordinates, available for approximately 10% of tweets, and coordinates of the user at the time of publication, available for approximately 1% of tweets. Given our interest in the latter set of coordinates, we work with a small subset of the overall data. This restriction causes two issues:
+The data is relatively sparse at the park-level. However, we overcome this issue by recording the data over a long time period (152 days).
+The fact that users can opt-in and out of location sharing may mean that the users that we observe are different from the ones that we don’t observe. This issue raises concerns about our sample’s representativeness of the overall Twitter population.
+
+SKEWED DEMOGRAPHICS
+The demographics of Twitter users are highly skewed. As discussed in a Pew Research Center report, younger Americans are more likely than older Americans to be on Twitter (the share of adults ages 18-29 on Twitter is more than triple the share among adults 65 and older). Twitter is also more popular among the highly educated and earners of income greater than $50K. Therefore, we cannot directly extrapolate our results to the general population. However, at later stages of cognitive mapping, we can use census data and survey results to calibrate our models.
+
+TWITTER USAGE PATTERNS
+Even among Twitter users, usage varies significantly, with some users tweeting hundreds of tweets each month while others tweet sporadically. As a result, not only some users have greater weight, but some user-level measures are imprecise due to a low number of tweets for a particular user.
+
+BOTS AND ADVERTISEMENT
+Twitter data is very noisy. Some users make indirect references in connection to an attached image or in reply to another user. Further, many users are bots, many of which provide advertisement. For this reason, we apply filtering techniques discussed in the Data Section 4. As a result, we further reduce the size of our data and also run the risk of introducing biases in the results.
+
+LIMITED TIME PERIOD
+The 152 days recorded may not be representative of the rest of year. Therefore, the downward pattern in sentiment noticed in the data may be an indication of a change in season from summer to fall rather a longer trend. Nevertheless, we are continuing to continuously record data, so the data’s time period is quickly expanding.
+
+UNNATURAL ENVIRONMENT
+Twitter provides an unnatural highly-engineered environment designed to draw-in and engage online visitors; Matthew Salganik, an expert in Social Media analytics, even argues that Social Media platforms are the online equivalent of a casino. Therefore, the behavior and words of Twitter users may not be representative of the same users’ actual off-line action (i.e. interaction with the space) and opinions.
+
+ALGORITHMIC CONFOUNDING
+Algorithmic confounding is the idea that algorithms affect and create patterns in the online world. For example, Twitter’s search algorithms attempt to match content to users’ requests. As a result, tweeters’ interactions and behavior are partially the results of the algorithms’ mechanics. This confounding factor makes it difficult to disentangle actual trends in behavior or opinion of Tweeters from the effects of the algorithms.
+
+8. Conclusion
+This study provides preliminary evidence that Twitter data can be reflective of urban physical space characteristics. We explored natural language processing techniques and usage patterns to obtain measures of user characteristics, sentiment, and topics discussed. We tested differences between park types and by user types and determined that the observed patterns are statistically significant rather than simply the result of random noise. We further obtained a first phase of what can be a next generation of cognitive mapping of three Manhattan parks: Washington Square Park, Bryant Park, and the High Line. It is clear that the application of advanced text analytics to Twitter data has the potential to advance cognitive mapping. The next phase of this exploration will begin to correlate the map patterns with social demographic data to determine the environmental factors that produce these outcomes.
+
+9. References
+Bertrand KZ, Bialik M, Virdee K, Gros A, Bar-Yam Y (2013). Sentiment in New York City: A High Resolution Spatial and Temporal View. arXiv:1308.5010.
+Craglia M, Osernmann F, and Spinsanti L (2012). Digital Earth from vision to practice: making sense of citizen-generated content, International Journal of Digital Earth, Vol. 5 Iss: 5, pp. 398-416.
+Dodds PS, Harris KD, Kloumann IM, Bliss CA, Danforth CM (2011). Temporal Patterns of Happiness and Information in a Global Social Network: Hedonometrics and Twitter, PLoS ONE 6(12): e26752. doi:10.1371/journal.pone.0026752
+Duggan M (2015). Mobile Messaging and Social Media, Pew Research Center.
+França U, Sayama H, McSwiggen C , Daneshvar R, and Bar-Yam Y (2014). Visualizing the “Heartbeat” of a City with Tweets, New England Complex Systems Institute.
+Frank MR, Mitchell L, Dodds PS, Danforth CM (2013). Happiness and the Patterns of Life: A Study of Geolocated Tweets, Scientific Reports, Article number: 2625. DOI: 10.1038/srep02625.
+Garling, T. (1995). Introduction: How Do Urban Residents Acquire, Mentally Represent, and Use Knowledge of Spatial Layout? In Garling, T. (Ed.). (1995). Urban Cognition. San Diego: Academic Press. pp. 1-12.
+Hale SA (2014). Global Connectivity and Multilinguals in the Twitter Network. In Proceedings of the 2014 ACM Annual Conference on Human Factors in Computing Systems, ACM (Montreal, Canada). https://github.com/computermacgyver/twitter-python
+Hofer B, Lampoltshammer TJ, Belgiu M (2015). Demography of Twitter Users in the City of London: An Exploratory Spatial Data Analysis Approach. In book: Modern Trends in Cartography, Publisher: Springer International Publishing, Editors: Brus, Jan and Vondrakova, Alena and Vozenilek, Vit, pp.199-21
+Hollevoet, C. (1992). Wandering in the City. Flânerie to Dérive and After: The Cognitive Mapping of Urban Space. In Hollevoet, C. (Ed.). (1992). In The Power of the City. The City of Power. New York: Whitney Museum of Art. pp. 25-56.
+Kitchin, R. (2000). Collecting and analysing cognitive mapping data. In Kithcin, R., Freundschuh, S. (Eds). (2000). Cognitive Mapping. Past, Present and Future. New York: Routledge. pp. 9-23.
+Kuipers, B. (1982). The "Map in the head" Metaphor. Environment and Behavior 14 (2): 202-220.
+Lynch, K. (1960). The Image of the City. Cambrige:  MIT Press.
+	McGrath, B. (2008). Digital Modeling for Urban Design. Hoboken, NJ : John Wiley.
+Miller GA, Beckwith R, Fellbaum C, Gross D, Miller K (1993). Introduction to WordNet: An On-line Lexical Database, Princeton Papers.
+Morstatter F, Pfeffer J, Liu H (2014). When is it Biased? Assessing the Representativeness of Twitter’s Streaming API. arXiv:1401.7909v1
+Rosenthal S, Agarwal A, and McKeown K (2013). Columbia NLP: Sentiment Detection of Sentences and Subjective Phrases in Social Media, Columbia University Natural Language Processing Publications.
+Sadler, S. (1998). The Situationist City. Cambridge: MIT Press.
+Tzonis, A., White, I. (1994). Introduction. In Tzonis, A., White, I. (Eds.). Automation Based Creative Design. Research and Perspectives. Amsterdam: Elsevier Science B.V. pp. 1-39.
+Wakamiya S, Lee R and Sumiya K (2011). Crowdbased Urban Characterization: Extracting Crowd Behavioral Patterns in Urban Areas from Twitter. Proceedings of the 3rd ACM SIGSPATIAL International Workshop on Location-Based Social Networks. ACM, New York, NY, 2011, 77–84. DOI= http://doi.acm.org/10.1145/2063212.2063225.
+Zimmerman M, Proferes NJ  (2014). A topology of Twitter research: disciplines, methods, and ethics, Aslib Journal of Information Management, Vol. 66 Iss: 3, pp.250 – 261
+Žižek, S. (1992) From Virtual Reality to the Virtualization of Reality. In Fleck, R. (Ed.). (1992). On Justifying the Hypothetical Nature of Art and the Non-Identicality Within the Art World. Koln: Walter Koenig Bookshop. pp. 127-136.
+
+10. Appendix
+
+Appendix A: GitHub Code
+The code used for this project is available on GitHub at the following link: https://github.com/laurauguc/Social-Media-Interface-and-the-Next-Generation-Cognitive-Mapping-in-New-York-City
+
+Appendix B: Frequency Series before Scaling
+The following figure shows the frequency series in FIGURE 4 prior to scaling.
+
+Appendix C: Variation of Tourist Selection
+The following figure shows the sentiment series in FIGURE 12, with a variation. Rather than categorizing users with only 1 tweet in the city as tourist, these users are filtered out of the dataset. The resulting sentiment series is presented below.
+
+The resulting peaks and trough are different from the ones obtained with the paper’s first method. Now, the highest and lowest days for tourists and residents are matching.
+
+Appendix D: Maps
+The following maps are grouped as follows. The first set of maps provides an extended view of Figures 6-10 and 15-19. The second set of maps provides further cognitive maps for Bryant Park, exploring sentiment in combination with topics and resident types.
