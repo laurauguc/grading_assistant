@@ -82,7 +82,6 @@ const FileLoader = ({
       />
       <label htmlFor="file-upload" className="upload-label">
         <MdUploadFile className="upload-icon" />
-        <span>Upload a file</span>
       </label>
 
       {rubricMarkdownFileName && (
