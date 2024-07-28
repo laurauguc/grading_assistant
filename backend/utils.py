@@ -184,8 +184,9 @@ def create_improvements_html_with_css(improvements, original_text):
     Highlights the revised text in the essay and provides a tooltip with the details of the improvement.
     """
     if not improvements:
-        return "Unable to generate the Detailed Feedback. Please check your inputs and try again"
-
+        return "Unable to generate the Detailed Feedback. Please check your inputs and try again."
+    elif len(improvements) == 0:
+        return "Unable to generate the Detailed Feedback. Please check your inputs and try again."
     css = """
     <style>
     .improvement-tooltip {
@@ -233,7 +234,7 @@ def create_improvements_html_with_css(improvements, original_text):
         <div class="improvement-tooltip">
             {revised}
             <span class="tooltiptext">
-                <strong>Category:</strong> {criterion}<br>
+                <strong>Criterion:</strong> {criterion}<br>
                 <strong>Improvement:</strong> {improvement_text}<br>
                 <strong>Reason:</strong> {reason_for_suggestion}
             </span>
