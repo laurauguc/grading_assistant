@@ -82,7 +82,7 @@ def grade_with_gemini(request):
     "   - Do not deduct points for issues related to formatting, tables, and figures.\n"
     "3. Review the analysis in step 2:\n"
     "   - Ensure all justifications are factually accurate.\n"
-    "   - Reassess if the grading was too harsh. Consider assigning higher points for effort and creativity.\n"
+    "   - Reassess if the grading was too tough. Consider assigning higher points for effort and creativity.\n"
     "   - Verify that all grading rubric categories are included and sum correctly to the total score.\n"
     "   - Verify that any elements mentioned in the justification (e.g., citations) are present.\n"
     "   - Look for opportunities to acknowledge strengths.\n"
