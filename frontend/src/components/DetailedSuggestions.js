@@ -20,6 +20,7 @@ function DetailedSuggestions({
   const errorMessage =
     'Unable to generate the Detailed Feedback. Please check your inputs and try again.';
   const generate = () => {
+    setDetailedSuggestions(null);
     if (!student_assignment) {
       setMissingAssignment(true);
       return;
@@ -48,17 +49,18 @@ function DetailedSuggestions({
     <div>
       <p
         style={{
-          marginBottom: 30,
+          marginBottom: 20,
+          marginTop: 0,
         }}
       >
-        The Detailed Feedback provides a rewritten version of the essay, along
-        with explanations and the relevant rubric category.
+        The Detailed Feedback provides a rewritten version of the assignment,
+        along with explanations and the relevant rubric criteria.
       </p>
-      {!suggestions_loading && !detailed_suggestions && (
-        <button onClick={generate} className={'get_details_button ' + 'border'}>
-          Get Detailed Feedback
-        </button>
-      )}
+
+      <button onClick={generate} className={'get_details_button ' + 'border'}>
+        Get Detailed Feedback
+      </button>
+
       {missingAssignment && (
         <p
           style={{

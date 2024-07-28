@@ -58,7 +58,6 @@ const FileLoader = ({
     const headers = {
       'Content-Type': 'multipart/form-data',
     };
-    console.log('3', formData.getAll('file'));
 
     axios
       .post(BASE_URL.concat('api/convert-docx-to-md/'), formData, headers)
@@ -93,7 +92,7 @@ const FileLoader = ({
       {fileTypeError && (
         <p className="error">
           Currently, we only support custom rubrics in the .docx format. Please
-          load the rubric in the correct format and try again
+          load the rubric in the correct format and try again.
         </p>
       )}
     </div>
