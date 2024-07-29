@@ -40,6 +40,7 @@ const FileLoader = ({
       setRubricMarkdownFileName(fileName);
       localStorage.setItem('rubricMarkdownFileName', fileName);
       setFileTypeError(false);
+      event.target.value = null;
     } else {
       setFile(null);
       setFileTypeError(true);
