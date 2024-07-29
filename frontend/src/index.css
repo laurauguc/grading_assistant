@@ -278,8 +278,8 @@ label {
   align-items: center;
   flex-direction: column;
   padding-right: 20px;
-  /* margin-top: 10px; */
 }
+
 /* select {
   padding: 10px 20px;
   font-size: 16px;
@@ -354,8 +354,10 @@ li {
   background-color: var(--transparent-bg-color);
 }
 
-.view_rubric h1 h2 {
-  font-size: 20px;
+.view_rubric h1,
+.view_rubric h2 {
+  font-size: 19px;
+  margin-bottom: 0;
 }
 
 .view_rubric td {
@@ -399,8 +401,7 @@ li {
 table {
   border-collapse: collapse;
   width: 100%;
-  /* background-color: white; */
-
+  margin-top: 15px;
   table-layout: fixed;
 }
 td,
@@ -425,6 +426,10 @@ table td {
 
 table tr:nth-child(even) {
   background: #f8f8f8;
+}
+.error {
+  margin-top: 50px;
+  color: var(--red);
 }
 
 @media (min-width: 909px) {

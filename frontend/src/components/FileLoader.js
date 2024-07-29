@@ -42,7 +42,7 @@ const FileLoader = ({
       setFileTypeError(false);
     } else {
       setFile(null);
-      setFileTypeError(true); // Show file type error
+      setFileTypeError(true);
     }
   };
 
@@ -71,8 +71,11 @@ const FileLoader = ({
 
   return (
     <div className="load">
-      <p>Or load your own. </p>
-      <p> Formats accepted: docx</p>
+      <p>Load your own grading rubric: </p>
+      <label htmlFor="file-upload" className="upload-label">
+        <MdUploadFile className="upload-icon" />
+      </label>
+      <p style={{ fontSize: 15 }}> (Formats accepted: docx)</p>
 
       <input
         type="file"
@@ -80,9 +83,6 @@ const FileLoader = ({
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />
-      <label htmlFor="file-upload" className="upload-label">
-        <MdUploadFile className="upload-icon" />
-      </label>
 
       {rubricMarkdownFileName && (
         <p className="filename">

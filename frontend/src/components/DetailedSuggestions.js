@@ -12,6 +12,7 @@ function DetailedSuggestions({
   // States to manage Gemini suggestions & loading message
   const [suggestions_loading, setSuggestionsLoading] = useState(false);
   const [missingAssignment, setMissingAssignment] = useState(false);
+  const [error, setError] = useState('');
 
   const BASE_URL =
     process.env.NODE_ENV === 'development'
@@ -19,8 +20,12 @@ function DetailedSuggestions({
       : configData['SERVER_URL'];
   const errorMessage =
     'Unable to generate the Detailed Feedback. Please check your inputs and try again.';
+  const globalErrorMessage = 'Something went wrong. Please try again.';
   const generate = () => {
     setDetailedSuggestions(null);
+    setError('');
+    setMissingAssignment(false);
+
     if (!student_assignment) {
       setMissingAssignment(true);
       return;
@@ -34,15 +39,18 @@ function DetailedSuggestions({
         },
       }) // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
       .then(response => {
-        if (response == errorMessage) {
+        if (response === errorMessage) {
           setMissingAssignment(errorMessage);
           return;
         }
         setDetailedSuggestions(response.data.message);
       })
-      .then(() => setSuggestionsLoading(false))
       .catch(error => {
         console.log(error);
+        setError(globalErrorMessage);
+      })
+      .finally(() => {
+        setSuggestionsLoading(false);
       });
   };
   return (
@@ -57,16 +65,16 @@ function DetailedSuggestions({
         along with explanations and the relevant rubric criteria.
       </p>
 
-      <button onClick={generate} className={'get_details_button ' + 'border'}>
+      <button
+        onClick={generate}
+        className={'get_details_button ' + 'border'}
+        aria-label="Get Detailed Feedback"
+      >
         Get Detailed Feedback
       </button>
 
       {missingAssignment && (
-        <p
-          style={{
-            marginTop: 50,
-          }}
-        >
+        <p className="error" role="alert">
           No student assignment was found. Please return to the Home tab to
           insert.
         </p>
@@ -79,7 +87,7 @@ function DetailedSuggestions({
             },
           }}
         >
-          <Spin tip="Analyzing" size="large">
+          <Spin tip="Analyzing" size="large" role="status">
             <div
               style={{
                 padding: 50,
@@ -89,11 +97,18 @@ function DetailedSuggestions({
           </Spin>
         </ConfigProvider>
       )}
+      {error && (
+        <p className="error" role="alert">
+          {error}
+        </p>
+      )}
       {detailed_suggestions && (
         <div className="flex-column">
           <div
             dangerouslySetInnerHTML={{ __html: detailed_suggestions }}
             className={'detailed_feedback ' + 'border'}
+            aria-live="polite"
+            tabIndex="0"
           />
         </div>
       )}

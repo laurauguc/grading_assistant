@@ -39,7 +39,7 @@ const Home = ({
     const assignment = student_assignment_submission.current.value;
     setAdditionalInput(additional_input.current.value);
     setStudentAssignment(assignment);
-    generate(assignment, selected_rubric_id, additionalInput);
+    generate(assignment, selected_rubric_id, additionalInput, rubricMarkdown);
   };
   const handleStudentAssignmentChange = e => {
     setStudentAssignment(e.target.value);
@@ -47,16 +47,27 @@ const Home = ({
   const handleAdditionalInputChange = e => {
     setAdditionalInput(e.target.value);
   };
-  const generate = (student_assignment, rubric_id, additionalInput) => {
+  const generate = (
+    student_assignment,
+    rubric_id,
+    additionalInput,
+    rubricMarkdown
+  ) => {
     setGradingLoading(true);
+
+    const params = {
+      student_assignment,
+      additionalInput,
+    };
+    if (rubricMarkdown) {
+      params.rubric_content = rubricMarkdown;
+    } else {
+      params.rubric_id = rubric_id;
+    }
+    console.log('pararms', params);
     axios
       .get(BASE_URL.concat('api/grade-with-gemini/'), {
-        params: {
-          student_assignment,
-          rubric_id,
-          rubricMarkdown,
-          additionalInput,
-        },
+        params,
       })
       .then(response => {
         setGrading(response.data.message);
@@ -64,6 +75,10 @@ const Home = ({
       .then(() => setGradingLoading(false))
       .catch(error => {
         console.log(error);
+        setGrading('Something went wrong. Please try again.');
+      })
+      .finally(() => {
+        setGradingLoading(false);
       });
   };
 
@@ -74,29 +89,27 @@ const Home = ({
           <form onSubmit={handleSubmit}>
             <h2 className="step1">Step 1: Grading Rubric</h2>
             <div className="curated-rubric">
-              <div className="flex-row">
-                <label htmlFor="rubric-selection">
-                  Select a curated grading rubric:
-                </label>
-                {!rubrics ? (
-                  <div className="spinner" />
-                ) : (
-                  <ObtainRubricNames
-                    selected_rubric_id={selected_rubric_id}
-                    setRubricID={setRubricID}
-                    rubrics={rubrics}
-                    resetLabel={resetLabel}
-                    id="rubric-selection"
-                  />
-                )}
-              </div>
-
               <FileLoader
                 setRubricMarkdown={setRubricMarkdown}
                 rubricMarkdownFileName={rubricMarkdownFileName}
                 setRubricMarkdownFileName={setRubricMarkdownFileName}
                 resetLabel={resetLabel}
               />
+              <div className="flex-row">
+                <div>
+                  <label htmlFor="rubric-selection">
+                    Or select a curated one:
+                  </label>
+                </div>
+
+                <ObtainRubricNames
+                  selected_rubric_id={selected_rubric_id}
+                  setRubricID={setRubricID}
+                  rubrics={rubrics}
+                  resetLabel={resetLabel}
+                  id="rubric-selection"
+                />
+              </div>
             </div>
             <h2 className="step2">Step 2: Student Assignment</h2>
             <label htmlFor="student-assignment">
@@ -148,7 +161,7 @@ const Home = ({
                   },
                 }}
               >
-                <Spin tip="Analyzing" size="large">
+                <Spin tip="Analyzing" size="large" role="status">
                   <div
                     style={{
                       padding: 50,
@@ -170,6 +183,7 @@ const Home = ({
                 setGrading('');
                 setAdditionalInput('');
                 setDetailedSuggestions('');
+                resetLabel();
               }}
             >
               Clear to Restart

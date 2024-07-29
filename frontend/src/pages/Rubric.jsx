@@ -13,8 +13,6 @@ const Rubric = ({
 }) => {
   return (
     <div className="container">
-      {/* <p className="center">View or change your Grading Rubric</p> */}
-
       <ViewGradingRubricDetails
         rubric_id={selected_rubric_id}
         setRubricID={setRubricID}
