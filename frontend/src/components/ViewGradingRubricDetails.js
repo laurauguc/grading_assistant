@@ -6,6 +6,7 @@ import configData from '../config.json';
 
 function ViewGradingRubricDetails(props) {
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   //http://localhost:8000/api/obtain-rubric/?rubric_id=1
   var BASE_URL;
@@ -25,22 +26,20 @@ function ViewGradingRubricDetails(props) {
         level: '',
         language: '',
       });
-
       return;
     }
     axios
       .get(BASE_URL.concat('api/obtain-rubric/'), {
         params: props,
-      }) // alternative: {params: {student_assignment: props.student_assignment, grading_rubric: props.grading_rubric}}
+      })
       .then(response => {
         setMessage(response.data);
       })
       .catch(error => {
         console.log(error);
+        setError('Unable to fetch the rubric details. Please try again.');
       });
   }, [props]);
-  console.log('PROPS', props);
-  // console.log(message.file_);
 
   return (
     <div className="main_container_2">
@@ -77,31 +76,13 @@ function ViewGradingRubricDetails(props) {
               {message.language}
             </p>
           )}
+          {error && (
+            <p className="error" role="alert">
+              {error}
+            </p>
+          )}
         </div>
       </div>
-      {/* <div className="confirm-change">
-          <h2>Step 2: Confirm or Change Grading Rubric </h2>
-          <p>Select a curated grading rubric:</p>
-          <ObtainRubricNames
-            selected_rubric_id={props.rubric_id}
-            setRubricID={props.setRubricID}
-            rubrics={props.rubrics}
-          />
-
-          <FileLoader
-            setRubricMarkdown={props.setRubricMarkdown}
-            rubricMarkdownFileName={props.rubricMarkdownFileName}
-            setRubricMarkdownFileName={props.setRubricMarkdownFileName}
-          />
-
-          <button
-            type="submit"
-            className="grade-button"
-            onClick={() => props.handleTabChange(0)}
-          >
-            Confirm
-          </button>
-        </div> */}
 
       <div className={'view_rubric ' + 'border'}>
         <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>

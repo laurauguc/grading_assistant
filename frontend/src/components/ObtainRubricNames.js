@@ -19,17 +19,10 @@ function ObtainRubricNames({
     }
   };
 
-  console.log(process.env.REACT_APP_BASE_URL);
+  // console.log(process.env.REACT_APP_BASE_URL);
 
   if (rubrics)
     return (
-      // <select value={selected_rubric_id} onChange={handleChange_rubric}>
-      //   {rubrics.map((rubric, key) => (
-      //     <option value={rubric.id} key={key}>
-      //       {rubric.name}
-      //     </option>
-      //   ))}
-      // </select>
       <div>
         <ConfigProvider theme={{ token: { colorPrimary: '#ff7175' } }}>
           <Select
