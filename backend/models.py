@@ -7,7 +7,7 @@ class GradingRubric(models.Model):
     name = models.CharField(max_length=100)
     class_name = models.CharField(max_length=50, blank = True)
     #submitter = models.CharField(max_length=100, blank = True)
-    level = models.CharField(max_length=20, blank = True)
+    level = models.CharField(max_length=40, blank = True)
     language = models.CharField(max_length=50)
     description = models.TextField(blank = True)
     content = models.FileField(upload_to="rubrics") # markdown of rubric. More info on FileField: https://docs.djangoproject.com/en/5.0/topics/files/
