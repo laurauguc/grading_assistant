@@ -187,7 +187,7 @@ const Home = ({
                 resetLabel();
               }}
             >
-              Clear to Restart
+              Clear
             </button>
           </div>
         </div>
