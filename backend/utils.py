@@ -51,6 +51,28 @@ class DocxToMarkdownConverter:
             md_text = f"{md_text}\n"
         return md_text
 
+    def convert_cell_to_md(self, cell):
+        """
+        Convert the content of a DOCX table cell to a Markdown formatted string.
+
+        Parameters:
+        cell (docx.table._Cell): The cell to convert.
+
+        Returns:
+        str: The Markdown formatted cell content.
+        """
+        md_lines = []
+        for paragraph in cell.paragraphs:
+            if paragraph.text.strip():  # Only add non-empty paragraphs
+                md_lines.append(paragraph.text.strip())
+        for inner_table in cell.tables:
+            for inner_row in inner_table.rows: # changed here
+                for inner_cell in inner_row.cells:
+                    for paragraph in inner_cell.paragraphs:
+                        md_lines.append(paragraph.text.strip(". "))
+        cell_md = '. '.join(md_lines).strip()  # Join paragraphs with spaces
+        return cell_md
+
     def convert_table_to_md(self, table):
         """
         Convert a DOCX table to a Markdown formatted string.
@@ -64,13 +86,18 @@ class DocxToMarkdownConverter:
         md_lines = []
         header = True
         for row in table.rows:
-            row_data = [cell.text.strip() for cell in row.cells]
-            md_line = '| ' + ' | '.join(row_data) + ' |'
-            md_lines.append(md_line)
-            if header:
-                separator = '| ' + ' | '.join(['---'] * len(row_data)) + ' |'
-                md_lines.append(separator)
-                header = False
+            row_data = [self.convert_cell_to_md(cell) for cell in row.cells]
+            #row_data = [cell.text.strip() for cell in row.cells]
+            if len(set(row_data)) == 1: # wide row
+                md_lines.append("\n"+row_data[0]+"\n")
+                header = True
+            else:
+                md_line = '| ' + ' | '.join(row_data) + ' |'
+                md_lines.append(md_line)
+                if header:
+                    separator = '| ' + ' | '.join(['---'] * len(row_data)) + ' |'
+                    md_lines.append(separator)
+                    header = False
         return md_lines
 
     def convert_docx_to_md(self):
