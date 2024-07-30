@@ -123,6 +123,7 @@ const Home = ({
               value={student_assignment}
               onChange={handleStudentAssignmentChange}
               aria-labelledby="student-assignment"
+              required
             />
             <h2 className="step2">
               Step 3 (optional): Additional instructions
