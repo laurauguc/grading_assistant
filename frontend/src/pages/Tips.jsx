@@ -10,7 +10,7 @@ const Tips = () => {
     <div className={'detailed_container ' + 'main_container'}>
       <div>
         <div className="flex-row-center">
-          <h2>I am a</h2>
+          <h2 id="role-heading">I am a</h2>
           <ConfigProvider
             theme={{
               token: {
@@ -25,6 +25,7 @@ const Tips = () => {
                 defaultValue="teacher"
                 size="large"
                 onChange={handleRoleChange}
+                aria-labelledby="role-heading"
               >
                 <Radio.Button value="teacher">Teacher</Radio.Button>
                 <Radio.Button value="student">Student</Radio.Button>
