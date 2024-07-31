@@ -14,7 +14,7 @@ const Tips = () => {
           <ConfigProvider
             theme={{
               token: {
-                colorPrimary: '6f5403',
+                colorPrimary: '535676',
                 borderRadius: 6,
               },
             }}
@@ -31,7 +31,7 @@ const Tips = () => {
             </Flex>
           </ConfigProvider>
         </div>
-        <div className={'border ' + 'tips'}>
+        <div className={'tips'}>
           {role === 'teacher' && (
             <div>
               <p>

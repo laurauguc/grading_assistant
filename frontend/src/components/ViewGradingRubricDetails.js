@@ -45,34 +45,34 @@ function ViewGradingRubricDetails(props) {
     <div className="main_container_2">
       <div className="select_rubric">
         <div className="rubric_details">
-          <h2>Selected Grading Rubric Info</h2>
+          <h2 className="bold">SELECTED GRADING RUBRIC INFO</h2>
           {message.name && (
             <p>
-              <strong>Name: </strong>
+              <span className="bold">NAME: </span>
               {message.name}
             </p>
           )}
           {message.description && (
             <p>
-              <strong>Description: </strong>
+              <span className="bold">DESCRIPTION: </span>
               {message.description}
             </p>
           )}
           {message.class_name && (
             <p>
-              <strong>Class Name: </strong>
+              <span className="bold">CLASS NAME: </span>
               {message.class_name}
             </p>
           )}
           {message.level && (
             <p>
-              <strong>Level: </strong>
+              <span className="bold">LEVEL: </span>
               {message.level}
             </p>
           )}
           {message.language && (
             <p>
-              <strong>Language: </strong>
+              <span className="bold">LANGUAGE: </span>
               {message.language}
             </p>
           )}
@@ -84,7 +84,7 @@ function ViewGradingRubricDetails(props) {
         </div>
       </div>
 
-      <div className={'view_rubric ' + 'border'}>
+      <div className={'view_rubric'}>
         <Markdown remarkPlugins={[remarkGfm]}>{message.file_}</Markdown>
       </div>
     </div>

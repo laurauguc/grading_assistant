@@ -67,7 +67,7 @@ function DetailedSuggestions({
 
       <button
         onClick={generate}
-        className={'get_details_button ' + 'border'}
+        className={'get_details_button'}
         aria-label="Get Detailed Feedback"
       >
         Get Detailed Feedback
@@ -83,7 +83,7 @@ function DetailedSuggestions({
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: '#4CAF50',
+              colorPrimary: '#d0919a',
             },
           }}
         >
