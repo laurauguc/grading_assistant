@@ -47,12 +47,26 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
     } */
+
 header {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  /* margin-right: 10%; */
+}
+
+.modal {
+  margin: 0 8%;
+  margin-left: auto;
+}
+.headerClass {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 5px;
-  background-color: white;
 }
 
 header h1 {
@@ -218,6 +232,7 @@ textarea {
   padding: 5px 7px;
   margin-top: 10px;
   margin-bottom: 10px;
+  min-width: 50px;
 }
 
 .assignment_section {
@@ -268,6 +283,7 @@ label {
 }
 a {
   color: #145b94;
+  text-decoration: underline;
 }
 .center {
   text-align: center;
@@ -289,6 +305,21 @@ a {
 .grade-button:hover {
   background-color: var(--orangeSoft);
 }
+.about-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 150px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  background-color: white;
+  border: none;
+  color: black;
+  font-weight: 400;
+  border: 1px solid var(--orange);
+}
+.about-button:hover {
+  background-color: var(--orangeSoft);
+}
 .clear-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -301,13 +332,13 @@ a {
   font-weight: 400;
 }
 .clear-button:hover {
-  background-color: var(--greenSoft);
+  background-color: #acd7db;
 }
 .custom-select .ant-select-selector {
   border: none !important;
-  /* box-shadow: none !important; */
   width: 200px;
 }
+
 .get_details_button {
   padding: 10px 20px;
   font-size: 16px;
@@ -334,20 +365,27 @@ a {
   cursor: pointer;
   outline: none;
 } */
+.close-button {
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  color: #000000;
+  transition: all 0.3s;
+  padding: 7px 12px;
+  cursor: pointer;
+}
 
+.close-button:hover {
+  border: 1px solid var(--orange);
+}
 footer {
   font-size: 10px;
-  /* margin: 20px 0; */
-  /* color: aliceblue; */
-  /* background-color: rgb(133, 152, 158); */
   height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: -2;
-  /* position: absolute; */
-  /* bottom: 0; */
-  width: 100%;
+  /* width: 100%; */
+  padding: 0 20px;
 }
 ul {
   font-size: 15px;
@@ -473,6 +511,11 @@ table tr:nth-child(odd) {
 .error {
   margin-top: 50px;
   color: var(--red);
+}
+.privacy {
+  background-color: var(--grayBG);
+  margin: 20px;
+  padding: 20px 40px;
 }
 
 @media (min-width: 909px) {

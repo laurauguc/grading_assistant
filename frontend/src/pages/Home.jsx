@@ -123,7 +123,7 @@ const Home = ({
             <textarea
               id="student-assignment"
               ref={student_assignment_submission}
-              cols={66}
+              // cols={66}
               rows={10}
               value={student_assignment}
               onChange={handleStudentAssignmentChange}
@@ -140,7 +140,7 @@ const Home = ({
             <textarea
               id="additional-instructions"
               ref={additional_input}
-              cols={66}
+              // cols={66}
               rows={3}
               placeholder="Examples: add encouraging remarks; concise but specific."
               value={additionalInput}

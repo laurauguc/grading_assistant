@@ -6,8 +6,9 @@ import Details from '../src/pages/Details.jsx';
 import Tips from '../src/pages/Tips.jsx';
 import configData from './config.json';
 import { useState, useEffect } from 'react';
-import { Modal, Button } from 'antd';
-// import Modal from './components/Modal.js';
+import { Button } from 'antd';
+import AboutUsModal from './components/Modal.js';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
@@ -20,7 +21,6 @@ function App() {
   const [additionalInput, setAdditionalInput] = useState(null);
   const [detailed_suggestions, setDetailedSuggestions] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modalContent, setModalContent] = useState('');
 
   const resetLabel = () => {
     setRubricMarkdownFileName('');
@@ -137,45 +137,34 @@ function App() {
     setIsModalVisible(false);
   };
 
-  const showModal = content => {
-    setModalContent(content);
+  const showModal = () => {
     setIsModalVisible(true);
   };
 
   return (
     <React.Fragment>
       <header>
-        <img
-          src={logo}
-          className="App-logo"
-          alt="GradeMate logo"
-          height={120}
-        />
-        <div>
-          <h1>GradeMate</h1>
-          <h2>Gemini-powered grading assistant for teachers and students</h2>
+        <div className="headerClass">
+          <img
+            src={logo}
+            className="App-logo"
+            alt="GradeMate logo"
+            height={120}
+          />
+          <div>
+            <h1>GradeMate</h1>
+            <h2>Gemini-powered grading assistant for teachers and students</h2>
+          </div>
         </div>
-
-        {/* <Button onClick={() => showModal('This is the About Us content.')}>
-          About Us
-        </Button>
-
-        <Modal
-          title="About Us"
-          visible={isModalVisible}
-          onOk={handleModalClose}
-          onCancel={handleModalClose}
-          footer={[
-            <Button key="back" onClick={handleModalClose}>
-              Close
-            </Button>,
-          ]}
-        >
-          {modalContent}
-        </Modal> */}
-
-        {/* <button onClick={() => setIsModalVisible(true)}>Open Modal</button> */}
-        {/* {isModalVisible && <Modal setIsModalVisible={setIsModalVisible} />} */}
+        <div className="modal">
+          <button className="about-button" onClick={() => showModal()}>
+            About Us
+          </button>
+          <AboutUsModal
+            isVisible={isModalVisible}
+            handleClose={handleModalClose}
+          />
+        </div>
       </header>
       <div className="tabs">
         <div
@@ -213,9 +202,14 @@ function App() {
         </div>
       </div>
       <footer>
-        GradeMate may display inaccurate info so double-check its responses. It
-        is powered by the <span id="value">&nbsp;</span>
-        <a href="https://ai.google.dev/gemini-api/terms"> Gemini API</a>
+        <div>
+          GradeMate may display inaccurate info so double-check its responses.{' '}
+          <Link to="/privacy" target="_blank" rel="noreferrer">
+            {' '}
+            Your Privacy
+          </Link>
+          .
+        </div>
       </footer>
     </React.Fragment>
   );
