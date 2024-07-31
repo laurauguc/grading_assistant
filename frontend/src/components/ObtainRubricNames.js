@@ -28,9 +28,7 @@ function ObtainRubricNames({
           theme={{
             token: {
               colorPrimary: '#ff7a00',
-              border: 'none',
               borderRadius: '0px',
-              width: 'max-content',
             },
           }}
           dropdownStyle={{ borderRadius: '5px' }}
@@ -39,8 +37,7 @@ function ObtainRubricNames({
             value={selected_rubric_id}
             onChange={handleChange_rubric}
             style={{
-              // width: '100%',
-              border: 'none',
+              width: '280px',
             }}
             className="custom-select"
             aria-label="Select a grading rubric"
