@@ -166,10 +166,10 @@ def generate_suggestions_and_rewrite_essay(model, grading_feedback, student_assi
     response.resolve()
 
     if response and response.text:
-        print("Full response from model:\n", response.text)  # Debugging statement
+        #print("Full response from model:\n", response.text)  # Debugging statement
         return response.text
     else:
-        print("Error: No response from model")
+        #print("Error: No response from model")
         return None
 
 def clean_json_string(json_string):
@@ -187,7 +187,7 @@ def clean_json_string(json_string):
 
 def extract_json_improvements(response):
     if response is None:
-        print("Error: No response provided for JSON extraction")
+        print("Warning: No response provided for JSON extraction")
         return {'improvements': [], 'response_without_json': ''}
     try:
         json_match = re.search(r'\[\s*\{.*\}\s*\]', response, re.DOTALL)
@@ -201,7 +201,7 @@ def extract_json_improvements(response):
         response_without_json = response.replace(json_match.group(0), '')
         return {'improvements': improvements, 'response_without_json': response_without_json}
     except (ValueError, json.JSONDecodeError) as e:
-        print("Error extracting JSON from response:", e)
+        print("Warning: issue extracting JSON from response:", e)
         print(f"Failed to decode JSON string: {response}")  # Print the entire response for debugging
         return {'improvements': [], 'response_without_json': response}
 
