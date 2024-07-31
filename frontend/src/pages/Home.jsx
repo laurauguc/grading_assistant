@@ -87,7 +87,9 @@ const Home = ({
       <div className="main_container">
         <div className="assignment_section">
           <form onSubmit={handleSubmit}>
-            <h2 className="step1">Step 1: Grading Rubric</h2>
+            <h2 className="step1">
+              <span className="bold">STEP 1:</span> GRADING RUBRIC
+            </h2>
             <div className="curated-rubric">
               <FileLoader
                 setRubricMarkdown={setRubricMarkdown}
@@ -111,9 +113,12 @@ const Home = ({
                 />
               </div>
             </div>
-            <h2 className="step2">Step 2: Student Assignment</h2>
+            <h2 className="step2">
+              {' '}
+              <span className="bold">STEP 2:</span> STUDENT ASSIGNMENT
+            </h2>
             <label htmlFor="student-assignment">
-              Insert the student assignment
+              Insert the student assignment:
             </label>
             <textarea
               id="student-assignment"
@@ -126,10 +131,11 @@ const Home = ({
               required
             />
             <h2 className="step2">
-              Step 3 (optional): Additional instructions
+              <span className="bold">STEP 3 (OPTIONAL):</span> ADDITIONAL
+              INSTRUCTIONS
             </h2>
             <label htmlFor="additional-instructions">
-              Personalize the grading with additional input
+              Personalize the grading with additional input:
             </label>
             <textarea
               id="additional-instructions"
@@ -151,14 +157,18 @@ const Home = ({
           </form>
         </div>
         <div className="grading_section">
-          <h2>Grade and Feedback</h2>
-          <p>The grade and feedback will appear here</p>
-          <div className={'graded_feedback ' + 'border'}>
+          <h2>
+            {' '}
+            <span className="bold">GRADE & FEEDBACK</span>{' '}
+          </h2>
+
+          <p>The grade and feedback will appear here:</p>
+          <div className={'graded_feedback'}>
             {grading_loading ? (
               <ConfigProvider
                 theme={{
                   token: {
-                    colorPrimary: '#F44336',
+                    colorPrimary: '#70bec7',
                   },
                 }}
               >
@@ -178,7 +188,7 @@ const Home = ({
           <div className="button-container">
             <button
               type="button"
-              className={'grade-button ' + 'border'}
+              className={'clear-button'}
               onClick={() => {
                 setStudentAssignment('');
                 setGrading('');

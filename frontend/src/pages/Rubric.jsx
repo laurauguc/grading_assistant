@@ -12,18 +12,16 @@ const Rubric = ({
   setRubricMarkdown,
 }) => {
   return (
-    <div className="container">
-      <ViewGradingRubricDetails
-        rubric_id={selected_rubric_id}
-        setRubricID={setRubricID}
-        rubrics={rubrics}
-        handleTabChange={handleTabChange}
-        rubricMarkdown={rubricMarkdown}
-        rubricMarkdownFileName={rubricMarkdownFileName}
-        setRubricMarkdownFileName={setRubricMarkdownFileName}
-        setRubricMarkdown={setRubricMarkdown}
-      />
-    </div>
+    <ViewGradingRubricDetails
+      rubric_id={selected_rubric_id}
+      setRubricID={setRubricID}
+      rubrics={rubrics}
+      handleTabChange={handleTabChange}
+      rubricMarkdown={rubricMarkdown}
+      rubricMarkdownFileName={rubricMarkdownFileName}
+      setRubricMarkdownFileName={setRubricMarkdownFileName}
+      setRubricMarkdown={setRubricMarkdown}
+    />
   );
 };
 
