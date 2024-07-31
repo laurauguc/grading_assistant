@@ -24,12 +24,25 @@ function ObtainRubricNames({
   if (rubrics)
     return (
       <div>
-        <ConfigProvider theme={{ token: { colorPrimary: '#ff7a00' } }}>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#ff7a00',
+              border: 'none',
+              borderRadius: '0px',
+              width: 'max-content',
+            },
+          }}
+          dropdownStyle={{ borderRadius: '5px' }}
+        >
           <Select
             value={selected_rubric_id}
             onChange={handleChange_rubric}
-            style={{ width: '100%', border: 'none', borderRadius: '1px' }}
-            dropdownStyle={{ borderRadius: '5px' }}
+            style={{
+              // width: '100%',
+              border: 'none',
+            }}
+            className="custom-select"
             aria-label="Select a grading rubric"
           >
             {rubrics.map((rubric, key) => (

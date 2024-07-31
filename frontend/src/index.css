@@ -12,7 +12,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #8bbfc5;
+  background-color: #92c2c7;
 }
 
 :root {
@@ -295,7 +295,7 @@ a {
   width: 250px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  background-color: #8bbfc5;
+  background-color: #92c2c7;
   border: none;
   color: black;
   font-weight: 400;
@@ -303,7 +303,10 @@ a {
 .clear-button:hover {
   background-color: var(--greenSoft);
 }
-
+.custom-select .ant-select-selector {
+  border: none !important;
+  box-shadow: none !important;
+}
 .get_details_button {
   padding: 10px 20px;
   font-size: 16px;

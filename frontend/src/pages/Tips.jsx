@@ -16,6 +16,7 @@ const Tips = () => {
               token: {
                 colorPrimary: '535676',
                 borderRadius: 6,
+                borderRadius: '0px',
               },
             }}
           >

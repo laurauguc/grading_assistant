@@ -168,7 +168,7 @@ const Home = ({
               <ConfigProvider
                 theme={{
                   token: {
-                    colorPrimary: '#83aa64',
+                    colorPrimary: '#70bec7',
                   },
                 }}
               >

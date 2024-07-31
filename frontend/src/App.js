@@ -156,7 +156,7 @@ function App() {
           <h2>Gemini-powered grading assistant for teachers and students</h2>
         </div>
 
-        <Button onClick={() => showModal('This is the About Us content.')}>
+        {/* <Button onClick={() => showModal('This is the About Us content.')}>
           About Us
         </Button>
 
@@ -172,7 +172,7 @@ function App() {
           ]}
         >
           {modalContent}
-        </Modal>
+        </Modal> */}
 
         {/* <button onClick={() => setIsModalVisible(true)}>Open Modal</button> */}
         {/* {isModalVisible && <Modal setIsModalVisible={setIsModalVisible} />} */}
