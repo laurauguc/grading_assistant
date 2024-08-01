@@ -217,9 +217,7 @@ def convert_docx_to_md(request):
 
     return Response(md_content)
 
-#from django.shortcuts import render
-
-
+from django.shortcuts import render
 
 #def index_view(request):
 #    logger.debug('Serving index.html')
