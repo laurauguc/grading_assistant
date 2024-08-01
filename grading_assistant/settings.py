@@ -172,7 +172,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
 
     FRONTEND_DIR / "build",
-    FRONTEND_DIR / "build/static", # this commented out
+    #FRONTEND_DIR / "build/static", # this commented out
 
 ]
 

@@ -217,6 +217,13 @@ def convert_docx_to_md(request):
 
     return Response(md_content)
 
-def index_view(request):
-    logger.debug('Serving index.html')
-    return render(request, 'index.html')
+#from django.shortcuts import render
+
+
+
+#def index_view(request):
+#    logger.debug('Serving index.html')
+#    return render(request, 'index.html')
+
+#def privacy_view(request):
+#    return render(request, 'privacy.html')

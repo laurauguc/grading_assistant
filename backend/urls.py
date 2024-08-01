@@ -2,8 +2,8 @@ from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
-    re_path(r'^.*$', views.index_view, name='index'),
-    path('privacy/', views.index_view, name='privacy'),
+    #re_path(r'^.*$', views.index_view, name='index'),
+    #path('privacy/', views.index_view, name='privacy'),
     path('grade-with-gemini/', views.grade_with_gemini, name = 'grade_with_gemini'),
     path('suggestions-with-gemini/', views.suggestions_with_gemini, name = 'suggestions_with_gemini'),
     path('obtain-rubric-names/', views.obtain_rubric_names, name = 'obtain_rubric_names'),
