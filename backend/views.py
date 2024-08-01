@@ -216,3 +216,7 @@ def convert_docx_to_md(request):
         os.remove(tmp_file_path)
 
     return Response(md_content)
+
+def index_view(request):
+    logger.debug('Serving index.html')
+    return render(request, 'index.html')
