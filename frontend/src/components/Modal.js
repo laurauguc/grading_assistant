@@ -4,6 +4,7 @@ import { Modal, Button } from 'antd';
 const AboutUsModal = ({ isVisible, handleClose }) => {
   return (
     <Modal
+      className="modalText"
       // title="Welcome to GradeMate"
       visible={isVisible}
       onOk={handleClose}
@@ -15,20 +16,23 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         </button>,
       ]}
     >
-      <h1>Welcome to GradeMate</h1>
+      <h1>Welcome to GradeMate.</h1>
       <p>
         Powered by Gemini, Google's advanced language model, we assist teachers
         and students with grading assignments and delivering personalized
-        feedback.{' '}
+        feedback.
       </p>
-      <h1>Our Team </h1>
+      <h2>Our Team </h2>
       <p>
         We are an international team of four students and professionals,
         passionate about technology and society. Our diverse backgrounds span
-        the humanities, social sciences, and data science, enabling us to tackle
-        the critical issue of unequal access to education through GradeMate.
+        the humanities, social sciences, and data science, enabling us to{' '}
+        <span className="boldLight">
+          tackle the critical issue of unequal access to education through
+          GradeMate.
+        </span>
       </p>{' '}
-      <h1> Social Impact </h1>
+      <h2> Social Impact </h2>
       <p>
         GradeMate streamlines and enhances the grading process for writing
         assignments, which typically consumes about{' '}
@@ -42,15 +46,18 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         By utilizing GradeMate, teachers save valuable time and can provide
         students with more personalized feedback.
       </p>{' '}
-      <h2>More Student Interaction </h2>
+      <h3>More Student Interaction </h3>
       <p>
-        The value of a teacher's time is immeasurable. With more time freed up
-        for personal interactions, teachers can positively influence their
-        students' lives. As Nelson Mandela wisely stated, “Education is the most
-        powerful weapon which you can use to change the world.” GradeMate
-        empowers teachers to dedicate more time to these impactful engagements.
+        The value of a teacher's time is immeasurable. With{' '}
+        <span className="boldLight">
+          more time freed up for personal interactions
+        </span>
+        , teachers can positively influence their students' lives. As Nelson
+        Mandela wisely stated, “Education is the most powerful weapon which you
+        can use to change the world.” GradeMate empowers teachers to dedicate
+        more time to these impactful engagements.
       </p>{' '}
-      <h2>Addressing Educational Inequalities </h2>
+      <h3>Addressing Educational Inequalities </h3>
       <p>
         Underprivileged schools often lack access to personalized writing
         feedback. According to the{' '}
@@ -73,13 +80,17 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         </a>{' '}
         reveals that over 300,000 students in New York City's high-need schools
         are in oversized classes, disproportionately affecting Black, Brown,
-        low-income, and immigrant students. GradeMate aims to bridge this gap by
-        providing equitable access to quality feedback.
+        low-income, and immigrant students. GradeMate aims to{' '}
+        <span className="boldLight">
+          bridge this gap by providing equitable access
+        </span>{' '}
+        to quality feedback.
       </p>
-      <h2>Tackling the Global Teacher Shortage</h2>
+      <h3>Tackling the Global Teacher Shortage</h3>
       <p>
         GradeMate enables teachers to manage larger student populations
-        effectively, addressing the global teacher shortage.{' '}
+        effectively, addressing the{' '}
+        <span className="boldLight">global teacher shortage</span>.{' '}
         <a
           href="https://www.unesco.org/en/articles/global-report-teachers-what-you-need-know"
           target="_blank"
@@ -88,35 +99,57 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
           {' '}
           UNESCO
         </a>{' '}
-        estimates that to achieve universal primary and secondary education by
-        2030, an additional 69 million teachers are needed. By enhancing
-        efficiency, GradeMate supports teachers in meeting this critical demand
-        and ensures that more students receive the education they deserve.
+        estimates that{' '}
+        <span className="boldLight">
+          {' '}
+          to achieve universal primary and secondary education by 2030
+        </span>
+        , an additional 69 million teachers are needed. By enhancing efficiency,
+        GradeMate supports teachers in{' '}
+        <span className="boldLight">meeting this critical demand</span> and
+        ensures that more students receive the education they deserve.
       </p>
-      <h1>Environmental Impact </h1>
+      <h2>Environmental Impact </h2>
       <p>
         GradeMate encourages teachers to transition to digital assignment
-        submissions, promoting a paperless environment and reducing the
-        environmental impact associated with paper waste.
+        submissions,{' '}
+        <span className="boldLight"> promoting a paperless environment</span>{' '}
+        and reducing the environmental impact associated with paper waste.
       </p>
-      <h2>Paper Consumption in Schools</h2>{' '}
+      <h3>Paper Consumption in Schools</h3>{' '}
       <p>
         Schools use an average of 2,000 sheets of paper daily, amounting to
         320,000 sheets annually per school. With approximately 100,000 schools
         in the U.S., this results in the consumption of up to 32 billion sheets
         of paper each year (Record Nations) —just in the United States alone!
       </p>{' '}
-      <h2>Environmental Consequences of Paper Use</h2>
+      <h3>Environmental Consequences of Paper Use</h3>
       <ul>
         <li>
-          Landfill Contribution: Paper and paperboard account for nearly 12% of
-          landfill waste, making it the third-largest category of waste (US
-          EPA).
+          <span className="boldLight">Landfill Contribution: </span> Paper and
+          paperboard account for nearly 12% of municipal solid waste landfill,
+          the third-largest category of waste (
+          <a
+            href="https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials"
+            target="_blank"
+            rel="noreferrer"
+          >
+            US EPA
+          </a>
+          ).
         </li>
         <li>
-          Industry Impact: The paper industry significantly contributes to
-          deforestation, and consumes high amounts of water and energy, leading
-          to substantial pollution (Record Nations) (US EPA).
+          <span className="boldLight"> Industry Impact: </span> The paper
+          industry significantly contributes to deforestation, and consumes high
+          amounts of water and energy, leading to substantial pollution (
+          <a
+            href="https://kunakair.com/environmental-impact-paper-industry/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Kunak
+          </a>
+          ).
         </li>
       </ul>
       <p>

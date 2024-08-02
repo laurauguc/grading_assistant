@@ -77,7 +77,7 @@ header h1 {
 header h2 {
   margin: 0;
   font-size: 1em;
-  color: var(--orange);
+  color: #8e4302;
   font-weight: 300;
 }
 h2 {
@@ -151,7 +151,15 @@ h2 {
 .tab-button.active {
   background-color: var(--active-color);
 }
-
+.modalText h2 {
+  font-size: 24px;
+}
+.modalText h3 {
+  font-size: 20px;
+}
+.boldLight {
+  font-weight: 500;
+}
 .curated-rubric {
   display: flex;
   flex-direction: column;
@@ -220,7 +228,7 @@ label {
 .grading_section {
   flex: 1;
   width: 100%;
-  min-width: 40ch;
+  /* min-width: 40ch; */
 }
 
 textarea {
@@ -229,6 +237,7 @@ textarea {
   /* flex: 1; */
   resize: none;
   width: 96%;
+  /* max-width: 100%; */
   padding: 5px 7px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -271,7 +280,7 @@ label {
   padding: 8px 11px;
   white-space: pre-wrap;
   background-color: white;
-  margin-bottom: 51px;
+  margin-bottom: 48px;
 }
 .detailed_feedback {
   width: 100%;
@@ -301,6 +310,7 @@ a {
   border: none;
   color: black;
   font-weight: 400;
+  max-width: 100%;
 }
 .grade-button:hover {
   background-color: var(--orangeSoft);
@@ -308,7 +318,7 @@ a {
 .about-button {
   padding: 10px 20px;
   font-size: 16px;
-  width: 150px;
+  width: 140px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   background-color: white;
@@ -316,6 +326,7 @@ a {
   color: black;
   font-weight: 400;
   border: 1px solid var(--orange);
+  max-width: 100%;
 }
 .about-button:hover {
   background-color: var(--orangeSoft);
@@ -330,6 +341,7 @@ a {
   border: none;
   color: black;
   font-weight: 400;
+  max-width: 100%;
 }
 .clear-button:hover {
   background-color: #acd7db;
@@ -518,7 +530,7 @@ table tr:nth-child(odd) {
   padding: 20px 40px;
 }
 
-@media (min-width: 909px) {
+@media (min-width: 700px) {
   .assignment_section {
     /* border-right: 1px solid #ccc; */
     border-block-end-width: 0;

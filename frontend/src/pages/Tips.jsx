@@ -121,7 +121,7 @@ const Tips = () => {
                 student interactions.
               </p>
               <i>
-                <p style={{ textAlign: 'right' }}>The GradeMate Team</p>
+                <p style={{ textAlign: 'right' }}>GradeMate Team</p>
               </i>
             </div>
           )}
@@ -220,7 +220,7 @@ const Tips = () => {
               </ul>
               <p>We hope this tool improves your study experience!</p>
               <i>
-                <p style={{ textAlign: 'right' }}>The GradeMate Team</p>
+                <p style={{ textAlign: 'right' }}>GradeMate Team</p>
               </i>
             </div>
           )}
