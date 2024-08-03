@@ -172,7 +172,13 @@ const Home = ({
                   },
                 }}
               >
-                <Spin tip="Analyzing" size="large" role="status">
+                <Spin
+                  tip="Analyzing"
+                  size="large"
+                  role="status"
+                  aria-live="assertive"
+                  aria-busy="true"
+                >
                   <div
                     style={{
                       padding: 50,
