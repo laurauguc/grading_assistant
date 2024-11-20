@@ -9,13 +9,21 @@ from pathlib import Path
 from django.conf import settings
 from . import utils
 import tempfile
+import openai
+
 
 load_dotenv(Path(".env"))
+# Gemini API
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 
+#OpenAI API
+OPENAI_API_KEY=os.getenv('OPENAI_API_KEY')
+openai.api_key = OPENAI_API_KEY
+
+
 @api_view(['GET'])
-def grade_with_gemini(request):
+def grade_with_gemini(request): # change function name to just grade
     """
     Grades a student writing assignment using a specified grading rubric and the Gemini AI model.
 
@@ -65,6 +73,7 @@ def grade_with_gemini(request):
     # opted out of triple quotes for multi-line for better control of indentation
     # made delimination more explicit with triple backticks.
     # ensured consistent use of terminology (e.g. use only student assignment, instead of student assignment and student response)
+    # Gemini prompt
     prompt = ("Role: You are a Teaching Assistant. "
     "Your task is to grade a student submission using a grading rubric and justify the final grade. Both are provided at the bottom and delimited by triple backticks.\n"
     "Steps:\n"
@@ -101,9 +110,61 @@ def grade_with_gemini(request):
     "Grading rubric: ```"
     "{}\nb"
     "```").format(additional_info, student_assignment, rubric_content)
-    #print(prompt)
-    response = model.generate_content(prompt)
-    return Response({'message': response.text })
+    # uncomment 2 lines below to obtain Gemini response
+    #response = model.generate_content(prompt)
+    #return Response({'message': response.text })
+
+    #Open AI GPT4o
+    system_prompt = ("Role: You are a Teaching Assistant. "
+    "Your task is to grade a student submission using a grading rubric and justify the final grade. Both will be provided by the user, delimited by triple backticks.\n"
+    "Steps:\n"
+    "1. Validate the grading task:\n"
+    "   - Ensure the student submission aligns with the grading rubric.\n"
+    "   - Check for any issues such as very short essays, off-topic content, inappropriate or violent content, or missing information.\n"
+    "   - If issues are found, stop grading and output the issue(s).\n"
+    "2. Grade the student submission and provide a justification:\n"
+    "   - Assign an overall score as well as scores for each criteria in the grading rubric.\n"
+    "   - Identify both strengths and weaknesses, giving special emphasis to areas of excellence.\n"
+    "   - Provide specific justification based on the grading rubric and the student submission.\n"
+    "   - Ensure good work is identified and rewarded generously.\n"
+    "   - Avoid subjective comments.\n"
+    "   - Only assign a letter grade if explicitly described in the grading rubric.\n"
+    "   - Do not deduct points for issues related to formatting, tables, and figures.\n"
+    "3. Review the analysis in step 2:\n"
+    "   - Ensure all justifications are factually accurate.\n"
+    "   - Verify that all grading rubric criteria are included and sum correctly to the total score.\n"
+    "   - Verify that any elements mentioned in the justification (e.g., citations) are present.\n"
+    "   - Look for opportunities to acknowledge strengths.\n"
+    "\n"
+    "Provide only the final grade with justification and feedback. Don't output intermediary steps.\n"
+    "\n"
+    "Format the output as markdown.\n"
+    "\n")
+    user_prompt = ("Student submission: ```"
+    "{}\n"
+    "```\n\n"
+    "Grading rubric: ```"
+    "{}\nb"
+    "```").format(student_assignment, rubric_content)
+
+    client = openai.OpenAI()
+
+    chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": system_prompt,
+        }, {
+            "role": "user",
+            "content": user_prompt
+        }
+    ],
+    model="gpt-4o",
+    temperature = 0
+    )
+
+    message_content = chat_completion.choices[0].message.content
+    return Response({'message': message_content })
 
 @api_view(['GET'])
 def suggestions_with_gemini(request):
