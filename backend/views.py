@@ -208,8 +208,8 @@ def convert_docx_to_md(request):
 
     try:
         # Pass the temporary file path to the converter
-        converter = utils.DocxToMarkdownConverter(tmp_file_path)
-        md_content = converter.convert()
+        converter = utils.DocxToMarkdownConverter()
+        md_content = converter.convert(tmp_file_path)
     finally:
         # Delete the temporary file
         os.remove(tmp_file_path)

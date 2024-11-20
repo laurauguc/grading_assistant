@@ -16,7 +16,7 @@ class DocxToMarkdownConverter:
     converted content to a specified file path.
     """
 
-    def __init__(self, docx_path):
+    def __init__(self):
         """
         Initialize the converter with paths to the DOCX file and the output Markdown file.
 
@@ -24,14 +24,14 @@ class DocxToMarkdownConverter:
         docx_path (str): Path to the DOCX file.
         md_path (str): Path to the output Markdown file.
         """
-        self.docx_path = docx_path
+        #self.docx_path = docx_path
         self.doc = None
 
-    def read_word_file(self):
+    def read_word_file(self, docx_path):
         """
         Read the DOCX file and store the Document object in the instance variable.
         """
-        self.doc = docx.Document(self.docx_path)
+        self.doc = docx.Document(docx_path)
 
     def convert_paragraph_to_md(self, paragraph):
         """
@@ -45,7 +45,10 @@ class DocxToMarkdownConverter:
         """
         md_text = paragraph.text.strip()
         if paragraph.style.name.startswith('Heading'):
-            level = int(paragraph.style.name.split()[-1])
+            try:
+                level = int(paragraph.style.name.split()[-1])
+            except:
+                level = 1
             md_text = f"{'#' * level} {md_text}"
         elif paragraph.style.name == 'Normal' and md_text:
             md_text = f"{md_text}\n"
@@ -109,25 +112,27 @@ class DocxToMarkdownConverter:
         """
         md_lines = []
         for element in self.doc.element.body:
-            if isinstance(element, docx.oxml.CT_P):
+            if isinstance(element, docx.oxml.CT_P): # paragraph
                 paragraph = docx.text.paragraph.Paragraph(element, self.doc)
                 md_line = self.convert_paragraph_to_md(paragraph)
                 if md_line:
                     md_lines.append(md_line)
-            elif isinstance(element, docx.oxml.CT_Tbl):
+            elif isinstance(element, docx.oxml.CT_Tbl): # table
                 table = docx.table.Table(element, self.doc)
                 md_table_lines = self.convert_table_to_md(table)
                 md_lines.extend(md_table_lines)
+            elif isinstance(element, docx.oxml.CT_SectPr):
+                md_lines.append("<Image found here>") # TO DO: Replace <Image found here> with descriptive image metadata, OR: make an API call to obtain a description (Premium version).
         return "\n".join(md_lines)
 
-    def convert(self):
+    def convert(self, docx_path):
         """
         Orchestrate the conversion of a DOCX file to Markdown format and save the result to a file.
         """
-        if not os.path.exists(self.docx_path):
-            raise FileNotFoundError(f"The file {self.docx_path} does not exist.")
+        if not os.path.exists(docx_path):
+            raise FileNotFoundError(f"The file {docx_path} does not exist.")
 
-        self.read_word_file()
+        self.read_word_file(docx_path)
         md_content = self.convert_docx_to_md()
         return md_content  # Return the Markdown content to the console
 
