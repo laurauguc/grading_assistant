@@ -280,7 +280,7 @@ label {
   padding: 8px 11px;
   white-space: pre-wrap;
   background-color: white;
-  margin-bottom: 48px;
+  margin-bottom: 20px;
 }
 .detailed_feedback {
   width: 100%;
@@ -345,6 +345,13 @@ a {
 }
 .clear-button:hover {
   background-color: #acd7db;
+}
+
+.button-container-feedback {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .custom-select .ant-select-selector {
   border: none !important;

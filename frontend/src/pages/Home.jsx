@@ -26,38 +26,26 @@ const Home = ({
   rubricMarkdownFileName,
   setRubricMarkdownFileName,
   resetLabel,
-  additionalInput,
-  setAdditionalInput,
   setDetailedSuggestions,
 }) => {
   const [grading_loading, setGradingLoading] = useState(false);
   const student_assignment_submission = useRef();
-  const additional_input = useRef();
 
   const handleSubmit = e => {
     e.preventDefault();
     const assignment = student_assignment_submission.current.value;
-    setAdditionalInput(additional_input.current.value);
     setStudentAssignment(assignment);
-    generate(assignment, selected_rubric_id, additionalInput, rubricMarkdown);
+    generate(assignment, selected_rubric_id, rubricMarkdown);
   };
   const handleStudentAssignmentChange = e => {
     setStudentAssignment(e.target.value);
   };
-  const handleAdditionalInputChange = e => {
-    setAdditionalInput(e.target.value);
-  };
-  const generate = (
-    student_assignment,
-    rubric_id,
-    additionalInput,
-    rubricMarkdown
-  ) => {
+
+  const generate = (student_assignment, rubric_id, rubricMarkdown) => {
     setGradingLoading(true);
 
     const params = {
       student_assignment,
-      additionalInput,
     };
     if (rubricMarkdown) {
       params.rubric_content = rubricMarkdown;
@@ -124,7 +112,7 @@ const Home = ({
               id="student-assignment"
               ref={student_assignment_submission}
               // cols={66}
-              rows={10}
+              rows={17}
               value={student_assignment}
               onChange={handleStudentAssignmentChange}
               aria-labelledby="student-assignment"
@@ -174,14 +162,20 @@ const Home = ({
               <Markdown>{graded_feedback}</Markdown>
             )}
           </div>
-          <div className="button-container">
+          <div className="button-container-feedback">
+            <button
+              type="button"
+              className={'grade-button'}
+              // onClick={downloadFeedback}
+            >
+              Download Feedback
+            </button>
             <button
               type="button"
               className={'clear-button'}
               onClick={() => {
                 setStudentAssignment('');
                 setGrading('');
-                setAdditionalInput('');
                 setDetailedSuggestions('');
                 resetLabel();
               }}
