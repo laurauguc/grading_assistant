@@ -130,23 +130,6 @@ const Home = ({
               aria-labelledby="student-assignment"
               required
             />
-            <h2 className="step2">
-              <span className="bold">STEP 3 (OPTIONAL):</span> ADDITIONAL
-              INSTRUCTIONS
-            </h2>
-            <label htmlFor="additional-instructions">
-              Personalize the grading with additional input:
-            </label>
-            <textarea
-              id="additional-instructions"
-              ref={additional_input}
-              // cols={66}
-              rows={3}
-              placeholder="Examples: add encouraging remarks; concise but specific."
-              value={additionalInput}
-              onChange={handleAdditionalInputChange}
-              aria-labelledby="additional-instructions"
-            />
 
             <div className="button-container">
               <p>Click Grade to submit the grading rubric and assignment</p>
