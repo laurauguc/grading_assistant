@@ -163,13 +163,13 @@ const Home = ({
             )}
           </div>
           <div className="button-container-feedback">
-            <button
+            {/* <button
               type="button"
               className={'grade-button'}
               // onClick={downloadFeedback}
             >
               Download Feedback
-            </button>
+            </button> */}
             <button
               type="button"
               className={'clear-button'}
