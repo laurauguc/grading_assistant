@@ -49,13 +49,12 @@ const Tips = () => {
                   <ul>
                     <li>
                       <strong>Be Aware of “Hallucinations”: </strong> GradeMate
-                      is powered by Google’s Gemini, a type of Artificial
-                      Intelligence model called a Large Language Model (LLM). As
-                      is common with LLMs, it may sometimes generate incorrect
-                      or irrelevant information that looks feasible (called
-                      “hallucinations” in AI jargon). Always review the grades
-                      and feedback provided by the app to ensure accuracy and
-                      relevance.
+                      is powered by Large Language Models (LLMs), a type of
+                      Artificial Intelligence model. As is common with LLMs, it
+                      may sometimes generate incorrect or irrelevant information
+                      that looks feasible (called “hallucinations” in AI
+                      jargon). Always review the grades and feedback provided by
+                      the app to ensure accuracy and relevance.
                     </li>
                     <li>
                       <strong>College Graduate Analogy: </strong> Think of
@@ -85,6 +84,17 @@ const Tips = () => {
                         </a>
                         ).
                       </i>
+                    </li>
+                    <li>
+                      <strong>Be Mindful of Systematic Biases: </strong>{' '}
+                      GradeMate is built on LLMs, which can reflect systematic
+                      biases present in the data used to train them. While
+                      overcoming these biases is an active area of research,
+                      LLMs can still be subtly affected by them. To ensure
+                      fairness and inclusivity, we encourage you to review the
+                      app’s output critically, particularly when grading or
+                      providing feedback on sensitive topics or diverse
+                      perspectives
                     </li>
                   </ul>
                 </li>
@@ -141,12 +151,11 @@ const Tips = () => {
                   <ul>
                     <li>
                       <strong>Be Aware of “Hallucinations”: </strong> GradeMate
-                      is powered by Google’s Gemini, a type of Artificial
-                      Intelligence model called a Large Language Model (LLM). As
-                      is common with LLMs, it may sometimes generate incorrect
-                      or irrelevant information that looks feasible (called
-                      “hallucinations” in AI jargon). So, take the feedback with
-                      a grain of salt!
+                      is powered by Large Language Models (LLMs), a type of
+                      Artificial Intelligence model. As is common with LLMs, it
+                      may sometimes generate incorrect or irrelevant information
+                      that looks feasible (called “hallucinations” in AI
+                      jargon). So, take the feedback with a grain of salt!
                     </li>
                     <li>
                       <strong>College Graduate Analogy: </strong> Think of
@@ -174,6 +183,17 @@ const Tips = () => {
                         </a>
                         ).
                       </i>
+                    </li>
+                    <li>
+                      <strong>Be Mindful of Systematic Biases: </strong>{' '}
+                      GradeMate is built on LLMs, which can reflect systematic
+                      biases present in the data used to train them. While
+                      overcoming these biases is an active area of research,
+                      LLMs can still be subtly affected by them. To ensure
+                      fairness and inclusivity, we encourage you to review the
+                      app’s output critically, particularly when grading or
+                      providing feedback on sensitive topics or diverse
+                      perspectives
                     </li>
                   </ul>
                 </li>

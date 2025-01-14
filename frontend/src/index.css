@@ -275,12 +275,12 @@ label {
 
 .graded_feedback {
   width: 100%;
-  height: 469px;
+  height: 440px;
   overflow-y: auto;
   padding: 8px 11px;
   white-space: pre-wrap;
   background-color: white;
-  margin-bottom: 48px;
+  margin-bottom: 50px;
 }
 .detailed_feedback {
   width: 100%;
@@ -300,10 +300,11 @@ a {
   padding: 15px 0 0 0;
 }
 
-.grade-button {
+.grade-button,
+.clear-button {
   padding: 10px 20px;
   font-size: 16px;
-  width: 250px;
+  width: 220px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   background-color: var(--orange);
@@ -315,6 +316,14 @@ a {
 .grade-button:hover {
   background-color: var(--orangeSoft);
 }
+
+.clear-button {
+  background-color: #92c2c7;
+}
+.clear-button:hover {
+  background-color: #acd7db;
+}
+
 .about-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -331,20 +340,12 @@ a {
 .about-button:hover {
   background-color: var(--orangeSoft);
 }
-.clear-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  width: 250px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  background-color: #92c2c7;
-  border: none;
-  color: black;
-  font-weight: 400;
-  max-width: 100%;
-}
-.clear-button:hover {
-  background-color: #acd7db;
+
+.button-container-feedback {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .custom-select .ant-select-selector {
   border: none !important;

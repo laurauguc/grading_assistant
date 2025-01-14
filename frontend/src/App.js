@@ -153,7 +153,7 @@ function App() {
           />
           <div>
             <h1>GradeMate</h1>
-            <h2>Gemini-powered grading assistant for teachers and students</h2>
+            <h2>AI-powered grading assistant for teachers and students</h2>
           </div>
         </div>
         <div className="modal">
