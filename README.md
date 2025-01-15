@@ -1,10 +1,10 @@
 # <img src="./frontend/src/images/logo.png" alt="drawing" width="200"/> GradeMate
 
-The Gemini-powered Grading Assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this app is available at: [www.grade-mate.app](https://www.grade-mate.app).
+The AI-powered Grading Assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this app is available at: [www.grade-mate.app](https://www.grade-mate.app).
 
 ## Architecture
 
-GradeMate is built using JavaScript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS app while the backend is a Django app, functioning as an API endpoint for the frontend. The calls to the Gemini API are made from the backend.
+GradeMate is built using JavaScript for the frontend and Python for the backend. Specifically, the frontend is a ReactJS app while the backend is a Django app, functioning as an API endpoint for the frontend.
 
 ## Requirements
 
