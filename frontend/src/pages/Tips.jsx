@@ -96,6 +96,21 @@ const Tips = () => {
                       providing feedback on sensitive topics or diverse
                       perspectives
                     </li>
+                    <li>
+                      <strong>Note: </strong>{' '}
+                      While anthropomorphic terms (such as hallucinations or the
+                        college graduate analogy) can serve as helpful mental models
+                        to grasp the limitations of LLMs, it's crucial to remember that,
+                        unlike humans, AI models do not truly understand the text they process
+                        or generate. As explained in <a
+                          href="https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"
+                          target="_blank"
+                          rel="noreferrer"
+                        > UNESCO’s Guidance for Generative AI in Education and Research (2023)</a>:
+                        “The disconnect between GenAI models ‘appearing’ to understand the text that they use and generate, and the ‘reality’
+                        that they do not understand the language and the real world can lead teachers
+                        and students to place a level of trust in the output that it does not warrant.”
+                    </li>
                   </ul>
                 </li>
                 <li>
@@ -194,6 +209,21 @@ const Tips = () => {
                       app’s output critically, particularly when grading or
                       providing feedback on sensitive topics or diverse
                       perspectives
+                    </li>
+                    <li>
+                      <strong>Note: </strong>{' '}
+                      While anthropomorphic terms (such as hallucinations or the
+                        college graduate analogy) can serve as helpful mental models
+                        to grasp the limitations of LLMs, it's crucial to remember that,
+                        unlike humans, AI models do not truly understand the text they process
+                        or generate. As explained in <a
+                          href="https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"
+                          target="_blank"
+                          rel="noreferrer"
+                        > UNESCO’s Guidance for Generative AI in Education and Research (2023)</a>:
+                        “The disconnect between GenAI models ‘appearing’ to understand the text that they use and generate, and the ‘reality’
+                        that they do not understand the language and the real world can lead teachers
+                        and students to place a level of trust in the output that it does not warrant.”
                     </li>
                   </ul>
                 </li>
