@@ -59,9 +59,9 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
           style={{ width: '40%', borderRadius: '4px' }}
         />
         <div>
-          <h3>Fostering Student Interaction</h3>
+          <h3>Fostering Teacher-Student Interaction</h3>
           <p>
-            A teacher’s time is invaluable. By supporting grading tasks, GradeMate empowers teachers to engage more
+            A teacher’s time is invaluable. By supporting grading tasks, GradeMate frees up teachers to engage more
             directly with their students. As Nelson Mandela once said, “Education is the most powerful weapon which
             you can use to change the world.” GradeMate ensures teachers have <span className="boldLight">more time to
             focus on the interactions that shape students' lives.</span>
