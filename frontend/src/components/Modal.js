@@ -45,8 +45,8 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         rel="noreferrer"
       >
         20% of teachers' work hours
-      </a>. GradeMate optimizes this process, saving teachers valuable time while enabling them to provide
-      students with more personalized and actionable feedback.
+      </a>. GradeMate optimizes this task, saving teachers valuable time, while also enabling them to provide
+      students with more comprehensive feedback.
 
       </p>{' '}
 
@@ -61,7 +61,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <div>
           <h3>Fostering Student Interaction</h3>
           <p>
-            A teacher’s time is invaluable. By automating grading tasks, GradeMate empowers teachers to engage more
+            A teacher’s time is invaluable. By supporting grading tasks, GradeMate empowers teachers to engage more
             directly with their students. As Nelson Mandela once said, “Education is the most powerful weapon which
             you can use to change the world.” GradeMate ensures teachers have <span className="boldLight">more time to
             focus on the interactions that shape students' lives.</span>
