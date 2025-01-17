@@ -1,8 +1,9 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
-import aboutUs_image1 from '../images/aboutUs_image1.png';
-import aboutUs_image2 from '../images/aboutUs_image2.png';
-import aboutUs_image3 from '../images/aboutUs_image3.png';
+import interaction_image from '../images/aboutUs_interaction.png';
+import feedback_image from '../images/aboutUs_feedback.png';
+import inequalities_image from '../images/aboutUs_inequalities.png';
+import teacher_shortage_image from '../images/aboutUs_teacher_shortage.png';
 
 const AboutUsModal = ({ isVisible, handleClose }) => {
   return (
@@ -54,7 +55,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
 
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
         <img
-          src={aboutUs_image1}
+          src={interaction_image}
           alt="About Us"
           style={{ width: '40%', borderRadius: '4px' }}
         />
@@ -69,9 +70,29 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         </div>
       </div>
       <p></p>
+
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
         <img
-          src={aboutUs_image2}
+          src={feedback_image}
+          alt="About Us"
+          style={{ width: '40%', borderRadius: '4px' }}
+        />
+        <div>
+          <h3>Enhancing Writing Feedback</h3>
+          <p>
+            With the help of a brainstorming and analytical companion, teachers can provide more in-depth and specific feedback
+            on writing assignments. This feedback can highlight strengths, identify areas for improvement, and include reasoning
+            and illustrative examples. In future versions of GradeMate, teachers will also benefit from additional writing support
+            for their personalized feedback, with features like "Rewrite with AI," "Connect to study materials," and "Add examples" to further refine and enhance their comments.
+          </p>
+        </div>
+      </div>
+      <p></p>
+
+
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+        <img
+          src={inequalities_image}
           alt="About Us"
           style={{ width: '40%', borderRadius: '4px' }}
         />
@@ -110,7 +131,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
       <p></p>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
         <img
-          src={aboutUs_image3}
+          src={teacher_shortage_image}
           alt="About Us"
           style={{ width: '40%', borderRadius: '4px' }}
         />
