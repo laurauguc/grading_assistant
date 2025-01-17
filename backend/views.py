@@ -174,15 +174,16 @@ def suggestions_with_gemini(request):
         return Response({'error': 'Missing student_assignment in query parameters'}, status=400)
 
     if 'graded_feedback' in request.query_params.keys():
-        graded_feedback = request.query_params['graded_feedback']
+        grading_feedback = request.query_params['graded_feedback']
     else:
         return Response({'error': 'Missing student_assignment in query parameters'}, status=400)
 
-    model = genai.GenerativeModel('gemini-1.5-pro')
-
-    suggestions_and_rewrite = utils.generate_suggestions_and_rewrite_essay(model, graded_feedback, student_assignment)
-    extracted_data = utils.extract_json_improvements(suggestions_and_rewrite)
-    html_with_css = utils.create_improvements_html_with_css(extracted_data['improvements'], student_assignment)
+    #model = genai.GenerativeModel('gemini-1.5-pro')
+    improvements, strengths = utils.generate_feedback(grading_feedback, student_assignment)
+    #suggestions_and_rewrite = utils.generate_suggestions_and_rewrite_essay(model, graded_feedback, student_assignment)
+    #extracted_data = utils.extract_json_improvements(suggestions_and_rewrite)
+    #html_with_css = utils.create_improvements_html_with_css(extracted_data['improvements'], student_assignment)
+    html_with_css = utils.create_feedback_html_with_css(student_assignment, improvements, strengths)
     return Response({'message': html_with_css })
 
 @api_view(['GET'])
