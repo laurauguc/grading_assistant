@@ -1,19 +1,20 @@
 {
   "files": {
     "main.css": "/static/css/main.96f786d9.css",
-    "main.js": "/static/js/main.f9a87d6e.js",
+    "main.js": "/static/js/main.ca1de9de.js",
     "static/js/453.8ab44547.chunk.js": "/static/js/453.8ab44547.chunk.js",
-    "static/media/aboutUs_image2.png": "/static/media/aboutUs_image2.d098b9f9ef4b7f710c67.png",
-    "static/media/aboutUs_image3.png": "/static/media/aboutUs_image3.42ffa8590ba0e717ae69.png",
-    "static/media/aboutUs_image1.png": "/static/media/aboutUs_image1.3dcc4271d58e5120f429.png",
+    "static/media/aboutUs_inequalities.png": "/static/media/aboutUs_inequalities.d098b9f9ef4b7f710c67.png",
+    "static/media/aboutUs_teacher_shortage.png": "/static/media/aboutUs_teacher_shortage.42ffa8590ba0e717ae69.png",
+    "static/media/aboutUs_feedback.png": "/static/media/aboutUs_feedback.b03ebbd6f0599b3bcdaa.png",
+    "static/media/aboutUs_interaction.png": "/static/media/aboutUs_interaction.3dcc4271d58e5120f429.png",
     "static/media/logo.png": "/static/media/logo.c6996158abd04c00d236.png",
     "index.html": "/index.html",
     "main.96f786d9.css.map": "/static/css/main.96f786d9.css.map",
-    "main.f9a87d6e.js.map": "/static/js/main.f9a87d6e.js.map",
+    "main.ca1de9de.js.map": "/static/js/main.ca1de9de.js.map",
     "453.8ab44547.chunk.js.map": "/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.96f786d9.css",
-    "static/js/main.f9a87d6e.js"
+    "static/js/main.ca1de9de.js"
   ]
 }
