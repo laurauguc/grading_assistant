@@ -275,12 +275,12 @@ label {
 
 .graded_feedback {
   width: 100%;
-  height: 440px;
+  height: 432px;
   overflow-y: auto;
   padding: 8px 11px;
   white-space: pre-wrap;
   background-color: white;
-  margin-bottom: 50px;
+  margin-bottom: 48px;
 }
 .detailed_feedback {
   width: 100%;
