@@ -95,18 +95,18 @@ function App() {
         />
       ),
     },
-    {
-      label: 'DETAILED FEEDBACK',
-      className: 'pink',
-      component: (
-        <Details
-          student_assignment={student_assignment}
-          graded_feedback={graded_feedback}
-          detailed_suggestions={detailed_suggestions}
-          setDetailedSuggestions={setDetailedSuggestions}
-        />
-      ),
-    },
+    // {
+    //   label: 'DETAILED FEEDBACK',
+    //   className: 'pink',
+    //   component: (
+    //     <Details
+    //       student_assignment={student_assignment}
+    //       graded_feedback={graded_feedback}
+    //       detailed_suggestions={detailed_suggestions}
+    //       setDetailedSuggestions={setDetailedSuggestions}
+    //     />
+    //   ),
+    // },
     {
       label: 'USAGE TIPS',
       className: 'purple',

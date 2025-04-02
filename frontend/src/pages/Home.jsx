@@ -79,16 +79,16 @@ const Home = ({
               <span className="bold">STEP 1:</span> GRADING RUBRIC
             </h2>
             <div className="curated-rubric">
-              <FileLoader
+              {/* <FileLoader
                 setRubricMarkdown={setRubricMarkdown}
                 rubricMarkdownFileName={rubricMarkdownFileName}
                 setRubricMarkdownFileName={setRubricMarkdownFileName}
                 resetLabel={resetLabel}
-              />
+              /> */}
               <div className="flex-row">
                 <div>
                   <label htmlFor="rubric-selection">
-                    Or select a curated one:
+                    Select a curated rubric:
                   </label>
                 </div>
 
@@ -112,7 +112,7 @@ const Home = ({
               id="student-assignment"
               ref={student_assignment_submission}
               // cols={66}
-              rows={17}
+              rows={20}
               value={student_assignment}
               onChange={handleStudentAssignmentChange}
               aria-labelledby="student-assignment"
