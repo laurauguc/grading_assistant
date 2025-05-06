@@ -108,7 +108,7 @@ function App() {
     //   ),
     // },
     {
-      label: 'USAGE TIPS',
+      label: 'RESPONSIBLE USE',
       className: 'purple',
       component: <Tips />,
     },

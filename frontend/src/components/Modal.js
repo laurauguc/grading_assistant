@@ -22,23 +22,41 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
     >
       <h1>Welcome to GradeMate.</h1>
       <p>
-
-        GradeMate leverages cutting-edge advancements in Artificial Intelligence to assist teachers and
-        students with grading writing assignments and delivering personalized feedback. Our mission is
-        to alleviate teacher burnout and shortages by streamlining and enhancing this time-intensive task.
-
+        GradeMate harnesses cutting-edge advancements in Artificial Intelligence to support teachers and students in grading writing assignments and delivering personalized feedback. Our mission is to reduce teacher burnout and mitigate shortages by streamlining one of the most time-consuming tasks in education.
       </p>
-      <h2>Our Team </h2>
-      <p>
+      <p><strong>Important:</strong> GradeMate is not a substitute for human judgment. Teachers must critically evaluate all AI-generated feedback before using it with students. (<em>See the RESPONSIBLE USE tab for more details.</em>)</p>
 
-        We are a dedicated team of professionals passionate about technology, society, and AI ethics,
-        supported by Columbia University's QMSS Innovation Lab. Our diverse expertise spans the humanities,
-        social sciences, and data science, empowering us to {' '}
-        <span className="boldLight">
-          tackle the critical issue of unequal access to education through GradeMate.
-        </span>
-      </p>{' '}
-      <h2> Benefits of AI-Supported Grading</h2>
+      <h2>💡 Our Vision & the Current State of AI in Education</h2>
+      <p>No current AI tool is suitable for fully automated grading due to the limitations outlined in the RESPONSIBLE USE tab. <strong>Human oversight and final judgment remain essential.</strong></p>
+      <p>In the future, AI may support limited forms of automated grading—for example, in basic or diagnostic assessments—but such use must be approached with caution. Any implementation must be guided by:</p>
+      <ul>
+        <li>Transparency</li>
+        <li>Research-based practices</li>
+        <li>Fairness and accountability</li>
+        <li>Environmental responsibility</li>
+        <li>Student rights to review and appeal</li>
+      </ul>
+      <p>
+        This open-source project—<a href="https://github.com/laurauguc/grading_assistant" target="_blank" rel="noopener noreferrer">available here</a>—aims to spark conversation around the future of AI in grading, its limitations, and ethical use. This work began at the <strong>Quantitative Methods in the Social Sciences Innovation Lab</strong> and we hope to expand collaboration with the wider research and educational community.
+        We welcome you to engage in discussions at this <a href="https://github.com/laurauguc/grading_assistant/discussions" target="_blank" rel="noopener noreferrer"> link</a>.
+      </p>
+
+
+      <h2>👥 Our Team</h2>
+      <p>
+        We are a passionate team of students and professionals brought together through Columbia University’s Quantitative Methods in the Social Sciences Innovation Lab. Our diverse backgrounds in the humanities, social sciences, and data science enable us to tackle educational inequality with an interdisciplinary approach.
+      </p>
+
+      <h2>⚠️ Risks of AI-Supported Grading</h2>
+      <p>
+        AI-supported grading is not the same as automated grading—it is a <strong>teacher-led</strong> process. However, educators must be aware of potential risks:
+      </p>
+      <ul>
+        <li><strong>Moral Deskilling:</strong> Overreliance on AI outputs can cause teachers to disengage from the ethical and reflective aspects of their feedback responsibilities.</li>
+        <li><strong>Bias and Marginalization:</strong> Large Language Models (LLMs) are trained on dominant linguistic patterns. As a result, they may unintentionally reinforce stereotypes and overlook or penalize minority or subtle perspectives.</li>
+        <li><strong>Inaccurate Outputs:</strong> AI-generated content may include plausible but incorrect information—often called “hallucinations.” However, this term can be misleading, as it anthropomorphizes AI and implies reasoning or understanding where none exists.</li>
+      </ul>
+      <h2>🌟 Benefits of AI-Supported Grading</h2>
       <p>
       Grading writing assignments consumes nearly{' '}<a
         href="https://www.edweek.org/teaching-learning/heres-how-many-hours-a-week-teachers-work/2022/04"
