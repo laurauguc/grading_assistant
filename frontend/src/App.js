@@ -95,20 +95,20 @@ function App() {
         />
       ),
     },
+    // {
+    //   label: 'DETAILED FEEDBACK',
+    //   className: 'pink',
+    //   component: (
+    //     <Details
+    //       student_assignment={student_assignment}
+    //       graded_feedback={graded_feedback}
+    //       detailed_suggestions={detailed_suggestions}
+    //       setDetailedSuggestions={setDetailedSuggestions}
+    //     />
+    //   ),
+    // },
     {
-      label: 'DETAILED FEEDBACK',
-      className: 'pink',
-      component: (
-        <Details
-          student_assignment={student_assignment}
-          graded_feedback={graded_feedback}
-          detailed_suggestions={detailed_suggestions}
-          setDetailedSuggestions={setDetailedSuggestions}
-        />
-      ),
-    },
-    {
-      label: 'USAGE TIPS',
+      label: 'RESPONSIBLE USE',
       className: 'purple',
       component: <Tips />,
     },
@@ -153,7 +153,7 @@ function App() {
           />
           <div>
             <h1>GradeMate</h1>
-            <h2>Gemini-powered grading assistant for teachers and students</h2>
+            <h2>AI-powered grading assistant for teachers and students</h2>
           </div>
         </div>
         <div className="modal">

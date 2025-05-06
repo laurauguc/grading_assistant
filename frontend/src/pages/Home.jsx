@@ -26,38 +26,26 @@ const Home = ({
   rubricMarkdownFileName,
   setRubricMarkdownFileName,
   resetLabel,
-  additionalInput,
-  setAdditionalInput,
   setDetailedSuggestions,
 }) => {
   const [grading_loading, setGradingLoading] = useState(false);
   const student_assignment_submission = useRef();
-  const additional_input = useRef();
 
   const handleSubmit = e => {
     e.preventDefault();
     const assignment = student_assignment_submission.current.value;
-    setAdditionalInput(additional_input.current.value);
     setStudentAssignment(assignment);
-    generate(assignment, selected_rubric_id, additionalInput, rubricMarkdown);
+    generate(assignment, selected_rubric_id, rubricMarkdown);
   };
   const handleStudentAssignmentChange = e => {
     setStudentAssignment(e.target.value);
   };
-  const handleAdditionalInputChange = e => {
-    setAdditionalInput(e.target.value);
-  };
-  const generate = (
-    student_assignment,
-    rubric_id,
-    additionalInput,
-    rubricMarkdown
-  ) => {
+
+  const generate = (student_assignment, rubric_id, rubricMarkdown) => {
     setGradingLoading(true);
 
     const params = {
       student_assignment,
-      additionalInput,
     };
     if (rubricMarkdown) {
       params.rubric_content = rubricMarkdown;
@@ -91,16 +79,16 @@ const Home = ({
               <span className="bold">STEP 1:</span> GRADING RUBRIC
             </h2>
             <div className="curated-rubric">
-              <FileLoader
+              {/* <FileLoader
                 setRubricMarkdown={setRubricMarkdown}
                 rubricMarkdownFileName={rubricMarkdownFileName}
                 setRubricMarkdownFileName={setRubricMarkdownFileName}
                 resetLabel={resetLabel}
-              />
+              /> */}
               <div className="flex-row">
                 <div>
                   <label htmlFor="rubric-selection">
-                    Or select a curated one:
+                    Select a curated rubric:
                   </label>
                 </div>
 
@@ -124,28 +112,11 @@ const Home = ({
               id="student-assignment"
               ref={student_assignment_submission}
               // cols={66}
-              rows={10}
+              rows={20}
               value={student_assignment}
               onChange={handleStudentAssignmentChange}
               aria-labelledby="student-assignment"
               required
-            />
-            <h2 className="step2">
-              <span className="bold">STEP 3 (OPTIONAL):</span> ADDITIONAL
-              INSTRUCTIONS
-            </h2>
-            <label htmlFor="additional-instructions">
-              Personalize the grading with additional input:
-            </label>
-            <textarea
-              id="additional-instructions"
-              ref={additional_input}
-              // cols={66}
-              rows={3}
-              placeholder="Examples: add encouraging remarks; concise but specific."
-              value={additionalInput}
-              onChange={handleAdditionalInputChange}
-              aria-labelledby="additional-instructions"
             />
 
             <div className="button-container">
@@ -191,14 +162,20 @@ const Home = ({
               <Markdown>{graded_feedback}</Markdown>
             )}
           </div>
-          <div className="button-container">
+          <div className="button-container-feedback">
+            {/* <button
+              type="button"
+              className={'grade-button'}
+              // onClick={downloadFeedback}
+            >
+              Download Feedback
+            </button> */}
             <button
               type="button"
               className={'clear-button'}
               onClick={() => {
                 setStudentAssignment('');
                 setGrading('');
-                setAdditionalInput('');
                 setDetailedSuggestions('');
                 resetLabel();
               }}

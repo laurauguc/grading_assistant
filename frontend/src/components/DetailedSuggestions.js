@@ -55,15 +55,6 @@ function DetailedSuggestions({
   };
   return (
     <div>
-      <p
-        style={{
-          marginBottom: 20,
-          marginTop: 0,
-        }}
-      >
-        The Detailed Feedback provides a rewritten version of the assignment,
-        along with explanations and the relevant rubric criteria.
-      </p>
 
       <button
         onClick={generate}

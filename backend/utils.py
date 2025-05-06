@@ -6,6 +6,9 @@ import google.generativeai as genai
 from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 import re
+from openai import OpenAI
+
+from . import schemas
 
 class DocxToMarkdownConverter:
     """
@@ -16,7 +19,7 @@ class DocxToMarkdownConverter:
     converted content to a specified file path.
     """
 
-    def __init__(self, docx_path):
+    def __init__(self):
         """
         Initialize the converter with paths to the DOCX file and the output Markdown file.
 
@@ -24,14 +27,14 @@ class DocxToMarkdownConverter:
         docx_path (str): Path to the DOCX file.
         md_path (str): Path to the output Markdown file.
         """
-        self.docx_path = docx_path
+        #self.docx_path = docx_path
         self.doc = None
 
-    def read_word_file(self):
+    def read_word_file(self, docx_path):
         """
         Read the DOCX file and store the Document object in the instance variable.
         """
-        self.doc = docx.Document(self.docx_path)
+        self.doc = docx.Document(docx_path)
 
     def convert_paragraph_to_md(self, paragraph):
         """
@@ -45,7 +48,10 @@ class DocxToMarkdownConverter:
         """
         md_text = paragraph.text.strip()
         if paragraph.style.name.startswith('Heading'):
-            level = int(paragraph.style.name.split()[-1])
+            try:
+                level = int(paragraph.style.name.split()[-1])
+            except:
+                level = 1
             md_text = f"{'#' * level} {md_text}"
         elif paragraph.style.name == 'Normal' and md_text:
             md_text = f"{md_text}\n"
@@ -109,25 +115,27 @@ class DocxToMarkdownConverter:
         """
         md_lines = []
         for element in self.doc.element.body:
-            if isinstance(element, docx.oxml.CT_P):
+            if isinstance(element, docx.oxml.CT_P): # paragraph
                 paragraph = docx.text.paragraph.Paragraph(element, self.doc)
                 md_line = self.convert_paragraph_to_md(paragraph)
                 if md_line:
                     md_lines.append(md_line)
-            elif isinstance(element, docx.oxml.CT_Tbl):
+            elif isinstance(element, docx.oxml.CT_Tbl): # table
                 table = docx.table.Table(element, self.doc)
                 md_table_lines = self.convert_table_to_md(table)
                 md_lines.extend(md_table_lines)
+            elif isinstance(element, docx.oxml.CT_SectPr):
+                md_lines.append("<Image found here>") # TO DO: Replace <Image found here> with descriptive image metadata, OR: make an API call to obtain a description (Premium version).
         return "\n".join(md_lines)
 
-    def convert(self):
+    def convert(self, docx_path):
         """
         Orchestrate the conversion of a DOCX file to Markdown format and save the result to a file.
         """
-        if not os.path.exists(self.docx_path):
-            raise FileNotFoundError(f"The file {self.docx_path} does not exist.")
+        if not os.path.exists(docx_path):
+            raise FileNotFoundError(f"The file {docx_path} does not exist.")
 
-        self.read_word_file()
+        self.read_word_file(docx_path)
         md_content = self.convert_docx_to_md()
         return md_content  # Return the Markdown content to the console
 
@@ -157,66 +165,93 @@ def format_suggestions_and_rewrite_prompt(grading_feedback, student_assignment):
     ]
     """
 
-def generate_suggestions_and_rewrite_essay(model, grading_feedback, student_assignment):
-    prompt = format_suggestions_and_rewrite_prompt(grading_feedback, student_assignment)
+# def generate_suggestions_and_rewrite_essay(model, grading_feedback, student_assignment):
+#     prompt = format_suggestions_and_rewrite_prompt(grading_feedback, student_assignment)
+#
+#     response = model.generate_content(prompt)
+#
+#     # Ensure the response streaming completes
+#     response.resolve()
+#
+#     if response and response.text:
+#         #print("Full response from model:\n", response.text)  # Debugging statement
+#         return response.text
+#     else:
+#         #print("Error: No response from model")
+#         return None
 
-    response = model.generate_content(prompt)
+def get_feeback(system_prompt, user_prompt, response_format):
+    client = OpenAI()
+    response = client.chat.completions.create(
+      model="gpt-4o",
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt,
+            }, {
+                "role": "user",
+                "content": user_prompt
+            }
+        ],
+      response_format = response_format,
+      temperature=0
+    )
+    message_content = response.choices[0].message.content
+    return json.loads(message_content)
 
-    # Ensure the response streaming completes
-    response.resolve()
+def generate_feedback(grading_feedback, student_assignment):
+    system_prompt_improvements = (
+        "Role: You are a Teaching Assistant tasked with providing detailed and actionable feedback to students on their writing assignments."
+        "\n\n"
+        "The user will provide you with the student's assignment text and high-level feedback, both enclosed within triple backticks."
+        "Your responsibility is to generate specific suggestions for improving the assignment based on the provided feedback."
+        "\n\n"
+        "For each suggested improvement, include the following elements:"
+        "1. **improvement**: A concise description of the suggested change."
+        "2. **original_text**: The exact excerpt from the student's assignment where the improvement applies. Ensure this matches a verbatim portion of the input text."
+        "3. **criterion_from_rubric**: The related grading rubric criterion. If no explicit criterion is provided, derive an appropriate one based on the feedback."
+        "4. **reason_for_suggestion**: A clear explanation of why the improvement is necessary or beneficial."
+        "5. **examples**: Provide 1 or 2 example ideas for the suggested improvement."
+        "\n\n"
+        "Ensure that the `original_text` aligns with an exact excerpt from the student's assignment. Do not paraphrase or generalize this text."
+    )
 
-    if response and response.text:
-        #print("Full response from model:\n", response.text)  # Debugging statement
-        return response.text
-    else:
-        #print("Error: No response from model")
-        return None
+    system_prompt_strengths = (
+        "Role: You are a Teaching Assistant responsible for providing detailed, actionable feedback to students on their writing assignments."
+        "\n\n"
+        "Instructions: The user will provide the student's assignment text and high-level feedback, both enclosed in triple backticks. Your task is to identify specific strengths in the student's work related to the feedback."
+        "\n\n"
+        "For each identified strength, include the following elements:"
+        "1. **strength**: A concise description of the positive aspect."
+        "2. **original_text**: The exact excerpt from the student's assignment where the strength is demonstrated (must match verbatim)."
+        "3. **criterion_from_rubric**: The relevant grading criterion. If not explicitly provided, infer an appropriate criterion based on the feedback."
+        "4. **comments**: Additional reinforcement, clarification, or advice."
+        "\n\n"
+        "\n\n"
+        "Ensure that the `original_text` aligns with an exact excerpt from the student's assignment. Do not paraphrase or generalize this text."
+    )
 
-def clean_json_string(json_string):
-    # Remove Markdown formatting and trailing commas
-    json_string = json_string.replace('```json', '').replace('```', '').strip()
-    json_string = re.sub(r',\s*([}\]])', r'\1', json_string)  # Remove trailing commas before closing braces
-    # Ensure all objects are closed properly
-    json_string = re.sub(r'\s*}\s*{', '},{', json_string)
-    # Add missing closing brackets if necessary
-    if json_string.count('[') > json_string.count(']'):
-        json_string += ']'
-    if json_string.count('{') > json_string.count('}'):
-        json_string += '}'
-    return json_string
+    user_prompt = ("Student assignment: ```"
+        "{}\n"
+        "```\n\n"
+        "High level feedback: ```"
+        "{}\n"
+        "```").format(student_assignment, grading_feedback)
 
-def extract_json_improvements(response):
-    if response is None:
-        print("Warning: No response provided for JSON extraction")
-        return {'improvements': [], 'response_without_json': ''}
-    try:
-        json_match = re.search(r'\[\s*\{.*\}\s*\]', response, re.DOTALL)
-        if not json_match:
-            raise ValueError("No valid JSON found in response.")
+    improvements = get_feeback(system_prompt_improvements, user_prompt, schemas.response_format_improvements)['improvements']
+    strengths = get_feeback(system_prompt_strengths, user_prompt, schemas.response_format_strengths)['strengths']
 
-        cleaned_json_string = clean_json_string(json_match.group(0))
-        print("Cleaned JSON string:", cleaned_json_string)  # Debugging statement
+    return improvements, strengths
 
-        improvements = json.loads(cleaned_json_string)
-        response_without_json = response.replace(json_match.group(0), '')
-        return {'improvements': improvements, 'response_without_json': response_without_json}
-    except (ValueError, json.JSONDecodeError) as e:
-        print("Warning: issue extracting JSON from response:", e)
-        print(f"Failed to decode JSON string: {response}")  # Print the entire response for debugging
-        return {'improvements': [], 'response_without_json': response}
-
-def create_improvements_html_with_css(improvements, original_text):
+def create_feedback_html_with_css(student_assignment, improvements, strengths):
     """
-    Displays the improvements in the original essay text with hover effects.
+    Displays specifics strengths and areas for improvement in the original essay text with hover effects.
     Highlights the revised text in the essay and provides a tooltip with the details of the improvement.
     """
-    if not improvements:
-        return "Unable to generate the Detailed Feedback. Please check your inputs and try again."
-    elif len(improvements) == 0:
-        return "Unable to generate the Detailed Feedback. Please check your inputs and try again."
+
     css = """
     <style>
-    .improvement-tooltip {
+    .feedback-tooltip {
         position: relative;
         display: inline-block;
         cursor: pointer;
@@ -226,7 +261,7 @@ def create_improvements_html_with_css(improvements, original_text):
         border: 1px solid black;  /* Adds a border to the highlighted section */
         border-radius: 4px;  /* Adds rounded corners */
     }
-    .improvement-tooltip .tooltiptext {
+    .feedback-tooltip .tooltiptext {
         visibility: hidden;
         width: 300px;
         background-color: white;
@@ -242,36 +277,81 @@ def create_improvements_html_with_css(improvements, original_text):
         left: 50%;
         margin-left: -150px;
     }
-    .improvement-tooltip:hover .tooltiptext {
+    .feedback-tooltip:hover .tooltiptext {
         visibility: visible;
     }
     </style>
     """
 
-    html_content = original_text
+    html_content = student_assignment
 
     for improvement in improvements:
         original = improvement.get('original_text', '')
-        revised = improvement.get('revised_text', '')
         improvement_text = improvement['improvement']
         reason_for_suggestion = improvement['reason_for_suggestion']
         criterion = improvement['criterion_from_rubric']
+        examples = improvement['examples']
 
-        tooltip_html = f"""
-        <div class="improvement-tooltip">
-            {revised}
-            <span class="tooltiptext">
-                <strong>Criterion:</strong> {criterion}<br>
-                <strong>Improvement:</strong> {improvement_text}<br>
-                <strong>Reason:</strong> {reason_for_suggestion}
-            </span>
-        </div>
-        """
 
-        if original:
+        if original in student_assignment:
+            tooltip_html = f"""
+            <div class="feedback-tooltip">
+                {original}
+                <span class="tooltiptext">
+                    <strong>Criterion:</strong> {criterion}<br>
+                    <strong>Area for Improvement:</strong> {improvement_text}<br>
+                    <strong>Reason:</strong> {reason_for_suggestion}<br>
+                    <strong>Example:</strong> {examples}
+                </span>
+            </div>
+            """
             html_content = html_content.replace(original, tooltip_html)
         else:
-            html_content = html_content + tooltip_html
+            # TODO: When original in not the student assignment: use a flash LLM to disambiguate (e.g. refers to a missing element), and identify correct position (such as missing title should be at the top)
+            tooltip_html = f"""
+            <div class="feedback-tooltip">
+                {" "}
+                <span class="tooltiptext">
+                    <strong>Criterion:</strong> {criterion}<br>
+                    <strong>Area for Improvement:</strong> {original}<br>
+                    <strong>Reason:</strong> {reason_for_suggestion}<br>
+                    <strong>Example:</strong> {examples}
+                </span>
+            </div>
+            """
 
+            html_content = tooltip_html + html_content
+
+    for strength in strengths:
+        original = strength.get('original_text', '')
+        strength_text = strength['strength']
+        criterion = strength['criterion_from_rubric']
+        comments = strength['comments']
+        if original in student_assignment:
+            tooltip_html = f"""
+            <div class="improvement-tooltip">
+                {original}
+                <span class="tooltiptext">
+                    <strong>Criterion:</strong> {criterion}<br>
+                    <strong>Strength:</strong> {strength_text}<br>
+                    <p>{comments}</p>
+                </span>
+            </div>
+            """
+            html_content = html_content.replace(original, tooltip_html)
+
+        else:
+            # TODO: When original in not the student assignment: use a flash LLM to disambiguate: see improvements loop for similar situation.
+
+            tooltip_html = f"""
+            <div class="feedback-tooltip">
+                {" "}
+                <span class="tooltiptext">
+                    <strong>Criterion:</strong> {criterion}<br>
+                    <strong>Strength:</strong> {original}<br>
+                    <p>{comments}</p>
+                </span>
+            </div>
+            """
+            html_content = tooltip_html + html_content
     return css + html_content
-    #display(HTML(css + html_content))
