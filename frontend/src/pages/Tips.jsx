@@ -37,20 +37,21 @@ const Tips = () => {
           {role === 'teacher' && (
             <div>
               <p>
-                <strong>Dear Teacher,</strong>
+                <span className="boldLight">Dear Teacher,</span>
               </p>
               <p>
-                We hope you enjoy using <strong>GradeMate</strong> and that it supports you in providing faster, more meaningful formative feedback to your students.
+                We hope you enjoy using <span className="boldLight">GradeMate</span> and that it supports you in providing faster, more meaningful formative feedback to your students.
                 While this tool offers many benefits, it's essential to understand its limitations and use it responsibly.
               </p>
 
               <h3>⚠️ Responsible Use</h3>
               <p>
-                <strong>GradeMate</strong> uses generative AI (GenAI) to assist with writing feedback. It is designed to act as a <strong>creative assistant</strong>, offering helpful suggestions and feedback ideas. However, it is <strong>not a substitute</strong> for professional judgment.
+                <span className="boldLight">You must always review and critically evaluate any AI-generated output before using it with students. The teacher is ultimately responsible for ensuring that all feedback and grades are accurate, fair, and appropriate.</span>
               </p>
               <p>
-                <strong>You must always review and critically evaluate any AI-generated feedback before using it with students.</strong> The teacher is ultimately responsible for ensuring that all feedback and grades are accurate, fair, and appropriate.
+                <span className="boldLight">GradeMate</span> uses generative AI (GenAI) to assist with writing feedback. It is designed to act as a <span className="boldLight">creative assistant</span>, offering helpful suggestions and feedback ideas. However, it is <span className="boldLight">not a substitute</span> for professional judgment.
               </p>
+
               <ul>
                 <li>GenAI produces text that may appear human-like but lacks true understanding.</li>
                 <li>Outputs can sometimes be inaccurate or misleading.</li>
@@ -58,10 +59,10 @@ const Tips = () => {
                 <li>Some content may unintentionally reinforce stereotypes or biases.</li>
               </ul>
               <p>
-                <small><em>
-                  Adapted from UNESCO’s guidance on the use of generative AI in education.<br />
-                  Source: <a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693" target="_blank" rel="noreferrer">unesdoc.unesco.org</a>
-                </em></small>
+                <em>
+                  Adapted from UNESCO’s <a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693" target="_blank">
+                    Guidance for generative AI in education and research</a>.<br />
+                </em>
               </p>
 
               <i>
@@ -72,20 +73,20 @@ const Tips = () => {
           {role === 'student' && (
             <div>
               <p>
-                <strong>Dear Student,</strong>
+                <span className="boldLight">Dear Student,</span>
               </p>
               <p>
-                Welcome to <strong>GradeMate</strong>! This tool is designed to help you get an early round of feedback on your writing by using generative AI (GenAI).
+                Welcome to <span className="boldLight">GradeMate</span>! This tool is designed to help you get an early round of feedback on your writing by using generative AI (GenAI).
                 It can suggest ideas to improve clarity, organization, and style—helping you strengthen your work before submitting it.
               </p>
 
               <h3>⚠️ Use Responsibly</h3>
 
               <p>
-                Please remember: <strong>GradeMate is not a substitute for your teacher’s feedback.</strong>
+                Please remember: <span className="boldLight">GradeMate is not a substitute for your teacher’s feedback.</span>
                 It is a creative assistant, not a grading tool or final authority.
                 AI-generated suggestions can be helpful, but they can also be
-                <strong>inaccurate, overly general, or even misleading.</strong>
+                <span className="boldLight">inaccurate, overly general, or even misleading.</span>
               </p>
 
               <p>
@@ -93,13 +94,13 @@ const Tips = () => {
               </p>
               <ul>
                 <li>Not everything it says is correct—think carefully about what makes sense for your writing.</li>
-                <li>Your teacher's feedback should <strong>always take priority</strong> over what the AI suggests.</li>
+                <li>Your teacher's feedback should <span className="boldLight">always take priority</span> over what the AI suggests.</li>
                 <li>AI tools like this one can reflect common or dominant perspectives and might miss alternative or diverse voices.</li>
                 <li>Sometimes the feedback may unintentionally reinforce stereotypes or assumptions.</li>
               </ul>
 
               <p>
-                These limitations are part of why <strong>AI should never replace human judgment</strong>—especially when it comes to your learning.
+                These limitations are part of why <span className="boldLight">AI should never replace human judgment</span>—especially when it comes to your learning.
               </p>
 
               <h3>🤝 Your Learning Journey</h3>
@@ -114,7 +115,7 @@ const Tips = () => {
               </p>
 
               <p>
-                <strong>For more information on the responsible use of generative AI in education and research, visit:</strong><br />
+                <span className="boldLight">For more information on the responsible use of generative AI in education and research, visit:</span><br />
                 <a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693" target="_blank">
                   UNESCO: Guidance for generative AI in education and research
                 </a>
