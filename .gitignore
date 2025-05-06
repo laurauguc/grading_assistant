@@ -21,6 +21,7 @@ grading_assistant.egg-info/
 grading_assistant/__pycache__/
 backend/migrations/__pycache__/
 backend/__pycache__/
+backend/management/commands/__pycache__/
 
 # If frontend is a directory in your project
 frontend/node_modules/
