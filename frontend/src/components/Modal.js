@@ -33,18 +33,17 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <li>Transparency</li>
         <li>Research-based practices</li>
         <li>Fairness and accountability</li>
-        <li>Environmental responsibility</li>
         <li>Student rights to review and appeal</li>
       </ul>
       <p>
-        This open-source project—<a href="https://github.com/laurauguc/grading_assistant" target="_blank" rel="noopener noreferrer">available here</a>—aims to spark conversation around the future of AI in grading, its limitations, and ethical use. This work began at <span className="boldLight">Conlumbia University's Quantitative Methods in the Social Sciences Innovation Lab (QMSS Innovation Lab)</span> and we hope to expand collaboration with the wider research and educational community.
+        This open-source project—<a href="https://github.com/laurauguc/grading_assistant" target="_blank" rel="noopener noreferrer">code available here</a>—aims to spark conversation around the future of AI in grading, its limitations, and ethical use. This work began at <span className="boldLight">Conlumbia University's Quantitative Methods in the Social Sciences Innovation Lab (QMSS Innovation Lab)</span> and we hope to expand collaboration with the wider research and educational community.
         We welcome you to engage in discussions at this <a href="https://github.com/laurauguc/grading_assistant/discussions" target="_blank" rel="noopener noreferrer"> link</a>.
       </p>
 
 
       <h2>👥 Our Team</h2>
       <p>
-        We are a passionate team of students and professionals brought together through the QMSS Innovation Lab. Our diverse backgrounds in the humanities, social sciences, and data science enable us to tackle educational inequality with an interdisciplinary approach.
+        We are a passionate team of students and professionals brought together through the QMSS Innovation Lab. Our diverse backgrounds in the humanities, social sciences, and data science enable us to tackle AI-powered grading with an interdisciplinary approach.
       </p>
 
       <h2>⚠️ Risks of AI-Supported Grading</h2>
@@ -58,14 +57,13 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
       </ul>
       <h2>🌟 Benefits of AI-Supported Grading</h2>
       <p>
-      <span className="boldLight">The potential benefits of AI-supported grading compell us to investigate its development and responsible use.</span> Currently, grading writing assignments consumes nearly{' '}<a
+      <span className="boldLight">The potential benefits of AI-assisted grading compel us to explore its development and responsible implementation.</span> Currently, grading writing assignments consumes nearly{' '}<a
         href="https://www.edweek.org/teaching-learning/heres-how-many-hours-a-week-teachers-work/2022/04"
         target="_blank"
         rel="noreferrer"
       >
         20% of teachers' work hours
-      </a>. AI-supported grading aims to optimize this task, saving teachers valuable time, while also enabling them to provide
-      students with more comprehensive formative feedback.
+      </a>. By streamlining this time-intensive task, AI-supported grading can not only save educators valuable time but also empower them to offer students more detailed and meaningful formative feedback.
 
       </p>{' '}
 
@@ -82,7 +80,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
           <p>
             A teacher’s time is invaluable. Supporting grading tasks frees up teachers to engage more
             directly with their students. As Nelson Mandela once said, “Education is the most powerful weapon which
-            you can use to change the world.” The aim is allow teachers have <span className="boldLight">more time to
+            you can use to change the world.” The aim is allowing teachers to have <span className="boldLight">more time to
             focus on the interactions that shape students' lives.</span>
           </p>
         </div>
@@ -98,10 +96,8 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <div>
           <h3>Enhancing Writing Feedback</h3>
           <p>
-            With the support of AI-supported grading tools that include feedback, teachers can provide more in-depth and specific feedback
-            on writing assignments. This feedback can highlight strengths, identify areas for improvement, and include reasoning
-            and illustrative examples. Ideally, feedback tools would not reccomend feedback, but also work with the teacher to enhance
-            their insights, with features like "Rewrite with AI," "Connect to study materials," and "Add examples" to further refine and enhance their comments.
+            With the help of AI-powered grading tools that incorporate feedback capabilities, teachers can offer more detailed and targeted responses on writing assignments. These tools can highlight strengths, pinpoint areas for improvement, and provide clear reasoning along with illustrative examples.
+            Ideally, such tools would go beyond simply recommending feedback; they would <span className="boldLight">actively collaborate with teachers to deepen their insights</span>. Features like “Rewrite with AI,” “Connect to Study Materials,” and “Add Examples” could help educators further refine and enrich their comments.
           </p>
         </div>
       </div>

@@ -51,7 +51,9 @@ const Tips = () => {
               <p>
                 <span className="boldLight">GradeMate</span> uses generative AI (GenAI) to assist with writing feedback. It is designed to act as a <span className="boldLight">creative assistant</span>, offering helpful suggestions and feedback ideas. However, it is <span className="boldLight">not a substitute</span> for professional judgment.
               </p>
-
+              <p>
+                Please keep the following in mind when using GradeMate:
+              </p>
               <ul>
                 <li>GenAI produces text that may appear human-like but lacks true understanding.</li>
                 <li>Outputs can sometimes be inaccurate or misleading.</li>
@@ -101,6 +103,9 @@ const Tips = () => {
 
               <p>
                 These limitations are part of why <span className="boldLight">AI should never replace human judgment</span>—especially when it comes to your learning.
+              </p>
+              <p>
+              Additionally, you are expected to use this tool in accordance with your school’s academic integrity and technology use policies.
               </p>
 
               <h3>🤝 Your Learning Journey</h3>
