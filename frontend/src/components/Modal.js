@@ -64,8 +64,8 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         rel="noreferrer"
       >
         20% of teachers' work hours
-      </a>. GradeMate optimizes this task, saving teachers valuable time, while also enabling them to provide
-      students with more comprehensive feedback.
+      </a>. AI-supported grading aims to optimize this task, saving teachers valuable time, while also enabling them to provide
+      students with more comprehensive formative feedback.
 
       </p>{' '}
 
@@ -80,9 +80,9 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <div>
           <h3>Fostering Teacher-Student Interaction</h3>
           <p>
-            A teacher’s time is invaluable. By supporting grading tasks, GradeMate frees up teachers to engage more
+            A teacher’s time is invaluable. Supporting grading tasks frees up teachers to engage more
             directly with their students. As Nelson Mandela once said, “Education is the most powerful weapon which
-            you can use to change the world.” GradeMate ensures teachers have <span className="boldLight">more time to
+            you can use to change the world.” The aim is allow teachers have <span className="boldLight">more time to
             focus on the interactions that shape students' lives.</span>
           </p>
         </div>
@@ -98,10 +98,10 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <div>
           <h3>Enhancing Writing Feedback</h3>
           <p>
-            With the help of a brainstorming and analytical companion, teachers can provide more in-depth and specific feedback
+            With the support of AI-supported grading tools that include feedback, teachers can provide more in-depth and specific feedback
             on writing assignments. This feedback can highlight strengths, identify areas for improvement, and include reasoning
-            and illustrative examples. In future versions of GradeMate, teachers will also benefit from additional writing support
-            for their personalized feedback, with features like "Rewrite with AI," "Connect to study materials," and "Add examples" to further refine and enhance their comments.
+            and illustrative examples. Ideally, feedback tools would not reccomend feedback, but also work with the teacher to enhance
+            their insights, with features like "Rewrite with AI," "Connect to study materials," and "Add examples" to further refine and enhance their comments.
           </p>
         </div>
       </div>
@@ -138,7 +138,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
           </a>{' '}
           reveals that over 300,000 students in New York City's high-need schools
           are in oversized classes, disproportionately affecting Black, Brown,
-          low-income, and immigrant students. GradeMate aims to{' '}
+          low-income, and immigrant students. AI-supported grading aims to{' '}
           <span className="boldLight">
             bridge this gap by providing equitable access
           </span>{' '}
@@ -156,8 +156,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <div>
         <h3>Tackling the Global Teacher Shortage</h3>
         <p>
-          GradeMate enables teachers to manage larger student populations
-          effectively, addressing the{' '}
+          AI-supported grading enables teachers to manage larger student populations, thereby aiding in addressing the{' '}
           <span className="boldLight">global teacher shortage</span>.{' '}
           <a
             href="https://www.unesco.org/en/articles/global-report-teachers-what-you-need-know"
@@ -173,7 +172,7 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
             to achieve universal primary and secondary education by 2030
           </span>
           , an additional 69 million teachers are needed. By enhancing efficiency,
-          GradeMate supports teachers in{' '}
+          AI-supported grading supports teachers in{' '}
           <span className="boldLight">meeting this critical demand</span> and
           ensures that more students receive the education they deserve.
         </p>
