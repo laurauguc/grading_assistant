@@ -37,14 +37,14 @@ const AboutUsModal = ({ isVisible, handleClose }) => {
         <li>Student rights to review and appeal</li>
       </ul>
       <p>
-        This open-source project—<a href="https://github.com/laurauguc/grading_assistant" target="_blank" rel="noopener noreferrer">available here</a>—aims to spark conversation around the future of AI in grading, its limitations, and ethical use. This work began at the <strong>Quantitative Methods in the Social Sciences Innovation Lab</strong> and we hope to expand collaboration with the wider research and educational community.
+        This open-source project—<a href="https://github.com/laurauguc/grading_assistant" target="_blank" rel="noopener noreferrer">available here</a>—aims to spark conversation around the future of AI in grading, its limitations, and ethical use. This work began at <strong>Conlumbia University's Quantitative Methods in the Social Sciences Innovation Lab (QMSS Innovation Lab)</strong> and we hope to expand collaboration with the wider research and educational community.
         We welcome you to engage in discussions at this <a href="https://github.com/laurauguc/grading_assistant/discussions" target="_blank" rel="noopener noreferrer"> link</a>.
       </p>
 
 
       <h2>👥 Our Team</h2>
       <p>
-        We are a passionate team of students and professionals brought together through Columbia University’s Quantitative Methods in the Social Sciences Innovation Lab. Our diverse backgrounds in the humanities, social sciences, and data science enable us to tackle educational inequality with an interdisciplinary approach.
+        We are a passionate team of students and professionals brought together through the QMSS Innovation Lab. Our diverse backgrounds in the humanities, social sciences, and data science enable us to tackle educational inequality with an interdisciplinary approach.
       </p>
 
       <h2>⚠️ Risks of AI-Supported Grading</h2>
