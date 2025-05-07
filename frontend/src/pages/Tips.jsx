@@ -43,11 +43,10 @@ const Tips = () => {
                 We hope you enjoy using <span className="boldLight">GradeMate</span> and that it supports you in providing faster, more meaningful formative feedback to your students.
                 While this tool offers many benefits, it's essential to understand its limitations and use it responsibly.
               </p>
-
-              <h3>⚠️ Responsible Use</h3>
               <p>
-                <span className="boldLight">You must always review and critically evaluate any AI-generated output before using it with students. The teacher is ultimately responsible for ensuring that all feedback and grades are accurate, fair, and appropriate.</span>
+                <span className="boldLight">To use responsibly, you must always review and critically evaluate any AI-generated output before using it with students. The teacher is ultimately responsible for ensuring that all feedback and grades are accurate, fair, and appropriate.</span>
               </p>
+              <h3>⚠️ Limitations</h3>
               <p>
                 <span className="boldLight">GradeMate</span> uses generative AI (GenAI) to assist with writing feedback. It is designed to act as a <span className="boldLight">creative assistant</span>, offering helpful suggestions and feedback ideas. However, it is <span className="boldLight">not a substitute</span> for professional judgment.
               </p>
