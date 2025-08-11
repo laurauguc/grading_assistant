@@ -1,6 +1,6 @@
 # <img src="./frontend/src/images/logo.png" alt="drawing" width="200"/> GradeMate
 
-The AI-powered Grading Assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this app is available at: [www.grade-mate.app](https://www.grade-mate.app).
+The AI-powered Grading Assistant Application, GradeMate, aids teachers in grading written work. Teachers can apply curated rubrics or upload their own. The most recent version of this app is available at: [www.grade-mate.app](https://laurauguc.pythonanywhere.com).
 
 ## Architecture
 
